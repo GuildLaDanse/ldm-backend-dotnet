@@ -35,12 +35,13 @@ namespace LaDanse.WebAPI
             }
             finally
             {
-                Log.CloseAndFlush();
+               Log.CloseAndFlush();
             }            
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
+        private static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .UseSerilog()
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
