@@ -1,0 +1,13 @@
+#!/bin/bash
+
+export RUNTIME_DLL="bin/Debug/netcoreapp2.2/Hermes.WebUI.dll"
+export ASPNETCORE_ENVIRONMENT="Development"
+
+export HERMES_DATABASE_CONNECTION="Server=localhost;User Id=postgres;Password=secret;Database=database"
+
+export HERMES_STORAGE_CONNECTION="DefaultEndpointsProtocol=https;AccountName=accountname;AccountKey=accountkey;BlobEndpoint=blobendpointurl;TableEndpoint=tableendpointurl;"
+export HERMES_BLOB_CONTAINER="azure-container-name"
+
+export HERMES_DBX_APP_KEY=""
+export HERMES_DBX_APP_SECRET=""
+export HERMES_DBX_REDIRECT_URL=""
