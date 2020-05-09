@@ -5,8 +5,8 @@ SCRIPTDIR=`dirname "$BASH_SOURCE"`
 source ${SCRIPTDIR}/Functions.sh
 source ${SCRIPTDIR}/Environment.sh
 
-cd ${MAIN_PROJECT}
+#cd src/${MAIN_PROJECT}
 
 PrintSectionHeader "Running project with watch"
 
-exec dotnet watch run
+exec dotnet watch --project src/${MAIN_PROJECT}/${MAIN_PROJECT}.csproj run

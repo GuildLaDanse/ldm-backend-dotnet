@@ -9,7 +9,7 @@ PrintSectionHeader "Pulling updates from Git"
 
 git pull
 
-cd src/App
+cd src/${MAIN_PROJECT}
 
 PrintSectionHeader "Cleaning project"
 
