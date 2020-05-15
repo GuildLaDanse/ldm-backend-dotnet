@@ -1,14 +1,13 @@
 using System.Reflection;
 using LaDanse.Application;
-using LaDanse.Application.Behaviours;
+using LaDanse.Application.Common.Behaviours;
 using LaDanse.Common.Configuration;
-using LaDanse.Core.Behaviours;
+using LaDanse.Infrastructure;
 using LaDanse.Persistence;
 using MediatR;
 using MediatR.Pipeline;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -21,37 +20,32 @@ namespace LaDanse.WebAPI
     {
         private static readonly ILogger Logger = Log.ForContext<Startup>();
         
-        public Startup(IConfiguration configuration)
+        private IServiceCollection _services;
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
             Configuration = configuration;
+            Environment = environment;
         }
 
         private IConfiguration Configuration { get; }
+        private IWebHostEnvironment Environment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             // Verify that all required environment variables are present.
             CheckEnvironmentVariables();
-            
-            services
-                .AddEntityFrameworkNpgsql()
-                .AddDbContext<LaDanseDbContext>(options =>
-                    options.UseNpgsql(Configuration.GetEnvironmentValue(EnvNames.LaDanseDatabaseConnection)));
-            
-            // add MediatR pipeline behavior
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehavior<,>));
 
-            // add assemblies to scan for MediatR handlers
-            services.AddMediatR(
-                typeof(LaDanseApplicationAssembly).GetTypeInfo().Assembly);
-        
+            services.AddInfrastructure(Configuration, Environment);
+            services.AddPersistence(Configuration);
+            services.AddApplication();
+
+            services.AddHttpContextAccessor();
+            
             services.AddControllers();
-
-            services
-                .AddLaDansePersistence();
+            
+            _services = services;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

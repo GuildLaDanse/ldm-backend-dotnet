@@ -1,21 +1,18 @@
-﻿using LaDanse.Domain.GameData.Entities;
+﻿using LaDanse.Application.Common.Interfaces;
+using LaDanse.Domain.GameData.Entities;
 using LaDanse.Persistence.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace LaDanse.Persistence
 {
-    public class LaDanseDbContext : DbContext
+    public class LaDanseDbContext : DbContext, ILaDanseDbContext
     {
         public LaDanseDbContext(DbContextOptions<LaDanseDbContext> options)
             : base(options)
         {
         }
         
-        #region GameData
-        
-        public DbSet<Realm> Realm { get; set; }
-        
-        #endregion
+        public DbSet<Realm> Realms { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

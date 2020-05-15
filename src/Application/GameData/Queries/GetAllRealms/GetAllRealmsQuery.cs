@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using LaDanse.Application.Common.Interfaces;
 using LaDanse.Core.GameData.Models;
 using LaDanse.Domain;
 using MediatR;

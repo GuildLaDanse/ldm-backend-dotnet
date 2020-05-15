@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using MediatR;
 using Serilog;
 
-namespace LaDanse.Application.Behaviours
+namespace LaDanse.Application.Common.Behaviours
 {
     public class RequestPerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
