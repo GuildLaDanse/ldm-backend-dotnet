@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LaDanse.WebUI;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace LaDanse.WebAPI.Controllers
+namespace LaDanse.WebUI.Controllers
 {
     [ApiController]
     [Route("[controller]")]

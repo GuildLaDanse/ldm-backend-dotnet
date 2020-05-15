@@ -1,6 +1,6 @@
 using System;
 
-namespace LaDanse.WebAPI
+namespace LaDanse.WebUI
 {
     public class WeatherForecast
     {

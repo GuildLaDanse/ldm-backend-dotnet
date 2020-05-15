@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "LaDanse.WebAPI": {
+    "LaDanse.WebUI": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "weatherforecast",

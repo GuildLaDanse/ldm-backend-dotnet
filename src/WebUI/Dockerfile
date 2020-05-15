@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["LaDanse.WebAPI/LaDanse.WebAPI.csproj", "LaDanse.WebAPI/"]
-RUN dotnet restore "LaDanse.WebAPI/LaDanse.WebAPI.csproj"
+COPY ["LaDanse.WebUI/LaDanse.WebUI.csproj", "LaDanse.WebUI/"]
+RUN dotnet restore "LaDanse.WebUI/LaDanse.WebUI.csproj"
 COPY . .
-WORKDIR "/src/LaDanse.WebAPI"
-RUN dotnet build "LaDanse.WebAPI.csproj" -c Release -o /app/build
+WORKDIR "/src/LaDanse.WebUI"
+RUN dotnet build "LaDanse.WebUI.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "LaDanse.WebAPI.csproj" -c Release -o /app/publish
+RUN dotnet publish "LaDanse.WebUI.csproj" -c Release -o /app/publish
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "LaDanse.WebAPI.dll"]
+ENTRYPOINT ["dotnet", "LaDanse.WebUI.dll"]
