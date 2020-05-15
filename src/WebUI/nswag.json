@@ -1,5 +1,5 @@
 ﻿{
-  "runtime": "NetCore30",
+  "runtime": "NetCore31",
   "defaultVariables": null,
   "documentGenerator": {
     "aspNetCoreToOpenApi": {
@@ -30,7 +30,7 @@
       "serviceHost": null,
       "serviceBasePath": null,
       "serviceSchemes": [],
-      "infoTitle": "Northwind Traders API",
+      "infoTitle": "La Danse API",
       "infoDescription": null,
       "infoVersion": "1.0.0",
       "documentTemplate": null,
@@ -109,7 +109,7 @@
       "enumNameGeneratorType": null,
       "serviceHost": null,
       "serviceSchemes": null,
-      "output": "ClientApp/src/app/northwind-traders-api.ts"
+      "output": "ClientApp/src/app/ladanse-api.ts"
     }
   }
 }
