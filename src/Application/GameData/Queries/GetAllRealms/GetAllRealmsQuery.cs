@@ -4,7 +4,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using LaDanse.Application.Common.Interfaces;
 using LaDanse.Core.GameData.Models;
-using LaDanse.Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 

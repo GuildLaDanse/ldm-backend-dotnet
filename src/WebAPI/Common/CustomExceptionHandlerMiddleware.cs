@@ -1,10 +1,10 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
-using Newtonsoft.Json;
-using LaDanse.Application.Common.Exceptions;
 using System;
 using System.Net;
 using System.Threading.Tasks;
+using LaDanse.Application.Common.Exceptions;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 
 namespace LaDanse.WebUI.Common
 {
