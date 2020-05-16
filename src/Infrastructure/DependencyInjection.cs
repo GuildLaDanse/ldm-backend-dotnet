@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Security.Claims;
 using LaDanse.Common;
 using MediatR;
 using MediatR.Pipeline;
@@ -17,10 +15,10 @@ namespace LaDanse.Infrastructure
             IWebHostEnvironment environment)
         {
             services.AddTransient<IDateTime, MachineDateTime>();
-            
+
             // add MediatR pipeline behavior
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));
-            
+
             return services;
         }
     }

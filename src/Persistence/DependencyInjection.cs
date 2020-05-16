@@ -15,7 +15,7 @@ namespace LaDanse.Persistence
             #region GameData
             
             services
-                .AddEntityFrameworkNpgsql()
+                //.AddEntityFrameworkNpgsql()
                 .AddDbContext<LaDanseDbContext>(options =>
                     options.UseNpgsql(configuration.GetEnvironmentValue(EnvNames.LaDanseDatabaseConnection)));
             

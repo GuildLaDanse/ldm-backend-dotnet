@@ -61,17 +61,6 @@ namespace LaDanse.WebUI
                 options.SuppressModelStateInvalidFilter = true;
             });
 
-            // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            });
-
-            services.AddOpenApiDocument(configure =>
-            {
-                configure.Title = "LaDanse API";
-            });
-            
             _services = services;
         }
 
@@ -98,20 +87,10 @@ namespace LaDanse.WebUI
             app.UseHealthChecks("/health");
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-            app.UseSpaStaticFiles();
-
-            app.UseOpenApi();
-
-            app.UseSwaggerUi3(settings =>
-            {
-                settings.Path = "/api";
-                //    settings.DocumentPath = "/api/specification.json";   Enable when NSwag.MSBuild is upgraded to .NET Core 3.0
-            });
 
             app.UseRouting();
 
             app.UseAuthentication();
-            app.UseIdentityServer();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
@@ -120,19 +99,6 @@ namespace LaDanse.WebUI
                     pattern: "{controller}/{action=Index}/{id?}");
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
-            });
-
-            app.UseSpa(spa =>
-            {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
-
-                spa.Options.SourcePath = "ClientApp";
-
-                if (Environment.IsDevelopment())
-                {
-                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
-                }
             });
         }
         
