@@ -2,18 +2,19 @@ using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 using MediatR;
-using Serilog;
+using Microsoft.Extensions.Logging;
 
 namespace LaDanse.Application.Common.Behaviours
 {
     public class RequestPerformanceBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
-        private static readonly ILogger Logger = Log.ForContext<TRequest>();
+        private readonly ILogger _logger;
 
         private readonly Stopwatch _timer;
         
-        public RequestPerformanceBehaviour()
+        public RequestPerformanceBehaviour(ILogger<RequestPerformanceBehaviour<TRequest, TResponse>> logger)
         {
+            _logger = logger;
             _timer = new Stopwatch();
         }
 
@@ -31,7 +32,7 @@ namespace LaDanse.Application.Common.Behaviours
 
             // TODO: Add User Details
 
-            Logger.Warning("Hermes Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@Request}", name, _timer.ElapsedMilliseconds, request);
+            _logger.LogWarning("Hermes Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@Request}", name, _timer.ElapsedMilliseconds, request);
 
             return response;
         }

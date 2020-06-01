@@ -10,25 +10,27 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using Serilog;
 
 namespace WebAPI
 {
     public class Startup
     {
-        private static readonly ILogger Logger = Log.ForContext<Startup>();
+        private readonly ILogger<Startup> _logger;
 
         private IServiceCollection _services;
 
-        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
+        private IConfiguration Configuration { get; }
+        private IWebHostEnvironment Environment { get; }
+
+        public Startup(ILogger<Startup> logger,IConfiguration configuration, IWebHostEnvironment environment)
         {
+            _logger = logger;
+
             Configuration = configuration;
             Environment = environment;
         }
-
-        private IConfiguration Configuration { get; }
-        private IWebHostEnvironment Environment { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -45,7 +47,7 @@ namespace WebAPI
 
             services.AddHttpContextAccessor();
 
-            string domain = $"https://{Configuration["Auth0:Domain"]}/";
+            var domain = $"https://{Configuration["Auth0:Domain"]}/";
 
             services
                 .AddAuthentication(options =>
@@ -73,9 +75,11 @@ namespace WebAPI
 
             services.AddAuthorization();
 
-            _services = services;
-
             services.AddControllers();
+
+            services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
+
+            _services = services;
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -85,9 +89,6 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            // replace the 10+ logs per request by a summary log from Serilog
-            app.UseSerilogRequestLogging();
 
             app.UseRouting();
 
@@ -111,11 +112,11 @@ namespace WebAPI
 
             if (string.IsNullOrEmpty(envValue))
             {
-                Logger.Warning($"No value given for '{envName}'. Did you forgot to set the environment value?");
+                _logger.LogWarning($"No value given for '{envName}'. Did you forgot to set the environment value?");
             }
             else
             {
-                Logger.Debug($"Found a value for '{envName}': '{envValue}'");
+                _logger.LogDebug($"Found a value for '{envName}': '{envValue}'");
             }
         }
     }
