@@ -1,17 +1,17 @@
 using System;
 using System.Security.Claims;
+using LaDanse.Application;
+using LaDanse.Common.Configuration;
+using LaDanse.Infrastructure;
+using LaDanse.Persistence;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
-using LaDanse.Common.Configuration;
-using LaDanse.Infrastructure;
-using LaDanse.Persistence;
-using LaDanse.Application;
 
 namespace WebAPI
 {

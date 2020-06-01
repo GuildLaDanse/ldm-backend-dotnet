@@ -22,7 +22,7 @@ namespace LaDanse.Application.GameData.Queries.GetAllRealms
 
             public async Task<IEnumerable<RealmDto>> Handle(GetAllRealmsQuery request, CancellationToken cancellationToken)
             {
-                var realms = await _context.Realms
+                var realms = await _context.GameRealms
                     //.ProjectTo<EmployeeLookupDto>(_mapper.ConfigurationProvider)
                     .OrderBy(e => e.Name)
                     .ToListAsync(cancellationToken);
