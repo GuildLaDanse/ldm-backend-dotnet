@@ -1,7 +1,7 @@
 . $PSScriptRoot/Environment.ps1
 . $PSScriptRoot/Functions.ps1
 
-Push-Location src/LaDanse.WebUI
+Push-Location src/WebAPI
 
 Write-SectionHeader "Running project with watch"
 
