@@ -17,17 +17,13 @@ namespace WebAPI
 {
     public class Startup
     {
-        private readonly ILogger<Startup> _logger;
-
         private IServiceCollection _services;
 
         private IConfiguration Configuration { get; }
         private IWebHostEnvironment Environment { get; }
 
-        public Startup(ILogger<Startup> logger,IConfiguration configuration, IWebHostEnvironment environment)
+        public Startup(IConfiguration configuration, IWebHostEnvironment environment)
         {
-            _logger = logger;
-
             Configuration = configuration;
             Environment = environment;
         }
@@ -112,11 +108,11 @@ namespace WebAPI
 
             if (string.IsNullOrEmpty(envValue))
             {
-                _logger.LogWarning($"No value given for '{envName}'. Did you forgot to set the environment value?");
+                Console.WriteLine($"No value given for '{envName}'. Did you forgot to set the environment value?");
             }
             else
             {
-                _logger.LogDebug($"Found a value for '{envName}': '{envValue}'");
+                Console.WriteLine($"Found a value for '{envName}': '{envValue}'");
             }
         }
     }
