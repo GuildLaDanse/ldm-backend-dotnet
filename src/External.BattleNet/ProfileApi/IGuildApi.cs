@@ -8,6 +8,6 @@ namespace LaDanse.External.BattleNet.Abstractions.ProfileApi
     {
         Task<Guild> GuildAsync(string realmSlug, string nameSlug);
 
-        Task<GuildRoster> GuildRosterAsync(string realmSlug, string nameSlug);
+        Task<Roster> GuildRosterAsync(string realmSlug, string nameSlug);
     }
 }

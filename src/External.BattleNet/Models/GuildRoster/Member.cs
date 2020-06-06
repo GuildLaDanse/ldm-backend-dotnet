@@ -2,10 +2,10 @@
 
 namespace LaDanse.External.BattleNet.Abstractions.Models.GuildRoster
 {
-    public class GuildMember
+    public class Member
     {
         [JsonProperty("character")]
-        public GuildCharacter Character { get; set; }
+        public Character Character { get; set; }
         
         [JsonProperty("rank")]
         public int Rank { get; set; }

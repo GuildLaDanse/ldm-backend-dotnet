@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace LaDanse.External.BattleNet.Abstractions.Models.GuildRoster
 {
-    public class GuildCharacter
+    public class Character
     {
         [JsonProperty("name")]
         public string Name { get; set; }

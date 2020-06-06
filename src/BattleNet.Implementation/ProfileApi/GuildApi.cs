@@ -29,9 +29,9 @@ namespace LaDanse.External.BattleNet.Implementation.ProfileApi
             );
         }
 
-        public Task<GuildRoster.GuildRoster> GuildRosterAsync(string realmSlug, string nameSlug)
+        public Task<GuildRoster.Roster> GuildRosterAsync(string realmSlug, string nameSlug)
         {
-            return CallApi<GuildRoster.GuildRoster>(
+            return CallApi<GuildRoster.Roster>(
                 $"/data/wow/guild/{realmSlug}/{nameSlug}/roster",
                 "profile-" + _apiClient.ApiRegion.RegionId,
                 "en_US"

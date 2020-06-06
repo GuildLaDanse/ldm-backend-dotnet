@@ -27,7 +27,7 @@ namespace WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<GuildRoster> GetAsync()
+        public async Task<Roster> GetAsync()
         {
             var apiClient = await _battleNetApiClientFactory.CreateClientAsync(
                 ApiRegion.Eu,
