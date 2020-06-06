@@ -10,13 +10,15 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 
 namespace WebAPI
 {
     public class Startup
     {
+        private readonly ILogger _logger = Log.ForContext<Startup>();
+        
         private IServiceCollection _services;
 
         private IConfiguration Configuration { get; }
@@ -85,6 +87,8 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            app.UseSerilogRequestLogging();
 
             app.UseRouting();
 
@@ -100,6 +104,8 @@ namespace WebAPI
         private void CheckEnvironmentVariables()
         {
             CheckEnvironmentVariable(EnvNames.LaDanseDatabaseConnection);
+            CheckEnvironmentVariable(EnvNames.BattleNetClientId);
+            CheckEnvironmentVariable(EnvNames.BattleNetClientSecret);
         }
 
         private void CheckEnvironmentVariable(string envName)
@@ -108,11 +114,13 @@ namespace WebAPI
 
             if (string.IsNullOrEmpty(envValue))
             {
-                Console.WriteLine($"No value given for '{envName}'. Did you forgot to set the environment value?");
+                _logger.Warning($"No value given for '{envName}'. Did you forgot to set the environment value?");
             }
             else
             {
-                Console.WriteLine($"Found a value for '{envName}': '{envValue}'");
+                _logger.Information(Environment.IsDevelopment()
+                    ? $"Found a value for '{envName}': '{envValue}'"
+                    : $"Found a value for '{envName}'");
             }
         }
     }

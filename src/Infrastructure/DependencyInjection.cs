@@ -1,4 +1,6 @@
 using LaDanse.Common;
+using LaDanse.Common.Configuration;
+using LaDanse.External.BattleNet.Implementation;
 using MediatR;
 using MediatR.Pipeline;
 using Microsoft.AspNetCore.Hosting;
@@ -14,7 +16,10 @@ namespace LaDanse.Infrastructure
             IConfiguration configuration, 
             IWebHostEnvironment environment)
         {
+            services.AddBattleNeApi();
+            
             services.AddTransient<IDateTime, MachineDateTime>();
+            services.AddTransient<ILaDanseConfiguration, LaDanseConfiguration>();
 
             // add MediatR pipeline behavior
             services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));
