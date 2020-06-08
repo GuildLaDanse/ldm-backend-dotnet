@@ -22,6 +22,12 @@ namespace LaDanse.Persistence.Configurations.GameData.Characters
                 .IsRequired()
                 .HasColumnName("name")
                 .HasUtf8ColumnType(MySqlBuilderTypes.String(255));
+            
+            builder.Property(e => e.GameId)
+                .IsRequired()
+                .HasColumnName("gameId")
+                .HasColumnType(MySqlBuilderTypes.UnsignedInt)
+                .HasDefaultValue(0);
 
             builder.Property(e => e.GameRealmId)
                 .HasColumnName("gameRealmId")

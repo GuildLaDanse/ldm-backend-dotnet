@@ -32,7 +32,7 @@ namespace LaDanse.Application.Common.Behaviours
 
             // TODO: Add User Details
 
-            _logger.LogWarning("Hermes Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds) {@Request}", name, _timer.ElapsedMilliseconds, request);
+            _logger.LogWarning("Hermes Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds)", name, _timer.ElapsedMilliseconds, request);
 
             return response;
         }
