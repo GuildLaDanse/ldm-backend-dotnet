@@ -20,6 +20,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{9E37
 		scripts\Environment.ps1 = scripts\Environment.ps1
 		scripts\Functions.ps1 = scripts\Functions.ps1
 		scripts\RunWatchServer.ps1 = scripts\RunWatchServer.ps1
+		scripts\Environment.ps1.dist = scripts\Environment.ps1.dist
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "src\WebAPI\WebAPI.csproj", "{505F43CA-A08A-4C01-9130-F5F340B20825}"

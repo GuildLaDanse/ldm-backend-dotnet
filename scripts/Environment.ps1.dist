@@ -1,4 +1,7 @@
-$env:RUNTIME_DLL="bin/Debug/netcoreapp2.1/App.dll"
 $env:ASPNETCORE_URLS="http://localhost:5001"
 $env:ASPNETCORE_ENVIRONMENT="Development"
-$env:LADANSE_DATABASE_CONNECTION="Server=localhost;User Id=postgres;Password=secret;Database=database"
+
+$env:LADANSE_DATABASE_CONNECTION="server=DatabaseHost;port=3306;database=YourDatabase;user=DbUser;password=secret"
+
+$env:BATTLENET_CLIENT_ID="ClientIdFromBattleNet"
+$env:BATTLENET_CLIENT_SECRET="ClientSecretFromBattleNet"
