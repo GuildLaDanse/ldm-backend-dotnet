@@ -1,13 +1,13 @@
 ﻿using System.Threading.Tasks;
-using LaDanse.External.BattleNet.Abstractions.Models.GuildRoster;
-using Guild = LaDanse.External.BattleNet.Abstractions.Models.GuildInfo.Guild;
+using GuildRoster = LaDanse.External.BattleNet.Abstractions.Models.GuildRoster;
+using GuildInfo = LaDanse.External.BattleNet.Abstractions.Models.GuildInfo;
 
 namespace LaDanse.External.BattleNet.Abstractions.ProfileApi
 {
     public interface IGuildApi
     {
-        Task<Guild> GuildAsync(string realmSlug, string nameSlug);
+        Task<GuildInfo.Guild> GuildAsync(string realmSlug, string nameSlug);
 
-        Task<Roster> GuildRosterAsync(string realmSlug, string nameSlug);
+        Task<GuildRoster.Roster> GuildRosterAsync(string realmSlug, string nameSlug);
     }
 }
