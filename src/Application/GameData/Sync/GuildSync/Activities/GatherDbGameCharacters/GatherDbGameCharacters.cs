@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using LaDanse.Domain.Entities.GameData.Characters;
-using MediatR;
+﻿using MediatR;
 
 namespace LaDanse.Application.GameData.Sync.GuildSync.Activities.GatherDbGameCharacters
 {

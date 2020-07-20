@@ -5,7 +5,7 @@ namespace LaDanse.External.BattleNet.Implementation
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddBattleNeApi(
+        public static IServiceCollection AddBattleNetApi(
             this IServiceCollection services)
         {
             services.AddScoped<IBattleNetApiClientFactory, BattleNetApiClientFactory>();

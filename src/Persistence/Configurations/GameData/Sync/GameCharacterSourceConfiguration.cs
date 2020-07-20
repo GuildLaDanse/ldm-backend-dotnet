@@ -14,7 +14,7 @@ namespace LaDanse.Persistence.Configurations.GameData.Sync
             builder.ToTable("GameCharacterSource");
 
             builder.HasGuidKey();
-            
+
             builder.HasDiscriminator<string>("discr")
                 .HasValue<GameGuildSync>("GuildSync")
                 .HasValue<ProfileSync>("ProfileSync");

@@ -11,12 +11,12 @@ namespace LaDanse.Application.GameData.Sync.GuildSync.Activities.GatherDbGameCha
     public class GatherDbGameCharactersHandler : IRequestHandler<GatherDbGameCharacters, SyncedDbGameCharacters>
     {
         private readonly ILaDanseDbContext _laDanseDbContext;
-        
+
         public GatherDbGameCharactersHandler(ILaDanseDbContext laDanseDbContext)
         {
             _laDanseDbContext = laDanseDbContext;
         }
-        
+
         public Task<SyncedDbGameCharacters> Handle(GatherDbGameCharacters request, CancellationToken cancellationToken)
         {
             // fetch guild with given guildSlug

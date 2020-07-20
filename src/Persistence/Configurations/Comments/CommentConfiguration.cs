@@ -18,7 +18,7 @@ namespace LaDanse.Persistence.Configurations.Comments
                 .HasName("IDX_5BC96BF0581A197");
 
             builder.HasGuidKey();
-            
+
             builder.Property(e => e.Content)
                 .HasColumnName("content")
                 .IsRequired()
@@ -27,7 +27,7 @@ namespace LaDanse.Persistence.Configurations.Comments
             builder.Property(e => e.PostDate)
                 .HasColumnName("postDate")
                 .HasColumnType(MySqlBuilderTypes.DateTime);
-            
+
             builder.Property(e => e.GroupId)
                 .HasColumnName("groupId")
                 .HasForeignKeyColumnType();

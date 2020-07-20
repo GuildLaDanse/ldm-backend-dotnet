@@ -2,8 +2,8 @@
 {
     public enum SignUpType
     {
-        WillCome  = 0,
+        WillCome = 0,
         MightCome = 1,
-        Absence   = 2
+        Absence = 2
     }
 }

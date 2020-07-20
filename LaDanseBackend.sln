@@ -21,6 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{9E37
 		scripts\Functions.ps1 = scripts\Functions.ps1
 		scripts\RunWatchServer.ps1 = scripts\RunWatchServer.ps1
 		scripts\Environment.ps1.dist = scripts\Environment.ps1.dist
+		scripts\Environment.sh = scripts\Environment.sh
+		scripts\Environment.sh.dist = scripts\Environment.sh.dist
+		scripts\Functions.sh = scripts\Functions.sh
+		scripts\RunServer.sh = scripts\RunServer.sh
+		scripts\RunWatchServer.sh = scripts\RunWatchServer.sh
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "src\WebAPI\WebAPI.csproj", "{505F43CA-A08A-4C01-9130-F5F340B20825}"
@@ -30,6 +35,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{26B81DBB-2618-4D71-8027-A3D7D8F1BF96}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleNet.Implementation", "src\BattleNet.Implementation\BattleNet.Implementation.csproj", "{8537798C-9A33-4B96-A609-C83A2828C37A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.Abstractions", "src\Auth0.Abstractions\Auth0.Abstractions.csproj", "{DCCC4037-D784-4635-931C-B4858D80C12A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.Implementation", "src\Auth0.Implementation\Auth0.Implementation.csproj", "{15636D4F-600D-4D3C-B04B-26936E239465}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +78,14 @@ Global
 		{8537798C-9A33-4B96-A609-C83A2828C37A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8537798C-9A33-4B96-A609-C83A2828C37A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8537798C-9A33-4B96-A609-C83A2828C37A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DCCC4037-D784-4635-931C-B4858D80C12A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCCC4037-D784-4635-931C-B4858D80C12A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCCC4037-D784-4635-931C-B4858D80C12A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCCC4037-D784-4635-931C-B4858D80C12A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15636D4F-600D-4D3C-B04B-26936E239465}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15636D4F-600D-4D3C-B04B-26936E239465}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15636D4F-600D-4D3C-B04B-26936E239465}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15636D4F-600D-4D3C-B04B-26936E239465}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -83,6 +100,8 @@ Global
 		{82973E5D-7683-40FC-A7C3-1E1978540E24} = {26B81DBB-2618-4D71-8027-A3D7D8F1BF96}
 		{26B81DBB-2618-4D71-8027-A3D7D8F1BF96} = {CC759BFD-DBA6-4A6D-8A6F-5EA6F89B67F5}
 		{8537798C-9A33-4B96-A609-C83A2828C37A} = {26B81DBB-2618-4D71-8027-A3D7D8F1BF96}
+		{DCCC4037-D784-4635-931C-B4858D80C12A} = {26B81DBB-2618-4D71-8027-A3D7D8F1BF96}
+		{15636D4F-600D-4D3C-B04B-26936E239465} = {26B81DBB-2618-4D71-8027-A3D7D8F1BF96}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0DED3979-C715-4E1B-ABCE-96D8B15DD2F5}

@@ -7,7 +7,7 @@ namespace LaDanse.Application.GameData.Sync.GuildSync.Activities.GatherDbGameCha
     public class SyncedDbGameCharacters
     {
         public List<GameCharacterVersion> GameCharacterVersions { get; set; }
-        
+
         public GameGuildSync GameGuildSync { get; set; }
     }
 }

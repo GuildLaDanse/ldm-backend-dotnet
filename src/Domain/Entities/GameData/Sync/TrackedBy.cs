@@ -13,7 +13,7 @@ namespace LaDanse.Domain.Entities.GameData.Sync
 
         public Guid GameCharacterId { get; set; }
         public virtual GameCharacter GameCharacter { get; set; }
-        
+
         public Guid GameCharacterSourceId { get; set; }
         public virtual GameCharacterSource GameCharacterSource { get; set; }
     }

@@ -10,9 +10,9 @@ namespace LaDanse.Domain.Entities.CharacterClaims
 
         public DateTime FromTime { get; set; }
         public DateTime? EndTime { get; set; }
-        
+
         public GameRole GameRole { get; set; }
-        
+
         public Guid GameCharacterClaimId { get; set; }
         public virtual GameCharacterClaim GameCharacterClaim { get; set; }
     }

@@ -12,7 +12,7 @@ namespace LaDanse.Persistence.Configurations.Comments
             builder.ToTable("CommentGroup");
 
             builder.HasGuidKey();
-            
+
             builder.Property(e => e.PostDate)
                 .HasColumnName("postDate")
                 .HasColumnType(MySqlBuilderTypes.DateTime);

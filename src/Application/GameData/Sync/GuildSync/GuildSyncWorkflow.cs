@@ -10,12 +10,12 @@ namespace LaDanse.Application.GameData.Sync.GuildSync
     public class GuildSyncWorkflow
     {
         private readonly IMediator _mediator;
-        
+
         public GuildSyncWorkflow(IMediator mediator)
         {
             _mediator = mediator;
         }
-        
+
         public async Task<SyncActions> TemporaryMethod()
         {
             // fetch roster from BattleNet
@@ -24,7 +24,7 @@ namespace LaDanse.Application.GameData.Sync.GuildSync
                 GuildSlug = "la-danse-macabre",
                 RealmSlug = "defias-brotherhood"
             });
-            
+
             // fetch characters from database
             var syncedDbGameCharacters = await _mediator.Send(new GatherDbGameCharacters
             {

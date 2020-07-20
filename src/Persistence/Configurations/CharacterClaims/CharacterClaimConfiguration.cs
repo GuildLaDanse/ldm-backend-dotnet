@@ -15,9 +15,9 @@ namespace LaDanse.Persistence.Configurations.CharacterClaims
                 .HasName("IDX_E115ED7862DEB3E8");
             builder.HasIndex(e => e.GameCharacterId)
                 .HasName("IDX_E115ED785AF690F3");
-            
+
             builder.HasGuidKey();
-            
+
             builder.TemporalEntity();
 
             builder.Property(e => e.UserId)

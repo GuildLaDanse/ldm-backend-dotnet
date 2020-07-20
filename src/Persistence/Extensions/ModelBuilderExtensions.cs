@@ -19,14 +19,18 @@ namespace LaDanse.Persistence.Extensions
 
             var ret = typeof(LaDanseDbContext).Assembly
                 .GetTypes()
-                .Select(t => (t, i: t.GetInterfaces().FirstOrDefault(i => i.Name.Equals(typeof(IEntityTypeConfiguration<>).Name, StringComparison.Ordinal))))
+                .Select(t => (t,
+                    i: t.GetInterfaces().FirstOrDefault(i =>
+                        i.Name.Equals(typeof(IEntityTypeConfiguration<>).Name, StringComparison.Ordinal))))
                 .Where(it => it.i != null)
                 .Select(it => (et: it.i.GetGenericArguments()[0], cfgObj: Activator.CreateInstance(it.t)))
-                .Select(it => applyConfigurationMethodInfo.MakeGenericMethod(it.et).Invoke(modelBuilder, new[] { it.cfgObj }))
+                .Select(it =>
+                    applyConfigurationMethodInfo.MakeGenericMethod(it.et).Invoke(modelBuilder, new[] {it.cfgObj}))
                 .ToList();
         }
-        
-        public static void TemporalEntity<TEntity>(this EntityTypeBuilder<TEntity> builder) where TEntity : class, ITemporalEntity
+
+        public static void TemporalEntity<TEntity>(this EntityTypeBuilder<TEntity> builder)
+            where TEntity : class, ITemporalEntity
         {
             builder.Property(e => e.EndTime)
                 .HasColumnName("endTime")
@@ -41,12 +45,12 @@ namespace LaDanse.Persistence.Extensions
             where TEntity : class, IBaseEntity<Guid>
         {
             builder.HasKey(e => e.Id);
-            
+
             builder.Property(e => e.Id)
                 .HasColumnName("id")
                 .HasColumnType(MySqlBuilderTypes.Guid);
         }
-        
+
         public static void HasUtf8ColumnType(this PropertyBuilder<string> builder, string dbType)
         {
             builder
@@ -54,7 +58,7 @@ namespace LaDanse.Persistence.Extensions
                 .HasCharSet("utf8mb4")
                 .HasCollation("utf8mb4_unicode_ci");
         }
-        
+
         public static void HasForeignKeyColumnType(this PropertyBuilder<Guid> builder)
         {
             builder
@@ -63,7 +67,7 @@ namespace LaDanse.Persistence.Extensions
                 .HasCharSet("utf8mb4")
                 .HasCollation("utf8mb4_unicode_ci");
         }
-        
+
         public static void HasForeignKeyColumnType(this PropertyBuilder<Guid?> builder)
         {
             builder

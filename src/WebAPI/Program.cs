@@ -11,9 +11,11 @@ namespace WebAPI
         public static void Main(string[] args)
         {
             //IdentityModelEventSource.ShowPII = true;
-            
+
             Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Debug()
                 .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
                 .CreateLogger();
@@ -21,7 +23,7 @@ namespace WebAPI
             try
             {
                 Log.Information("Starting up");
-                
+
                 CreateHostBuilder(args).Build().Run();
             }
             catch (Exception ex)
@@ -37,9 +39,6 @@ namespace WebAPI
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .UseSerilog()
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }
 }

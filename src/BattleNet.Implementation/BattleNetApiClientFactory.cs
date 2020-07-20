@@ -9,8 +9,9 @@ namespace LaDanse.External.BattleNet.Implementation
     public class BattleNetApiClientFactory : IBattleNetApiClientFactory
     {
         private readonly ILogger _logger = Log.ForContext<BattleNetApiClientFactory>();
-        
-        public async Task<IBattleNetApiClient> CreateClientAsync(ApiRegion apiRegion, string clientId, string clientSecret)
+
+        public async Task<IBattleNetApiClient> CreateClientAsync(ApiRegion apiRegion, string clientId,
+            string clientSecret)
         {
             try
             {
@@ -20,11 +21,11 @@ namespace LaDanse.External.BattleNet.Implementation
                         grant_type = "client_credentials"
                     })
                     .WithBasicAuth(
-                        clientId, 
+                        clientId,
                         clientSecret)
                     .GetAsync()
                     .ReceiveJson<OAuthTokenResponse>();
-                
+
                 return new BattleNetApiClient(
                     apiRegion,
                     oAuthToken.AccessToken,
@@ -33,7 +34,7 @@ namespace LaDanse.External.BattleNet.Implementation
             catch (FlurlHttpException e)
             {
                 _logger.Error(e, "Could not get access token");
-                
+
                 throw new CannotCreateClientException("Could not get access token", e);
             }
         }

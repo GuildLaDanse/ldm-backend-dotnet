@@ -3,7 +3,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using LaDanse.Application.Common.Interfaces;
-using LaDanse.Core.GameData.Models;
+using LaDanse.Application.GameData.Models;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 
@@ -20,7 +20,8 @@ namespace LaDanse.Application.GameData.Queries.GetAllRealms
                 _context = context;
             }
 
-            public async Task<IEnumerable<RealmDto>> Handle(GetAllRealmsQuery request, CancellationToken cancellationToken)
+            public async Task<IEnumerable<RealmDto>> Handle(GetAllRealmsQuery request,
+                CancellationToken cancellationToken)
             {
                 var realms = await _context.GameRealms
                     //.ProjectTo<EmployeeLookupDto>(_mapper.ConfigurationProvider)

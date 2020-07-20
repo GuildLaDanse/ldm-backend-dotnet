@@ -7,9 +7,9 @@ namespace LaDanse.Application.GameData.Sync.GuildSync.Activities.CalculateSyncAc
     public class SyncActions
     {
         public IEnumerable<GameCharacterVersion> GameCharactersToRemove { get; set; }
-        
+
         public IEnumerable<Member> GameCharactersToAdd { get; set; }
-        
+
         public IEnumerable<UpdateAction> GameCharactersToUpdate { get; set; }
     }
 }

@@ -2,8 +2,8 @@
 {
     public enum GameRole
     {
-        Tank   = 0,
+        Tank = 0,
         Healer = 1,
-        Dps    = 2
+        Dps = 2
     }
 }

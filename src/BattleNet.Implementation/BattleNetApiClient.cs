@@ -10,9 +10,9 @@ namespace LaDanse.External.BattleNet.Implementation
         private readonly ILogger _logger = Log.ForContext<BattleNetApiClient>();
 
         public ApiRegion ApiRegion { get; }
-        
+
         public string AccessToken { get; }
-        
+
         public int ExpiresIn { get; }
 
         public BattleNetApiClient(ApiRegion apiRegion, string accessToken, int expiresIn)

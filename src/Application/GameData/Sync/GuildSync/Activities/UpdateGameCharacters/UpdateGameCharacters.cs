@@ -8,7 +8,7 @@ namespace LaDanse.Application.GameData.Sync.GuildSync.Activities.UpdateGameChara
     public class UpdateGameCharacters : IRequest<Unit>
     {
         public GameGuildSync GameGuildSync { get; set; }
-        
+
         public IEnumerable<UpdateAction> GameCharactersToUpdate { get; set; }
     }
 }

@@ -18,7 +18,7 @@ namespace LaDanse.Persistence.Configurations.GameData.Sync
                 .HasName("IDX_C2316E122CDD71BB");
 
             builder.HasGuidKey();
-            
+
             builder.TemporalEntity();
 
             builder.Property(e => e.GameCharacterId)

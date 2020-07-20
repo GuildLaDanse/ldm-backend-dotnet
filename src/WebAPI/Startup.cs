@@ -18,7 +18,7 @@ namespace WebAPI
     public class Startup
     {
         private readonly ILogger _logger = Log.ForContext<Startup>();
-        
+
         private IServiceCollection _services;
 
         private IConfiguration Configuration { get; }
@@ -67,7 +67,8 @@ namespace WebAPI
                         ValidIssuer = domain,
                         ValidAudience = Configuration["Auth0:ApiIdentifier"],
                         ClockSkew = TimeSpan.Zero,
-                        NameClaimType = ClaimTypes.NameIdentifier
+                        NameClaimType = ClaimTypes.NameIdentifier,
+                        RoleClaimType = "https://www.ladanse.org/roles"
                     };
                 });
 
@@ -87,7 +88,7 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-            
+
             app.UseSerilogRequestLogging();
 
             app.UseRouting();
@@ -95,17 +96,24 @@ namespace WebAPI
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
         }
 
         private void CheckEnvironmentVariables()
         {
+            // check existence of database connection configuration
             CheckEnvironmentVariable(EnvNames.LaDanseDatabaseConnection);
+
+            // check existence of Battle Net configuration
             CheckEnvironmentVariable(EnvNames.BattleNetClientId);
             CheckEnvironmentVariable(EnvNames.BattleNetClientSecret);
+
+            // check existence of Auth0 configuration
+            CheckEnvironmentVariable(EnvNames.Auth0Domain);
+            CheckEnvironmentVariable(EnvNames.Auth0Audience);
+            CheckEnvironmentVariable(EnvNames.Auth0ClientId);
+            CheckEnvironmentVariable(EnvNames.Auth0ClientSecret);
+            CheckEnvironmentVariable(EnvNames.Auth0DefaultConnection);
         }
 
         private void CheckEnvironmentVariable(string envName)

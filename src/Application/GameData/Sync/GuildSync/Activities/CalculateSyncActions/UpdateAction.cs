@@ -6,7 +6,7 @@ namespace LaDanse.Application.GameData.Sync.GuildSync.Activities.CalculateSyncAc
     public class UpdateAction
     {
         public Member BattleNetGuildMember { get; set; }
-        
+
         public GameCharacterVersion GameCharacterVersion { get; set; }
     }
 }

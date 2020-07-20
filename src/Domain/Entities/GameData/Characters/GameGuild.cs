@@ -7,7 +7,7 @@ namespace LaDanse.Domain.Entities.GameData.Characters
     public partial class GameGuild : IBaseEntity<Guid>
     {
         public Guid Id { get; set; }
-        
+
         public string Name { get; set; }
         public int GameId { get; set; }
 

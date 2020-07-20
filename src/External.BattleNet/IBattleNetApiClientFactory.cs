@@ -6,7 +6,7 @@ namespace LaDanse.External.BattleNet.Abstractions
     {
         Task<IBattleNetApiClient> CreateClientAsync(
             ApiRegion apiRegion,
-            string clientId, 
+            string clientId,
             string clientSecret);
     }
 }

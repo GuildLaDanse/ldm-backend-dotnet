@@ -11,14 +11,15 @@ namespace LaDanse.Application.Common.Behaviours
         private readonly ILogger _logger;
 
         private readonly Stopwatch _timer;
-        
+
         public RequestPerformanceBehaviour(ILogger<RequestPerformanceBehaviour<TRequest, TResponse>> logger)
         {
             _logger = logger;
             _timer = new Stopwatch();
         }
 
-        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
+        public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken,
+            RequestHandlerDelegate<TResponse> next)
         {
             _timer.Start();
 
@@ -27,12 +28,13 @@ namespace LaDanse.Application.Common.Behaviours
             _timer.Stop();
 
             if (_timer.ElapsedMilliseconds <= 500) return response;
-            
+
             var name = typeof(TRequest).Name;
 
             // TODO: Add User Details
 
-            _logger.LogWarning("Hermes Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds)", name, _timer.ElapsedMilliseconds, request);
+            _logger.LogWarning("Hermes Long Running Request: {Name} ({ElapsedMilliseconds} milliseconds)", name,
+                _timer.ElapsedMilliseconds, request);
 
             return response;
         }

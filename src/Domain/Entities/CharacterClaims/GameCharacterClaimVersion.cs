@@ -6,7 +6,7 @@ namespace LaDanse.Domain.Entities.CharacterClaims
     public partial class GameCharacterClaimVersion : IBaseEntity<Guid>, ITemporalEntity
     {
         public Guid Id { get; set; }
-        
+
         public DateTime FromTime { get; set; }
         public DateTime? EndTime { get; set; }
 

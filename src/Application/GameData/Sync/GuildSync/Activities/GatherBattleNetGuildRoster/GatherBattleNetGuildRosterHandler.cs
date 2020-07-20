@@ -11,7 +11,7 @@ namespace LaDanse.Application.GameData.Sync.GuildSync.Activities.GatherBattleNet
     {
         private readonly ILaDanseConfiguration _laDanseConfiguration;
         private readonly IBattleNetApiClientFactory _battleNetApiClientFactory;
-        
+
         public GatherBattleNetGuildRosterHandler(
             ILaDanseConfiguration laDanseConfiguration,
             IBattleNetApiClientFactory battleNetApiClientFactory)
@@ -19,14 +19,14 @@ namespace LaDanse.Application.GameData.Sync.GuildSync.Activities.GatherBattleNet
             _laDanseConfiguration = laDanseConfiguration;
             _battleNetApiClientFactory = battleNetApiClientFactory;
         }
-        
+
         public async Task<Roster> Handle(GatherBattleNetGuildRoster request, CancellationToken cancellationToken)
         {
             var battleNetApiClient = await _battleNetApiClientFactory.CreateClientAsync(
                 ApiRegion.Eu,
                 _laDanseConfiguration.BattleNetClientId(),
                 _laDanseConfiguration.BattleNetClientSecret());
-            
+
             return await battleNetApiClient
                 .GuildApi()
                 .GuildRosterAsync(request.RealmSlug, request.GuildSlug);
