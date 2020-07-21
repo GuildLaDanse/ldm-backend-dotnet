@@ -9,7 +9,7 @@ namespace LaDanse.Persistence.Configurations.Telemetry
     {
         public void Configure(EntityTypeBuilder<FeatureUse> builder)
         {
-            builder.ToTable("FeatureUse");
+            builder.ToTable("FeatureUse");   
 
             builder.HasIndex(e => e.UsedById)
                 .HasName("IDX_E504F432FCEF271C");

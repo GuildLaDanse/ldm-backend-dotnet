@@ -15,7 +15,7 @@ namespace LaDanse.Persistence.Configurations.Queues
                 .HasName("IDX_C656D44393C757EE");
 
             builder.HasGuidKey();
-
+            
             builder.Property(e => e.ActivityOn)
                 .IsRequired()
                 .HasColumnName("activityOn")

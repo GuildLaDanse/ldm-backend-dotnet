@@ -20,7 +20,7 @@ namespace LaDanse.Persistence.Configurations.GameData.Sync
                 .IsRequired()
                 .HasColumnName("fromTime")
                 .HasColumnType(MySqlBuilderTypes.DateTime);
-
+                
             builder.Property(e => e.EndTime)
                 .HasColumnName("endTime")
                 .HasColumnType(MySqlBuilderTypes.DateTime);

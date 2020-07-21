@@ -14,7 +14,10 @@ namespace LaDanse.Persistence.Migrations
                     id = table.Column<Guid>(type: "CHAR(36)", nullable: false),
                     postDate = table.Column<DateTime>(type: "DATETIME", nullable: false)
                 },
-                constraints: table => { table.PrimaryKey("PK_CommentGroup", x => x.id); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CommentGroup", x => x.id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "GameClass",
@@ -26,7 +29,10 @@ namespace LaDanse.Persistence.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4")
                         .Annotation("MySql:Collation", "utf8mb4_unicode_ci")
                 },
-                constraints: table => { table.PrimaryKey("PK_GameClass", x => x.id); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GameClass", x => x.id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "GameFaction",
@@ -38,7 +44,10 @@ namespace LaDanse.Persistence.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4")
                         .Annotation("MySql:Collation", "utf8mb4_unicode_ci")
                 },
-                constraints: table => { table.PrimaryKey("PK_GameFaction", x => x.id); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GameFaction", x => x.id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "GameRealm",
@@ -50,7 +59,10 @@ namespace LaDanse.Persistence.Migrations
                         .Annotation("MySql:Collation", "utf8mb4_unicode_ci"),
                     gameId = table.Column<uint>(type: "INT UNSIGNED", nullable: false)
                 },
-                constraints: table => { table.PrimaryKey("PK_GameRealm", x => x.id); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GameRealm", x => x.id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "MailSend",
@@ -68,7 +80,10 @@ namespace LaDanse.Persistence.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4")
                         .Annotation("MySql:Collation", "utf8mb4_unicode_ci")
                 },
-                constraints: table => { table.PrimaryKey("PK_MailSend", x => x.id); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MailSend", x => x.id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "User",
@@ -83,9 +98,13 @@ namespace LaDanse.Persistence.Migrations
                         .Annotation("MySql:Collation", "utf8mb4_unicode_ci"),
                     displayName = table.Column<string>(type: "varchar(35)", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4")
-                        .Annotation("MySql:Collation", "utf8mb4_unicode_ci")
+                        .Annotation("MySql:Collation", "utf8mb4_unicode_ci"),
+                    displayNameByUser = table.Column<bool>(nullable: false)
                 },
-                constraints: table => { table.PrimaryKey("PK_User", x => x.id); });
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_User", x => x.id);
+                });
 
             migrationBuilder.CreateTable(
                 name: "GameRace",

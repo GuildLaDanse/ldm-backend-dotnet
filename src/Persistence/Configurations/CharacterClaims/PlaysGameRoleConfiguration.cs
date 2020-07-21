@@ -15,7 +15,7 @@ namespace LaDanse.Persistence.Configurations.CharacterClaims
                 .HasName("IDX_7A9E9B239113A92D");
 
             builder.HasGuidKey();
-
+            
             builder.TemporalEntity();
 
             builder.Property(e => e.GameRole)

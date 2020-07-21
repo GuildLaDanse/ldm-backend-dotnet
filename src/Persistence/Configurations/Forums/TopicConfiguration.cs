@@ -21,7 +21,7 @@ namespace LaDanse.Persistence.Configurations.Forums
                 .HasName("IDX_5C81F11F581A197");
 
             builder.HasGuidKey();
-
+            
             builder.Property(e => e.LastPostDate)
                 .HasColumnName("lastPostDate")
                 .HasColumnType(MySqlBuilderTypes.DateTime);

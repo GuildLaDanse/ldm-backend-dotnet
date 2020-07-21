@@ -15,7 +15,7 @@ namespace LaDanse.Persistence.Configurations.Settings
                 .HasName("IDX_50C9810462DEB3E8");
 
             builder.HasGuidKey();
-
+            
             builder.Property(e => e.Name)
                 .IsRequired()
                 .HasColumnName("name")

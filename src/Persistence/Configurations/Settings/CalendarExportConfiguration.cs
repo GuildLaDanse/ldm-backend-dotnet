@@ -15,7 +15,7 @@ namespace LaDanse.Persistence.Configurations.Settings
                 .HasName("IDX_6E28848862DEB3E8");
 
             builder.HasGuidKey();
-
+            
             builder.Property(e => e.ExportAbsence)
                 .IsRequired()
                 .HasColumnName("exportAbsence");

@@ -24,7 +24,7 @@ namespace LaDanse.Persistence.Configurations.Identity
                 .IsUnique();
 
             builder.HasGuidKey();
-
+            
             builder.Property(e => e.ExternalId)
                 .HasColumnName("externalId")
                 .HasUtf8ColumnType(MySqlBuilderTypes.String(127));
@@ -38,6 +38,10 @@ namespace LaDanse.Persistence.Configurations.Identity
                 .IsRequired()
                 .HasColumnName("email")
                 .HasUtf8ColumnType(MySqlBuilderTypes.String(180));
+
+            builder.Property(e => e.DisplayNameByUser)
+                .IsRequired()
+                .HasColumnName("displayNameByUser");
         }
     }
 }
