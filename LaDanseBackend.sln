@@ -40,6 +40,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.Abstractions", "src\A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.Implementation", "src\Auth0.Implementation\Auth0.Implementation.csproj", "{15636D4F-600D-4D3C-B04B-26936E239465}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseMigrations", "src\DatabaseMigrations\DatabaseMigrations.csproj", "{AB9EFA57-ADEE-4B4E-A5EB-5360FCB63B5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cli", "cli", "{A6123A9D-A154-4AEE-859B-D8EFF4D74C72}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,6 +90,10 @@ Global
 		{15636D4F-600D-4D3C-B04B-26936E239465}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{15636D4F-600D-4D3C-B04B-26936E239465}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{15636D4F-600D-4D3C-B04B-26936E239465}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB9EFA57-ADEE-4B4E-A5EB-5360FCB63B5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB9EFA57-ADEE-4B4E-A5EB-5360FCB63B5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB9EFA57-ADEE-4B4E-A5EB-5360FCB63B5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB9EFA57-ADEE-4B4E-A5EB-5360FCB63B5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -102,6 +110,7 @@ Global
 		{8537798C-9A33-4B96-A609-C83A2828C37A} = {26B81DBB-2618-4D71-8027-A3D7D8F1BF96}
 		{DCCC4037-D784-4635-931C-B4858D80C12A} = {26B81DBB-2618-4D71-8027-A3D7D8F1BF96}
 		{15636D4F-600D-4D3C-B04B-26936E239465} = {26B81DBB-2618-4D71-8027-A3D7D8F1BF96}
+		{AB9EFA57-ADEE-4B4E-A5EB-5360FCB63B5C} = {A6123A9D-A154-4AEE-859B-D8EFF4D74C72}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0DED3979-C715-4E1B-ABCE-96D8B15DD2F5}
