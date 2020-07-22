@@ -13,7 +13,7 @@ namespace WebAPI.Controllers.Api.Admin
         [Authorize(Roles = "admin")]
         public async Task<SyncActions> SyncGuilds([FromServices] GuildSyncWorkflow guildSyncWorkflow)
         {
-            return await guildSyncWorkflow.TemporaryMethod();
+            return await guildSyncWorkflow.SyncTrackedGuilds();
         }
     }
 }

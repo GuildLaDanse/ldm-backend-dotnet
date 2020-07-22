@@ -16,7 +16,7 @@ namespace LaDanse.Application.GameData.Sync.GuildSync
             _mediator = mediator;
         }
 
-        public async Task<SyncActions> TemporaryMethod()
+        public async Task<SyncActions> SyncTrackedGuilds()
         {
             // fetch roster from BattleNet
             var guildRoster = await _mediator.Send(new GatherBattleNetGuildRoster

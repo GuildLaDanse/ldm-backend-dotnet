@@ -9,6 +9,7 @@ namespace LaDanse.Domain.Entities.GameData.Characters
         public Guid Id { get; set; }
 
         public string Name { get; set; }
+        public string GameSlug { get; set; }
         public int GameId { get; set; }
 
         public Guid GameRealmId { get; set; }

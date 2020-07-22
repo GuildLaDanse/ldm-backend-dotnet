@@ -25,9 +25,9 @@ namespace Auth0.Implementation.UserApi
             throw new NotImplementedException();
         }
 
-        public void DeleteUserAsync()
+        public void DeleteUserAsync(string userId)
         {
-            throw new NotImplementedException();
+            CallDeleteApiAsync($"/users/{userId}", null);
         }
 
         public void UpdateUserAsync()

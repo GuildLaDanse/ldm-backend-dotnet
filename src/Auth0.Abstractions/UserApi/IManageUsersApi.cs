@@ -9,7 +9,7 @@ namespace Auth0.Abstractions.UserApi
 
         void GetUserAysnc();
 
-        void DeleteUserAsync();
+        void DeleteUserAsync(string userId);
 
         void UpdateUserAsync();
     }

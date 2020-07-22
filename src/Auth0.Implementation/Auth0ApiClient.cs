@@ -28,7 +28,7 @@ namespace Auth0.Implementation
             return new SearchUsersApi(this);
         }
 
-        public IManageUsersApi ManagerUsersApi()
+        public IManageUsersApi ManageUsersApi()
         {
             return new ManageUsersApi(this);
         }

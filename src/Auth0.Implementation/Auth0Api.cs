@@ -35,6 +35,25 @@ namespace Auth0.Implementation
                 throw;
             }
         }
+        
+        protected Task CallDeleteApiAsync(string contextUrl, object queryValues)
+        {
+            var fullUrl = $"https://{_apiClient.Domain}/api/v2{contextUrl}";
+
+            try
+            {
+                return fullUrl
+                    .SetQueryParams(queryValues)
+                    .WithOAuthBearerToken(_apiClient.AccessToken)
+                    .DeleteAsync();
+            }
+            catch (FlurlHttpException e)
+            {
+                _logger.Error(e, $"Could not call {contextUrl}");
+
+                throw;
+            }
+        }
 
         protected Task<TResult> CallPostApiAsync<TPost, TResult>(string contextUrl, TPost postObject)
         {

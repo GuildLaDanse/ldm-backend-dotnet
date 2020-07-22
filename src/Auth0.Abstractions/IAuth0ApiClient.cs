@@ -6,6 +6,6 @@ namespace Auth0.Abstractions
     {
         ISearchUsersApi SearchUsersApi();
 
-        IManageUsersApi ManagerUsersApi();
+        IManageUsersApi ManageUsersApi();
     }
 }

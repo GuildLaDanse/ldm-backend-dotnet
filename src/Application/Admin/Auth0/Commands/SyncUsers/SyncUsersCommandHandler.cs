@@ -56,7 +56,7 @@ namespace LaDanse.Application.Admin.Auth0.Commands.SyncUsers
             {
                 _logger.Debug($"Processing user {dbUser.Email}");
 
-                var auth0Users = await authSearchUsersApi.SearchByEmailAsync(dbUser.Email);
+                var auth0Users = await authSearchUsersApi.SearchByEmailAsync(dbUser.Email.ToLower());
 
                 switch (auth0Users.Length)
                 {
@@ -98,7 +98,7 @@ namespace LaDanse.Application.Admin.Auth0.Commands.SyncUsers
 
         private async Task CreateAuth0User(User dbUser, IAuth0ApiClient auth0ApiClient)
         {
-            var managerUsersApi = auth0ApiClient.ManagerUsersApi();
+            var managerUsersApi = auth0ApiClient.ManageUsersApi();
 
             var createUserRequest = new CreateUser.Request
             {
