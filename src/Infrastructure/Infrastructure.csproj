@@ -8,15 +8,9 @@
 
     <ItemGroup>
         <PackageReference Include="MediatR" Version="8.1.0" />
-<<<<<<< HEAD
-        <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.7" />
-        <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.7" />
-        <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.7" />
-=======
         <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="3.1.4" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.4" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.4" />
->>>>>>> develop
         <PackageReference Include="PasswordGenerator" Version="2.0.5" />
     </ItemGroup>
 
