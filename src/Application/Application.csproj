@@ -6,7 +6,11 @@
     </PropertyGroup>
 
     <ItemGroup>
+<<<<<<< HEAD
         <PackageReference Include="FluentValidation" Version="8.6.2" />
+=======
+        <PackageReference Include="FluentValidation" Version="8.6.3" />
+>>>>>>> develop
         <PackageReference Include="MediatR" Version="8.1.0" />
         <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
     </ItemGroup>
