@@ -14,8 +14,9 @@ namespace WebAPI
 
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Debug()
-                .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft.AspNetCore", LogEventLevel.Debug)
                 .MinimumLevel.Override("Microsoft.EntityFrameworkCore", LogEventLevel.Warning)
+                .MinimumLevel.Override("Microsoft", LogEventLevel.Debug)
                 .Enrich.FromLogContext()
                 .WriteTo.Console()
                 .CreateLogger();
