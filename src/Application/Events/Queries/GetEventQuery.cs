@@ -3,7 +3,7 @@ using MediatR;
 
 namespace LaDanse.Application.Events.Queries
 {
-    public class GetEventQuery : IRequest<EventDto>
+    public class GetEventQuery : IRequest<Event>
     {
         public GetEventQuery(string eventId)
         {

@@ -14,7 +14,7 @@ namespace WebAPI.Controllers.Api.Events
         [HttpGet("/api/events/{eventId}")]
         [Produces("application/json")]
         [Authorize(Roles = "admin")]
-        public async Task<ActionResult<EventDto>> GetEventAsync([FromServices] IMediator mediator, string eventId)
+        public async Task<ActionResult<Event>> GetEventAsync([FromServices] IMediator mediator, string eventId)
         {
             var result = await mediator.Send(new GetEventQuery(eventId));
 
