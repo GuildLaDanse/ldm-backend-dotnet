@@ -1,7 +1,6 @@
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using LaDanse.Application.Admin.Auth0.Commands.SyncUsers;
 using LaDanse.Application.Common.Interfaces;
 using LaDanse.Application.Events.Models;
 using MediatR;
@@ -12,7 +11,7 @@ namespace LaDanse.Application.Events.Queries
 {
     public class GetEventQueryHandler : IRequestHandler<GetEventQuery, Event> 
     {
-        private readonly ILogger _logger = Log.ForContext<SyncUsersCommand>();
+        private readonly ILogger _logger = Log.ForContext<GetEventQueryHandler>();
 
         private readonly ILaDanseDbContext _dbContext;
 
