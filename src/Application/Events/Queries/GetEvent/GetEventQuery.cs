@@ -2,7 +2,7 @@ using System;
 using LaDanse.Application.Events.Models;
 using MediatR;
 
-namespace LaDanse.Application.Events.Queries
+namespace LaDanse.Application.Events.Queries.GetEvent
 {
     public class GetEventQuery : IRequest<Event>
     {

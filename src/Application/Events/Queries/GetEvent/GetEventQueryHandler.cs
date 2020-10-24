@@ -7,7 +7,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 
-namespace LaDanse.Application.Events.Queries
+namespace LaDanse.Application.Events.Queries.GetEvent
 {
     public class GetEventQueryHandler : IRequestHandler<GetEventQuery, Event> 
     {
