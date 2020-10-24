@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using LaDanse.Application.Admin.Auth0.Commands.SyncUsers;
 using LaDanse.Application.Events.Models;
@@ -16,7 +17,9 @@ namespace WebAPI.Controllers.Api.Events
         [Authorize(Roles = "admin")]
         public async Task<ActionResult<Event>> GetEventAsync([FromServices] IMediator mediator, string eventId)
         {
-            var result = await mediator.Send(new GetEventQuery(eventId));
+            var gEventId = Guid.Parse(eventId);
+            
+            var result = await mediator.Send(new GetEventQuery(gEventId));
 
             if (result == null)
             {

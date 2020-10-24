@@ -4,11 +4,11 @@ namespace LaDanse.Application.Events.Models
 {
     public class CommentGroupReference
     {
-        public CommentGroupReference(string id)
+        public CommentGroupReference(Guid commentGroupId)
         {
-            Id = id ?? throw new ArgumentNullException(nameof(id));
+            Id = commentGroupId;
         }
 
-        public string Id { get; }
+        public Guid Id { get; }
     }
 }

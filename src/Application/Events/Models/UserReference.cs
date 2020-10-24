@@ -4,13 +4,13 @@ namespace LaDanse.Application.Events.Models
 {
     public class UserReference
     {
-        public UserReference(string id, string name)
+        public UserReference(Guid userId, string name)
         {
-            Id = id ?? throw new ArgumentNullException(nameof(id));
+            Id = userId;
             Name = name ?? throw new ArgumentNullException(nameof(name));
         }
 
-        public string Id { get; }
+        public Guid Id { get; }
         
         public string Name { get; }
     }

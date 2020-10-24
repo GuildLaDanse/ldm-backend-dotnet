@@ -1,10 +1,11 @@
+using System;
 using System.Collections.Generic;
 
 namespace LaDanse.Application.Events.Models
 {
     public class SignUp
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         
         public UserReference UserRef { get; set; }
         

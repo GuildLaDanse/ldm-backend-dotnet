@@ -1,4 +1,3 @@
-using System;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -27,7 +26,7 @@ namespace LaDanse.Application.Events.Queries
             var dbUsers = _dbContext.Users;
 
             var dbEvent = await _dbContext.Events
-                .Where(e => e.Id == Guid.Parse((request.EventId)))
+                .Where(e => e.Id == request.EventId)
                 .Include(e => e.Organiser)
                 .FirstOrDefaultAsync(cancellationToken);
 
@@ -38,15 +37,15 @@ namespace LaDanse.Application.Events.Queries
 
             var eventModel = new Event
             {
-                Id = dbEvent.Id.ToString(),
+                Id = dbEvent.Id,
                 Name = dbEvent.Name,
                 Description = dbEvent.Description,
-                OrganiserRef = new UserReference(dbEvent.OrganiserId.ToString(), dbEvent.Organiser.DisplayName),
+                OrganiserRef = new UserReference(dbEvent.OrganiserId, dbEvent.Organiser.DisplayName),
                 InviteTime = dbEvent.InviteTime,
                 StartTime = dbEvent.StartTime,
                 EndTime = dbEvent.EndTime,
                 State = dbEvent.State.ToString(),
-                CommentGroupRef = new CommentGroupReference(dbEvent.CommentGroupId.ToString())
+                CommentGroupRef = new CommentGroupReference(dbEvent.CommentGroupId)
             };
 
             var dbSignups = await _dbContext.SignUps
@@ -65,8 +64,8 @@ namespace LaDanse.Application.Events.Queries
             var signUps = dbSignups.Select(
                 s => new SignUp
                 {
-                    Id = s.Id.ToString(),
-                    UserRef = new UserReference(s.UserId.ToString(), s.User.DisplayName),
+                    Id = s.Id,
+                    UserRef = new UserReference(s.UserId, s.User.DisplayName),
                     Type = s.Type.ToString(),
                     Roles = dbSignedForGameRoles
                         .Where(r => r.SignUpId == s.Id)
