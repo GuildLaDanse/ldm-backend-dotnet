@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
+using WebAPI.Filters;
 
 namespace WebAPI
 {
@@ -74,7 +75,11 @@ namespace WebAPI
 
             services.AddAuthorization();
 
-            services.AddControllers();
+            services.AddControllers(
+                options =>
+                {
+                    options.Filters.Add<OperationCancelledExceptionFilter>();
+                });
 
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
 
