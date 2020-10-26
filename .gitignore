@@ -342,3 +342,4 @@ healthchecksdb
 scripts/Environment.sh
 scripts/Environment.ps1
 
+.vscode/
