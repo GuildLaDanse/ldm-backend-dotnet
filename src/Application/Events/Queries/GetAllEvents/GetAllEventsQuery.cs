@@ -7,8 +7,11 @@ namespace LaDanse.Application.Events.Queries.GetAllEvents
 {
     public class GetAllEventsQuery : IRequest<IEnumerable<Event>>
     {
-        public GetAllEventsQuery()
+        public GetAllEventsQuery(DateTime startDate)
         {
+            StartDate = startDate;
         }
+        
+        public DateTime StartDate { get;  }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using LaDanse.Application.Common.Extensions;
 using LaDanse.Application.Common.Interfaces;
 using LaDanse.Application.Events.Models;
 using LaDanse.Application.Events.Queries.GetEvent;
@@ -27,10 +28,11 @@ namespace LaDanse.Application.Events.Queries.GetAllEvents
         {
             var dbUsers = _dbContext.Users;
             
-            var sinceDateTime = new DateTime(2020, 9, 1);
+            var lastDate = request.StartDate.AddDays(28).ChangeTime(23, 59, 59);
 
             var dbEvents = await _dbContext.Events
-                .Where(e => e.InviteTime.CompareTo(sinceDateTime) >= 0)
+                .Where(e => e.InviteTime.CompareTo(request.StartDate) >= 0)
+                .Where(e => e.InviteTime.CompareTo(lastDate) <= 0)
                 .Include(e => e.Organiser)
                 .ToListAsync(cancellationToken);
 
