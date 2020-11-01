@@ -33,6 +33,7 @@ namespace LaDanse.Application.Events.Queries.GetAllEvents
             var dbEvents = await _dbContext.Events
                 .Where(e => e.InviteTime.CompareTo(request.StartDate) >= 0)
                 .Where(e => e.InviteTime.CompareTo(lastDate) <= 0)
+                .OrderBy(e => e.InviteTime)
                 .Include(e => e.Organiser)
                 .ToListAsync(cancellationToken);
 
