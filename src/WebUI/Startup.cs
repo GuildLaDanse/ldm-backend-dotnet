@@ -37,20 +37,13 @@ namespace LaDanse.WebUI
         {
             // Verify that all required environment variables are present.
             CheckEnvironmentVariables();
-
-            //services.ConfigureSameSiteNoneCookies();
-
+            
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
             services.AddInfrastructure(Configuration, Environment);
             services.AddPersistence(Configuration);
             services.AddApplication();
-
-            /*
-            services.AddHealthChecks()
-                .AddDbContextCheck<LaDanseDbContext>();
-            */
 
             services.AddHttpContextAccessor();
             

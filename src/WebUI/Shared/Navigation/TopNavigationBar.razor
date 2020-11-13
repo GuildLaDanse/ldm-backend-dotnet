@@ -1,0 +1,24 @@
+﻿<div class="top-navigation-row">
+
+  <div class="top-navigation-container">
+
+    <!-- Guild Logo -->
+    <div class="guild-logo-container">
+      <a [routerLink]="logoNavigationTarget()">
+        <img class="guild-logo-image" src="/images/desktop/navigation/GuildLogo.png" alt="Guild Logo"/>
+      </a>
+    </div>
+
+    <!-- Guild Name -->
+    <div class="guild-name-container">
+      <a [routerLink]="logoNavigationTarget()" href="" class="inherit-link">La Danse Macabre</a>
+    </div>
+
+    <!-- Horizontal Menu -->
+    <div class="horizontal-menu-container flex-push-right">
+      <ApplicationMenu></ApplicationMenu>
+    </div>
+
+  </div>
+
+</div>

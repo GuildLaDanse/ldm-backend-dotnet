@@ -37,6 +37,12 @@
 
     <ItemGroup>
       <_ContentIncludedByDefault Remove="Pages\Accounting\Labels\Manage.razor" />
+      <_ContentIncludedByDefault Remove="Pages\Navigation\ApplicationMenu.razor" />
+      <_ContentIncludedByDefault Remove="Pages\Navigation\TopNavigationBar.razor" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot\css" />
     </ItemGroup>
 
 </Project>
