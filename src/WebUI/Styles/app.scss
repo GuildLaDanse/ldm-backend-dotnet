@@ -1,0 +1,27 @@
+﻿
+@import 'content.scss';
+
+@import 'validation.scss';
+
+@import 'blazor.scss';
+
+@import 'Accounting/upload';
+
+#card-container {
+    display: flex; /* or inline-flex */
+    flex-wrap: wrap;
+    margin: auto;
+
+    a {
+        text-decoration: none !important;
+    }
+
+    div.card {
+        margin: 10px;
+    }
+}
+
+.actionInProgress 
+{
+    cursor: progress !important;
+}

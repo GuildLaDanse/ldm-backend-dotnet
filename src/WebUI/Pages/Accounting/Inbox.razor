@@ -1,0 +1,48 @@
+﻿@page "/documents/inbox"
+@attribute [Authorize]
+
+@using MediatR
+
+@inject IMediator Mediator
+
+<h1>Document Inbox</h1>
+
+<p>@_content</p>
+
+<br/>
+
+<button class="btn btn-primary @(_loading ? "disabled actionInProgress":"")"
+        disabled=@_loading
+        @onclick="ReloadClicked">
+    Update heading
+</button>
+
+@code {
+
+    private bool _loading = false;
+
+    private string _content = "Some Text";
+    
+    protected override async Task OnInitializedAsync()
+    {
+        Console.Error.WriteLine("OnInitializedAsync");
+        
+        _content = "OnInitializedAsync";
+        
+        await LoadDataAsync();
+    }
+
+    async Task ReloadClicked()
+    {
+        _content = "ReloadClicked";
+        
+        await LoadDataAsync();
+    }
+
+    async Task LoadDataAsync()
+    {
+        _loading = true;
+
+        _loading = false;
+    }
+}

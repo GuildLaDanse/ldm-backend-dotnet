@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using Serilog.Events;
 
-namespace WebAPI
+namespace LaDanse.WebUI
 {
     public class Program
     {

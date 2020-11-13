@@ -1,20 +1,21 @@
 using System;
-using System.Security.Claims;
+using System.Threading.Tasks;
 using LaDanse.Application;
 using LaDanse.Common.Configuration;
 using LaDanse.Infrastructure;
 using LaDanse.Persistence;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
+using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Serilog;
-using WebAPI.Filters;
 
-namespace WebAPI
+namespace LaDanse.WebUI
 {
     public class Startup
     {
@@ -37,54 +38,99 @@ namespace WebAPI
             // Verify that all required environment variables are present.
             CheckEnvironmentVariables();
 
+            //services.ConfigureSameSiteNoneCookies();
+
+            services.AddRazorPages();
+            services.AddServerSideBlazor();
+
             services.AddInfrastructure(Configuration, Environment);
             services.AddPersistence(Configuration);
             services.AddApplication();
 
+            /*
             services.AddHealthChecks()
                 .AddDbContextCheck<LaDanseDbContext>();
+            */
 
             services.AddHttpContextAccessor();
-
-            var domain = $"https://{Configuration["Auth0:Domain"]}/";
-
+            
             services
                 .AddAuthentication(options =>
                 {
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
                 })
-                .AddJwtBearer(options =>
-                {
-                    options.MetadataAddress = domain + ".well-known/openid-configuration";
-                    options.RequireHttpsMetadata = false;
-                    options.SaveToken = true;
-                    options.TokenValidationParameters = new TokenValidationParameters
+                .AddCookie()
+                .AddOpenIdConnect("Auth0", options => {
+                    // Set the authority to your Auth0 domain
+                    options.Authority = $"https://{Configuration.GetEnvironmentValue(EnvNames.Auth0Domain)}";
+
+                    // Configure the Auth0 Client ID and Client Secret
+                    options.ClientId = Configuration.GetEnvironmentValue(EnvNames.Auth0ClientId);
+                    options.ClientSecret = Configuration.GetEnvironmentValue(EnvNames.Auth0ClientSecret);
+
+                    // Set response type to code
+                    options.ResponseType = OpenIdConnectResponseType.Code;
+                    
+                    options.SaveTokens = true;
+
+                    // Configure the scope
+                    options.Scope.Clear();
+                    options.Scope.Add("openid");
+                    options.Scope.Add("profile");
+
+                    // Set the callback path, so Auth0 will call back to http://localhost:3000/callback
+                    // Also ensure that you have added the URL as an Allowed Callback URL in your Auth0 dashboard
+                    options.CallbackPath = new PathString("/callback");
+
+                    // Configure the Claims Issuer to be Auth0
+                    options.ClaimsIssuer = "Auth0";
+                    
+                    options.NonceCookie.SameSite = SameSiteMode.Unspecified;
+                    options.CorrelationCookie.SameSite = SameSiteMode.Unspecified;
+                    
+                    options.Events = new OpenIdConnectEvents
                     {
-                        ValidateIssuer = true,
-                        ValidateAudience = true,
-                        ValidateLifetime = true,
-                        ValidateIssuerSigningKey = true,
-                        ValidIssuer = domain,
-                        ValidAudience = Configuration["Auth0:ApiIdentifier"],
-                        ClockSkew = TimeSpan.Zero,
-                        NameClaimType = ClaimTypes.NameIdentifier,
-                        RoleClaimType = "https://www.ladanse.org/roles"
+                        // handle the logout redirection
+                        OnRedirectToIdentityProviderForSignOut = (context) =>
+                        {
+                            var logoutUri = $"https://{Configuration.GetEnvironmentValue(EnvNames.Auth0Domain)}/v2/logout?client_id={Configuration.GetEnvironmentValue(EnvNames.Auth0ClientId)}";
+
+                            var postLogoutUri = context.Properties.RedirectUri;
+                            if (!string.IsNullOrEmpty(postLogoutUri))
+                            {
+                                if (postLogoutUri.StartsWith("/"))
+                                {
+                                    // transform to absolute
+                                    var request = context.Request;
+                                    postLogoutUri = request.Scheme + "://" + request.Host + request.PathBase + postLogoutUri;
+                                }
+                                logoutUri += $"&returnTo={ Uri.EscapeDataString(postLogoutUri)}";
+                            }
+
+                            context.Response.Redirect(logoutUri);
+                            context.HandleResponse();
+
+                            return Task.CompletedTask;
+                        }
                     };
                 });
-
+            
             services.AddAuthorization();
 
+            /*
             services.AddControllers(
                 options =>
                 {
                     options.Filters.Add<OperationCancelledExceptionFilter>();
                 });
+            */
 
             services.AddApplicationInsightsTelemetry(Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"]);
 
             // Register the Swagger generator, defining 1 or more Swagger documents
-            services.AddSwaggerGen();
+            //services.AddSwaggerGen();
             
             _services = services;
         }
@@ -96,9 +142,16 @@ namespace WebAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+            }
 
             app.UseSerilogRequestLogging();
-            
+
+            app.UseStaticFiles();
+
+            /*
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 
@@ -108,19 +161,19 @@ namespace WebAPI
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "La Danse API V1");
             });
+            */
 
             app.UseRouting();
-            
-            app.UseCors(builder =>
-                builder.WithOrigins("http://localhost:4200")
-                    .AllowAnyHeader()
-                    .AllowAnyMethod()
-                    .AllowCredentials());
 
             app.UseAuthentication();
             app.UseAuthorization();
 
-            app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
+            app.UseEndpoints(endpoints => 
+            {
+                endpoints.MapControllers();
+                endpoints.MapBlazorHub();
+                endpoints.MapFallbackToPage("/_Host");                
+            });
         }
 
         private void CheckEnvironmentVariables()

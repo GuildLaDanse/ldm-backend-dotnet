@@ -1,0 +1,35 @@
+﻿@page "/"
+
+<AuthorizeView>
+    <Authorized>
+        <p>You can only see this content if you're authorized.</p>
+        <ul>
+            @foreach (var claim in @context.User.Claims)
+            {
+                <li>@claim.Type = @claim.Value</li>    
+            }
+        </ul>
+        <a id="qsLoginBtn" href="/logout">Logout</a>
+    </Authorized>
+    <NotAuthorized>
+        <p>You're not signed in.</p>
+        <a id="qsLoginBtn" href="/login">Login</a>
+    </NotAuthorized>
+</AuthorizeView>
+
+<div id="card-container">
+
+    <div class="card text-white bg-danger mb-3" style="max-width: 20rem;">
+            <div class="card-body">
+                <h4 class="card-title">Danger card title</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+        <div class="card text-white bg-info mb-3" style="max-width: 20rem;">
+            <div class="card-body">
+                <h4 class="card-title">Info card title</h4>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+        </div>
+
+</div>
