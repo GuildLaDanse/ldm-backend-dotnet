@@ -5,8 +5,14 @@
 @using LaDanse.Application.Events.Queries.GetAllEvents
 @using LaDanse.WebUI.Models.Calendar
 @using MediatR
+@using Microsoft.AspNetCore.WebUtilities
+@using System.Globalization
+@using LaDanse.Common.Configuration
+@using Microsoft.Extensions.Configuration
 
+@inject NavigationManager NavManager
 @inject IMediator Mediator
+@inject IConfiguration Configuration
 
 <div class="centered-page">
 
@@ -98,7 +104,6 @@
 
 @code {
 
-  private DateTime _showDay;
   private RaidWeekModel _currentRaidWeek;
   private CalendarMonthModel _calendarMonth;
   
@@ -106,22 +111,53 @@
   
   protected override async Task OnInitializedAsync()
   {
-    await InitCalendarAsync(DateTime.Today);
+    var showDay = GetShowDay();
+
+    await InitCalendarAsync(showDay);
+  }
+
+  private DateTime GetShowDay()
+  {
+    var uri = NavManager.ToAbsoluteUri(NavManager.Uri);
+
+    if (!QueryHelpers.ParseQuery(uri.Query).TryGetValue("showDay", out var strShowDay))
+    {
+      return DateTime.Today;
+    }
+    
+    if (!DateTime.TryParseExact(
+      strShowDay, 
+      "yyyyMMdd", 
+      null, 
+      DateTimeStyles.None, 
+      out var fromDate))
+    {
+      fromDate = DateTime.Today;
+    }
+
+    return fromDate;
+  }
+
+  private void UpdateUri(DateTime showDay)
+  {
+    var baseUrlPart = Configuration.GetEnvironmentValue(EnvNames.LaDanseBaseUrl);
+    
+    NavManager.NavigateTo(baseUrlPart + "/events?showDate=" + showDay.ToString("yyyyMMdd"));
   }
   
   private async Task InitCalendarAsync(DateTime showDay)
   {
     _eventsPopulated = false;
     
-    _showDay = showDay;
-
     _currentRaidWeek = new RaidWeekModel(DateTime.Today);
-    _calendarMonth = new CalendarMonthModel(_showDay, _currentRaidWeek);
+    _calendarMonth = new CalendarMonthModel(showDay, _currentRaidWeek);
 
     await PopulateEventsAsync(_calendarMonth.FirstDay());
 
     _eventsPopulated = true;
     StateHasChanged();
+    
+    UpdateUri(showDay);
   }
 
   private async Task PopulateEventsAsync(DateTime fromDay)
@@ -158,28 +194,26 @@
 
   private static string EventCssClass(Event @event)
   {
-    var currentUserId = "35d2e57a-2625-4f56-9e71-d77bd9be9d87";
+    const string currentUserId = "35d2e57a-2625-4f56-9e71-d77bd9be9d87";
     
     if (@event.State == "Cancelled")
     {
       return "event-cancelled";
     }
-    else
+    
+    var signUp = @event.SignUps.FirstOrDefault(s => s.UserRef.Id.ToString() == currentUserId);
+      
+    if (signUp != null)
     {
-      var signUp = @event.SignUps.FirstOrDefault(s => s.UserRef.Id.ToString() == currentUserId);
-      
-      if (signUp != null)
+      return signUp.Type switch
       {
-        return signUp.Type switch
-        {
-          "WillCome" => "event-willCome",
-          "MightCome" => "event-mightCome",
-          "Absent" => "event-absent",
-          _ => "event-notSigned"
+        "WillCome" => "event-willCome",
+        "MightCome" => "event-mightCome",
+        "Absent" => "event-absent",
+        _ => "event-notSigned"
         };
-      }
-      
-      return "event-notSigned";
     }
+      
+    return "event-notSigned";
   }
 }

@@ -173,6 +173,9 @@ namespace LaDanse.WebUI
         {
             // check existence of database connection configuration
             CheckEnvironmentVariable(EnvNames.LaDanseDatabaseConnection);
+            
+            // check existence of various configuration values
+            CheckEnvironmentVariable(EnvNames.LaDanseBaseUrl);
 
             // check existence of Battle Net configuration
             CheckEnvironmentVariable(EnvNames.BattleNetClientId);
@@ -183,7 +186,7 @@ namespace LaDanse.WebUI
             CheckEnvironmentVariable(EnvNames.Auth0Audience);
             CheckEnvironmentVariable(EnvNames.Auth0ClientId);
             CheckEnvironmentVariable(EnvNames.Auth0ClientSecret);
-            CheckEnvironmentVariable(EnvNames.Auth0DefaultConnection);
+            //CheckEnvironmentVariable(EnvNames.Auth0DefaultConnection);
         }
 
         private void CheckEnvironmentVariable(string envName)

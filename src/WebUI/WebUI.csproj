@@ -40,6 +40,7 @@
       <_ContentIncludedByDefault Remove="Pages\Accounting\Labels\Manage.razor" />
       <_ContentIncludedByDefault Remove="Pages\Navigation\ApplicationMenu.razor" />
       <_ContentIncludedByDefault Remove="Pages\Navigation\TopNavigationBar.razor" />
+      <_ContentIncludedByDefault Remove="Pages\Accounting\Inbox.razor" />
     </ItemGroup>
 
     <ItemGroup>
