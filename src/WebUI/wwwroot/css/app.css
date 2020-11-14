@@ -12,6 +12,8 @@
   --default-background: rgb(18, 18, 20);
   --content-background: rgb(21, 21, 24);
   --focus-background: rgb(35, 35, 35);
+  --menu-tile-background: rgba(110, 110, 110, .60);
+  --menu-tile-background-hover: rgba(110, 110, 110, .85);
 }
 
 .valid.modified:not([type=checkbox]) {
@@ -47,6 +49,62 @@
 
 #components-reconnect-modal {
   background-color: rgba(0, 0, 0, 0.95) !important;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  color: var(--default-color);
+}
+
+.wow-background {
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: top;
+  background-size: cover;
+  background-image: var(--main-background);
+}
+
+.flex-push-right {
+  margin-left: auto;
+}
+
+/* Utility class to have a link not look like a link and instead inherit from parent */
+.inherit-link {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.inherit-link:hover {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+pre {
+  color: var(--default-color);
+}
+
+div.centered-page {
+  width: 980px;
+  margin: 50px auto auto;
+  font-family: Roboto, sans-serif;
+  color: var(--default-color);
+}
+
+.staticText h1 {
+  padding-top: 10px;
+  font-size: 2em;
+}
+
+.staticText h2 {
+  font-weight: normal;
+  padding-top: 15px;
+  padding-bottom: 5px;
+  font-size: 1.6em;
+}
+
+.actionInProgress {
+  cursor: progress !important;
 }
 
 div.top-navigation-row {
@@ -147,60 +205,267 @@ span.menu-link:first-child {
   font-size: 0.85em;
 }
 
-body {
+div.menu-item {
+  color: var(--default-color);
+  font-size: 1em;
+  height: 100%;
+  display: inline-block;
+}
+
+div.menu-item:first-child {
+  margin-left: 0;
+}
+
+div.my-account-container {
+  position: relative;
+}
+
+.dropdown-menu {
+  background-color: var(--content-background);
+}
+
+a,
+a:hover,
+a:focus {
+  color: var(--default-color) !important;
+}
+
+/* Dropdown menu font color*/
+.dropdown-menu a,
+.dropdown-menu a:hover,
+.dropdown-menu a:focus {
+  color: var(--default-color) !important;
+}
+
+.dropdown-menu a:hover {
+  background-color: var(--focus-background);
+  color: var(--default-color) !important;
+}
+
+span.menu-link {
+  color: var(--default-color);
+  font-size: 1em;
+  margin-left: 25px;
+  cursor: pointer;
+}
+
+.menu-clickable {
+  cursor: pointer;
+}
+
+span.menu-link:first-child {
+  margin-left: 0;
+}
+
+.menu-toggle-icon {
+  color: lightgray;
+}
+
+.item-icon {
+  width: 25px;
+  display: inline-block;
+  font-size: 0.85em;
+}
+
+.item-label {
+  display: inline-block;
+  font-size: 0.85em;
+}
+
+div.page-container {
+  width: 100%;
+  margin: 50px auto auto;
+  position: relative;
+}
+
+div.menu-container {
+  width: max-content;
+  margin: auto;
+}
+
+div.menu-columns-container {
+  white-space: nowrap;
+  position: relative;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: nowrap;
+  flex-wrap: nowrap;
+}
+
+div.menu-news-column {
+  width: 450px;
+}
+
+div.news-column-wrapper {
+  padding: 5px;
+  margin: 10px;
+}
+
+div.menu-column {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.tile-list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -moz-flex;
+  display: -webkit-flex;
+  display: flex;
+  width: 342px;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.tile {
+  margin: 10px;
+  background-color: var(--menu-tile-background);
+  color: #fafafa;
+  position: relative;
+}
+
+.tile:hover {
+  background-color: var(--menu-tile-background-hover);
+}
+
+.tile-single {
+  width: 150px;
+  height: 150px;
+}
+
+.tile-wide {
+  width: 320px;
+  height: 150px;
+}
+
+.tile-content {
+  padding: 5px 5px 35px;
+  position: absolute;
   width: 100%;
   height: 100%;
+}
+
+.tile-label {
+  position: absolute;
+}
+
+.tile-text-label {
+  left: 8px;
+  bottom: 5px;
+  font-size: 0.9em;
+  font-weight: 300;
+}
+
+.tile-icon-label {
+  font-size: 0.75em;
+  left: 8px;
+  bottom: 8px;
+}
+
+.construction-overlay {
+  position: absolute;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.construction-overlay img {
+  height: 50%;
+}
+
+div.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+div.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+div.image-container img.tile-image {
+  max-width: 100px;
+}
+
+div.menu-news {
+  overflow: visible !important;
+  white-space: normal !important;
+}
+
+div.menu-news p.news-item {
+  font-family: "Segoe UI", "Open Sans", sans-serif, serif;
+  font-size: 18px;
+  color: var(--default-color);
+  font-weight: 300;
+  padding-bottom: 15px;
+}
+
+div.menu-news p.news-title {
+  font-family: "Segoe UI", "Open Sans", sans-serif, serif;
+  font-size: 30px;
+  color: var(--default-color);
+  font-weight: bold;
+}
+
+div.menu-news p span.news-timestamp {
+  font-size: 14px;
+  color: gray;
+  font-weight: 200;
+}
+
+div.menu-news p a {
   color: var(--default-color);
 }
 
-.wow-background {
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: top;
-  background-size: cover;
-  background-image: var(--main-background);
+div.tile-content-container {
+  height: 100%;
+  width: 100%;
 }
 
-.flex-push-right {
-  margin-left: auto;
+.event-container {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.8em;
+  margin: 2px 2px 6px;
+  padding: 2px;
 }
-
-/* Utility class to have a link not look like a link and instead inherit from parent */
-.inherit-link {
-  color: inherit;
-  text-decoration: inherit;
-}
-
-.inherit-link:hover {
-  color: inherit;
-  text-decoration: inherit;
-}
-
-pre {
+.event-container a {
   color: var(--default-color);
 }
 
-div.centered-page {
-  width: 980px;
-  margin: 50px auto auto;
-  font-family: Roboto, sans-serif;
-  color: var(--default-color);
+.event-willCome {
+  --willCome-color: 19, 151, 22;
+  background-color: rgba(var(--willCome-color), 0.3);
+  color: rgb(var(--willCome-color));
+  border: 1px solid rgb(var(--willCome-color));
+  border-left: 4px solid rgb(var(--willCome-color));
 }
 
-.staticText h1 {
-  padding-top: 10px;
-  font-size: 2em;
+div.spinner-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
 }
-
-.staticText h2 {
-  font-weight: normal;
-  padding-top: 15px;
-  padding-bottom: 5px;
-  font-size: 1.6em;
-}
-
-.actionInProgress {
-  cursor: progress !important;
+div.spinner-container img {
+  width: 30px;
 }
 
 /*# sourceMappingURL=app.css.map */

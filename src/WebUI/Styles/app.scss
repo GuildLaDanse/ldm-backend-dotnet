@@ -4,8 +4,6 @@
 
 @import 'blazor.scss';
 
-@import 'Navigation/TopNavigationBar';
-
 body {
     width: 100%;
     height: 100%;
@@ -48,3 +46,6 @@ pre
 {
     cursor: progress !important;
 }
+
+@import 'Navigation/Navigation';
+@import 'Menu/Menu';
