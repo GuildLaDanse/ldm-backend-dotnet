@@ -343,3 +343,6 @@ scripts/Environment.sh
 scripts/Environment.ps1
 
 .vscode/
+src/WebUI/wwwroot/css/app.css
+
+src/WebUI/wwwroot/css/app.css.map
