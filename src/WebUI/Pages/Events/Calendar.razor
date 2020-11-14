@@ -72,8 +72,7 @@
               @foreach (var eventOnDay in calendarDay.Events())
               {
                 <a href="/events/@eventOnDay.Id">
-                  <div ngClass="{'event-cancelled': event.state == 'Cancelled'}"
-                       class="event-container event-willCome">
+                  <div class="event-container @EventCssClass(eventOnDay)">
                     @eventOnDay.Name
                   </div>
                 </a>
@@ -156,5 +155,31 @@
   {
     return day.IsToday() ? "today" : "";
   }
-  
+
+  private static string EventCssClass(Event @event)
+  {
+    var currentUserId = "35d2e57a-2625-4f56-9e71-d77bd9be9d87";
+    
+    if (@event.State == "Cancelled")
+    {
+      return "event-cancelled";
+    }
+    else
+    {
+      var signUp = @event.SignUps.FirstOrDefault(s => s.UserRef.Id.ToString() == currentUserId);
+      
+      if (signUp != null)
+      {
+        return signUp.Type switch
+        {
+          "WillCome" => "event-willCome",
+          "MightCome" => "event-mightCome",
+          "Absent" => "event-absent",
+          _ => "event-notSigned"
+        };
+      }
+      
+      return "event-notSigned";
+    }
+  }
 }
