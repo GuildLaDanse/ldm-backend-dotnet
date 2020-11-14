@@ -1,7 +1,15 @@
-$env:ASPNETCORE_URLS="http://localhost:5001"
+$env:ASPNETCORE_URLS="http://localhost:5000"
 $env:ASPNETCORE_ENVIRONMENT="Development"
+
+$env:LADANSE_BASE_URL="http://localhost:5000"
 
 $env:LADANSE_DATABASE_CONNECTION="server=DatabaseHost;port=3306;database=YourDatabase;user=DbUser;password=secret"
 
 $env:BATTLENET_CLIENT_ID="ClientIdFromBattleNet"
 $env:BATTLENET_CLIENT_SECRET="ClientSecretFromBattleNet"
+
+$env:AUTH0_DOMAIN="acme.openid.provider.com"
+$env:AUTH0_AUDIENCE="https://acme.org/api"
+$env:AUTH0_CLIENT_ID="ClientIdFromOpenIdProvider"
+$env:AUTH0_CLIENT_SECRET="ClientSecretFromOpenIdProvider"
+$env:AUTH0_DEFAULT_CONNECTION=""

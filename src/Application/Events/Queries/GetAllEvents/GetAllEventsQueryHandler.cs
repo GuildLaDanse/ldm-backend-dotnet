@@ -65,8 +65,6 @@ namespace LaDanse.Application.Events.Queries.GetAllEvents
                     .Where(s => signUpIds.Contains(s.SignUpId))
                     .ToListAsync(cancellationToken);
                 
-                _logger.Debug("dbSignedForGameRoles size " + dbSignedForGameRoles.Count);
-                
                 var signUps = dbSignups.Select(
                     s => new SignUp
                     {

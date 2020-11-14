@@ -1,0 +1,72 @@
+﻿<div class="tile @CssTile()">
+
+    <div class="tile-content">
+        @ChildContent
+    </div>
+    
+    @if (UnderConstruction)
+    {
+        <div class="construction-overlay @CssTile()">
+            <img src="/images/shared/under-construction.gif" alt="under construction"/>
+        </div>
+    }
+
+    @if (string.IsNullOrEmpty(Icon))
+    {
+        <div class="tile-label tile-text-label">
+            <span>@Label</span>
+        </div>
+    }
+
+    @if (!string.IsNullOrEmpty(Icon))
+    {
+        <div class="tile-label tile-icon-label">
+            <i class="@CssIconStyle() @Icon fa-2x"></i>
+        </div>
+    }
+</div>
+
+@code {
+
+    [Parameter]
+    public bool UnderConstruction { get; set; }
+    
+    [Parameter]
+    public string Label { get; set; }
+    
+    [Parameter]
+    public string Size { get; set; }
+    
+    [Parameter]
+    public string Icon { get; set; }
+    
+    [Parameter]
+    public string IconStyle { get; set; }
+    
+    [Parameter]
+    public RenderFragment ChildContent { get; set; }
+
+    private string CssTile()
+    {
+        return Size switch
+        {
+            "single" => "tile-single",
+            "wide" => "tile-wide",
+            _ => "tile-single"
+            };
+    }
+    
+    private string CssIconStyle()
+    {
+        return IconStyle switch
+        {
+            "solid" => "fas",
+            "regular" => "far",
+            "light" => "fal",
+            "duotone" => "fad",
+            "brands" => "fab",
+            _ => "fas"
+            };
+    }
+    
+}

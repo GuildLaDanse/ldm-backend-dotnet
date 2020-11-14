@@ -28,7 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{9E37
 		scripts\RunWatchServer.sh = scripts\RunWatchServer.sh
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAPI", "src\WebAPI\WebAPI.csproj", "{505F43CA-A08A-4C01-9130-F5F340B20825}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebUI", "src\WebUI\WebUI.csproj", "{505F43CA-A08A-4C01-9130-F5F340B20825}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleNet.Abstractions", "src\External.BattleNet\BattleNet.Abstractions.csproj", "{82973E5D-7683-40FC-A7C3-1E1978540E24}"
 EndProject
@@ -39,8 +39,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.Abstractions", "src\Auth0.Abstractions\Auth0.Abstractions.csproj", "{DCCC4037-D784-4635-931C-B4858D80C12A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.Implementation", "src\Auth0.Implementation\Auth0.Implementation.csproj", "{15636D4F-600D-4D3C-B04B-26936E239465}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "cli", "cli", "{A6123A9D-A154-4AEE-859B-D8EFF4D74C72}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
