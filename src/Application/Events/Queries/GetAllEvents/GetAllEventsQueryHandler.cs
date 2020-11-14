@@ -30,9 +30,6 @@ namespace LaDanse.Application.Events.Queries.GetAllEvents
             
             var lastDate = request.StartDate.AddDays(28).ChangeTime(23, 59, 59);
 
-            _logger.Debug($"{request.StartDate}");
-            _logger.Debug($"{lastDate}");
-            
             var dbEvents = await _dbContext.Events
                 .Where(e => e.InviteTime.CompareTo(request.StartDate) >= 0)
                 .Where(e => e.InviteTime.CompareTo(lastDate) <= 0)
@@ -67,8 +64,6 @@ namespace LaDanse.Application.Events.Queries.GetAllEvents
                 var dbSignedForGameRoles = await _dbContext.SignedForGameRoles
                     .Where(s => signUpIds.Contains(s.SignUpId))
                     .ToListAsync(cancellationToken);
-                
-                _logger.Debug("dbSignedForGameRoles size " + dbSignedForGameRoles.Count);
                 
                 var signUps = dbSignups.Select(
                     s => new SignUp

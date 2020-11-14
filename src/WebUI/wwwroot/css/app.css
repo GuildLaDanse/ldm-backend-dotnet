@@ -528,6 +528,9 @@ div.calendar div.week-row div.day-container {
   background-color: #18191b;
   border: 1px solid #242426;
 }
+div.calendar div.week-row div.day-container a {
+  text-decoration: none !important;
+}
 div.calendar div.week-row div.day-container div.day-container-header {
   padding: 5px;
   font-size: 0.9em;

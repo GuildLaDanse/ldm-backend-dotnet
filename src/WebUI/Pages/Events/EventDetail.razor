@@ -1,10 +1,28 @@
 ﻿@page "/events/{EventId}"
+@using MediatR
+@using LaDanse.Application.Events.Queries.GetEvent
+@using LaDanse.Application.Events.Models
 
-<h3>Event - @EventId</h3>
+@inject IMediator Mediator
+
+<div class="centered-page">
+    
+    @if (_calendarEvent != null)
+    {
+        <h3>Event - @_calendarEvent.Name</h3>
+    }
+    
+</div>
 
 @code {
     
     [Parameter]
     public string EventId { get; set; }
+
+    public Event _calendarEvent;
     
+    protected override async Task OnInitializedAsync()
+    {
+        _calendarEvent = await Mediator.Send(new GetEventQuery(Guid.Parse(EventId)));
+    }
 }
