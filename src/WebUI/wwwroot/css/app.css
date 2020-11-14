@@ -468,4 +468,163 @@ div.spinner-container img {
   width: 30px;
 }
 
+div.pager {
+  width: 100%;
+  padding-left: 0;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+div.pager div a {
+  display: inline-block;
+  padding: 5px 14px;
+  background-color: #18191b;
+  border-radius: 15px;
+  color: var(--default-color);
+  text-decoration: none;
+}
+
+div.legend {
+  margin-bottom: 20px;
+}
+div.legend div {
+  display: inline-block;
+  padding: 3px 8px;
+  margin-right: 8px;
+  border-radius: 5px;
+  font-size: 0.8em;
+}
+
+div.calendar {
+  font-size: 0.9em;
+  display: flex;
+  flex-direction: column;
+}
+div.calendar div.weekday-row {
+  display: flex;
+  flex-direction: row;
+}
+div.calendar div.weekday-row div {
+  min-width: 14.286%;
+  max-width: 14.286%;
+  flex: 1;
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #18191b;
+  border: 1px solid #242426;
+}
+div.calendar div.week-row {
+  display: flex;
+  flex-direction: row;
+}
+div.calendar div.week-row div.day-container {
+  position: relative;
+  flex: 1;
+  min-width: 14.286%;
+  max-width: 14.286%;
+  min-height: 140px;
+  background-color: #18191b;
+  border: 1px solid #242426;
+}
+div.calendar div.week-row div.day-container div.day-container-header {
+  padding: 5px;
+  font-size: 0.9em;
+}
+div.calendar div.week-row div.day-container div.day-container-header span.today {
+  padding: 3px;
+  background-color: darkred;
+  border-radius: 5px;
+}
+div.calendar div.week-row div.day-container div.event-container {
+  border-radius: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.8em;
+  margin: 4px 10px 0 10px;
+  padding: 6px;
+  cursor: pointer;
+}
+div.calendar div.week-row div.day-container div.event-container:last-child {
+  margin-bottom: 8px;
+}
+div.calendar div.week-row div.day-container:hover .hover-me-container {
+  display: block;
+}
+div.calendar div.week-row div.day-in-raidweek {
+  background-color: #2d2d2d;
+}
+
+.event-notSigned {
+  --notSigned-color: 255, 117, 55;
+  background-color: rgba(var(--notSigned-color), 0.3);
+  color: rgb(var(--notSigned-color));
+  border: 1px solid rgb(var(--notSigned-color));
+  border-left: 4px solid rgb(var(--notSigned-color));
+}
+
+.event-willCome {
+  --willCome-color: 19, 151, 22;
+  background-color: rgba(var(--willCome-color), 0.3);
+  color: rgb(var(--willCome-color));
+  border: 1px solid rgb(var(--willCome-color));
+  border-left: 4px solid rgb(var(--willCome-color));
+}
+
+.event-mightCome {
+  --mightCome-color: 29, 120, 246;
+  background-color: rgba(var(--mightCome-color), 0.3);
+  color: rgb(var(--mightCome-color));
+  border: 1px solid rgb(var(--mightCome-color));
+  border-left: 4px solid rgb(var(--mightCome-color));
+}
+
+.event-absent {
+  --absent-color: 206,96,126;
+  background-color: rgba(var(--absent-color), 0.3);
+  color: rgb(var(--absent-color));
+  border: 1px solid rgb(var(--absent-color));
+  border-left: 4px solid rgb(var(--absent-color));
+}
+
+.event-cancelled {
+  --cancelled-color: 102, 153, 170;
+  background-color: rgba(var(--cancelled-color), 0.3) !important;
+  color: rgb(var(--cancelled-color)) !important;
+  border: 1px solid rgb(var(--cancelled-color)) !important;
+  border-left: 4px solid rgb(var(--cancelled-color)) !important;
+}
+
+.hover-me-container {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.hover-me {
+  padding: 3px 8px 3px 3px;
+  font-size: 0.8em;
+  text-align: right;
+}
+.hover-me a {
+  color: var(--default-color);
+  text-decoration: none;
+}
+
+div.spinner-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+div.spinner-container img {
+  width: 30px;
+}
+
 /*# sourceMappingURL=app.css.map */
