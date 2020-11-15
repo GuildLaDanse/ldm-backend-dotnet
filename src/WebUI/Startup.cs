@@ -37,7 +37,7 @@ namespace LaDanse.WebUI
         {
             // Verify that all required environment variables are present.
             CheckEnvironmentVariables();
-            
+
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
@@ -48,69 +48,8 @@ namespace LaDanse.WebUI
             services.AddHttpContextAccessor();
             
             services
-                .AddAuthentication(options =>
-                {
-                    options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                    options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                })
-                .AddCookie()
-                .AddOpenIdConnect("Auth0", options => {
-                    // Set the authority to your Auth0 domain
-                    options.Authority = $"https://{Configuration.GetEnvironmentValue(EnvNames.Auth0Domain)}";
-
-                    // Configure the Auth0 Client ID and Client Secret
-                    options.ClientId = Configuration.GetEnvironmentValue(EnvNames.Auth0ClientId);
-                    options.ClientSecret = Configuration.GetEnvironmentValue(EnvNames.Auth0ClientSecret);
-
-                    // Set response type to code
-                    options.ResponseType = OpenIdConnectResponseType.Code;
-                    
-                    options.SaveTokens = true;
-
-                    // Configure the scope
-                    options.Scope.Clear();
-                    options.Scope.Add("openid");
-                    options.Scope.Add("profile");
-
-                    // Set the callback path, so Auth0 will call back to http://localhost:3000/callback
-                    // Also ensure that you have added the URL as an Allowed Callback URL in your Auth0 dashboard
-                    options.CallbackPath = new PathString("/callback");
-
-                    // Configure the Claims Issuer to be Auth0
-                    options.ClaimsIssuer = "Auth0";
-                    
-                    options.NonceCookie.SameSite = SameSiteMode.Unspecified;
-                    options.CorrelationCookie.SameSite = SameSiteMode.Unspecified;
-                    
-                    options.Events = new OpenIdConnectEvents
-                    {
-                        // handle the logout redirection
-                        OnRedirectToIdentityProviderForSignOut = (context) =>
-                        {
-                            var logoutUri = $"https://{Configuration.GetEnvironmentValue(EnvNames.Auth0Domain)}/v2/logout?client_id={Configuration.GetEnvironmentValue(EnvNames.Auth0ClientId)}";
-
-                            var postLogoutUri = context.Properties.RedirectUri;
-                            if (!string.IsNullOrEmpty(postLogoutUri))
-                            {
-                                if (postLogoutUri.StartsWith("/"))
-                                {
-                                    // transform to absolute
-                                    var request = context.Request;
-                                    postLogoutUri = request.Scheme + "://" + request.Host + request.PathBase + postLogoutUri;
-                                }
-                                logoutUri += $"&returnTo={ Uri.EscapeDataString(postLogoutUri)}";
-                            }
-
-                            context.Response.Redirect(logoutUri);
-                            context.HandleResponse();
-
-                            return Task.CompletedTask;
-                        }
-                    };
-                });
-            
-            services.AddAuthorization();
+                .AddAuth0Authentication(Configuration)
+                .AddAuthorization();
 
             /*
             services.AddControllers(

@@ -11,9 +11,9 @@ namespace LaDanse.WebUI.Controllers
     public class AccountController : Controller
     {
         [Route("login")]
-        public async Task Login(string returnUrl = "/")
+        public async Task Login([FromQuery(Name = "redirectUri")] string redirectUri = "/")
         {
-            await HttpContext.ChallengeAsync("Auth0", new AuthenticationProperties() { RedirectUri = returnUrl });
+            await HttpContext.ChallengeAsync("Auth0", new AuthenticationProperties() { RedirectUri = redirectUri });
         }
 
         [Route("logout")]
