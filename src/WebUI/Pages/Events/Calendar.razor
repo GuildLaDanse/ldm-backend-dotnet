@@ -1,47 +1,16 @@
-﻿@page "/events"
-@attribute [Authorize]
+﻿@attribute [Authorize]
 
-@using LaDanse.Application.Events.Models
-@using LaDanse.Application.Events.Queries.GetAllEvents
 @using LaDanse.WebUI.Models.Calendar
-@using MediatR
-@using Microsoft.AspNetCore.WebUtilities
 @using System.Globalization
 @using LaDanse.Application
+@using LaDanse.Application.Events.Models
 @using LaDanse.Common.Configuration
 @using Microsoft.Extensions.Configuration
 
-@inject NavigationManager NavManager
-@inject IMediator Mediator
-@inject IConfiguration Configuration
 @inject ILaDanseRuntimeContext LaDanseRuntimeContext;
 
-<div class="centered-page">
-
-  <div class="pager">
-    <div>
-      <a @onclick="OlderButtonClicked" @onclick:preventDefault href="#">
-        <i class="fa fa-arrow-left fa-1x"></i> older
-      </a>
-    </div>
-    <div>
-      <a @onclick="TodayButtonClicked" @onclick:preventDefault href="#">today</a>
-    </div>
-    <div>
-      <a @onclick="NewerButtonClicked" @onclick:preventDefault href="#">
-        newer <i class="fa fa-arrow-right fa-1x"></i>
-      </a>
-    </div>
-  </div>
-
-  <div class="legend">
-    <div class="event-willCome">will come</div>
-    <div class="event-mightCome">might come</div>
-    <div class="event-absent">absent</div>
-    <div class="event-notSigned">you haven't signed yet</div>
-    <div class="event-cancelled">cancelled event</div>
-  </div>
-
+@if (CalendarMonth != null)
+{
   <div class="calendar">
 
     <div class="weekday-row">
@@ -54,7 +23,7 @@
       <div>sunday</div>
     </div>
 
-    @foreach (var week in _calendarMonth.Weeks())
+    @foreach (var week in CalendarMonth.Weeks())
     {
       <div class="week-row">
 
@@ -74,118 +43,35 @@
                 </div>
               </div>
             }
+
+            @foreach (var eventOnDay in calendarDay.Events())
+            {
+              <a href="/events/@eventOnDay.Id">
+                <div class="event-container @EventCssClass(eventOnDay)">
+                  @eventOnDay.Name
+                </div>
+              </a>
+            }
             
-            @if (_eventsPopulated)
-            {
-              @foreach (var eventOnDay in calendarDay.Events())
-              {
-                <a href="/events/@eventOnDay.Id">
-                  <div class="event-container @EventCssClass(eventOnDay)">
-                    @eventOnDay.Name
-                  </div>
-                </a>
-              }
-            }
-            else
-            {
-              <div class="spinner-container">
-                <img src="/images/shared/waiting-spin.gif" alt="waiting spinner"/>
-              </div>
-            }
-          
           </div>
         }
 
       </div>
     }
-    
 
   </div>
-
-</div>
+}
 
 @code {
 
   private Guid _currentUserId;
   
-  private RaidWeekModel _currentRaidWeek;
-  private CalendarMonthModel _calendarMonth;
-  
-  private bool _eventsPopulated = false;
-  
-  protected override async Task OnInitializedAsync()
+  [Parameter]
+  public CalendarMonthModel CalendarMonth { get; set; }
+
+  protected override void OnInitialized()
   {
     _currentUserId = LaDanseRuntimeContext.UserId();
-    
-    var showDay = GetShowDay();
-
-    await InitCalendarAsync(showDay);
-  }
-
-  private DateTime GetShowDay()
-  {
-    var uri = NavManager.ToAbsoluteUri(NavManager.Uri);
-
-    if (!QueryHelpers.ParseQuery(uri.Query).TryGetValue("showDay", out var strShowDay))
-    {
-      return DateTime.Today;
-    }
-    
-    if (!DateTime.TryParseExact(
-      strShowDay, 
-      "yyyyMMdd", 
-      null, 
-      DateTimeStyles.None, 
-      out var fromDate))
-    {
-      fromDate = DateTime.Today;
-    }
-
-    return fromDate;
-  }
-
-  private void UpdateUri(DateTime showDay)
-  {
-    var baseUrlPart = Configuration.GetEnvironmentValue(EnvNames.LaDanseBaseUrl);
-    
-    NavManager.NavigateTo(baseUrlPart + "/events?showDate=" + showDay.ToString("yyyyMMdd"));
-  }
-  
-  private async Task InitCalendarAsync(DateTime showDay)
-  {
-    _eventsPopulated = false;
-    
-    _currentRaidWeek = new RaidWeekModel(DateTime.Today);
-    _calendarMonth = new CalendarMonthModel(showDay, _currentRaidWeek);
-
-    await PopulateEventsAsync(_calendarMonth.FirstDay());
-
-    _eventsPopulated = true;
-    StateHasChanged();
-    
-    UpdateUri(showDay);
-  }
-
-  private async Task PopulateEventsAsync(DateTime fromDay)
-  {
-    var result = await Mediator.Send(new GetAllEventsQuery(fromDay));
-    
-    _calendarMonth.PopulateEvents(result);
-  }
-
-  private async Task OlderButtonClicked()
-  {
-    await InitCalendarAsync(_calendarMonth.GetStartOfPreviousMonth());
-  }
-
-  private async Task TodayButtonClicked()
-  {
-    await InitCalendarAsync(DateTime.Today);
-  }
-
-  private async Task NewerButtonClicked()
-  {
-    await InitCalendarAsync(_calendarMonth.GetStartOfNextMonth());
   }
 
   private static string RaidWeekCssClass(DayModel day)
