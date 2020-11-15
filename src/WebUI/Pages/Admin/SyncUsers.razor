@@ -1,0 +1,24 @@
+﻿@page "/admin/sync-users"
+@attribute [Authorize]
+
+@using MediatR
+@using LaDanse.Application.Admin.Auth0.Commands.SyncUsers
+
+@inject IMediator Mediator
+
+<h3>SyncUsers</h3>
+
+<br/>
+
+<button @onclick="SyncUsersButtonClickedAsync">Sync Users</button>
+
+@code {
+
+    private async Task SyncUsersButtonClickedAsync()
+    {
+        await Mediator.Send(new SyncUsersCommand());
+        
+        await Console.Error.WriteLineAsync("Users synced");
+    }
+    
+}

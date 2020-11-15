@@ -1,4 +1,6 @@
 ﻿@page "/events/{EventId}"
+@attribute [Authorize]
+
 @using MediatR
 @using LaDanse.Application.Events.Queries.GetEvent
 @using LaDanse.Application.Events.Models

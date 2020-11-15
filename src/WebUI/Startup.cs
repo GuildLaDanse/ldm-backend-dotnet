@@ -183,10 +183,12 @@ namespace LaDanse.WebUI
 
             // check existence of Auth0 configuration
             CheckEnvironmentVariable(EnvNames.Auth0Domain);
-            CheckEnvironmentVariable(EnvNames.Auth0Audience);
             CheckEnvironmentVariable(EnvNames.Auth0ClientId);
             CheckEnvironmentVariable(EnvNames.Auth0ClientSecret);
-            //CheckEnvironmentVariable(EnvNames.Auth0DefaultConnection);
+            CheckEnvironmentVariable(EnvNames.Auth0AdminAudience);
+            CheckEnvironmentVariable(EnvNames.Auth0AdminClientId);
+            CheckEnvironmentVariable(EnvNames.Auth0AdminClientSecret);
+            CheckEnvironmentVariable(EnvNames.Auth0AdminDefaultConnection);
         }
 
         private void CheckEnvironmentVariable(string envName)

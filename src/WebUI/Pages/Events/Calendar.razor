@@ -7,12 +7,14 @@
 @using MediatR
 @using Microsoft.AspNetCore.WebUtilities
 @using System.Globalization
+@using LaDanse.Application
 @using LaDanse.Common.Configuration
 @using Microsoft.Extensions.Configuration
 
 @inject NavigationManager NavManager
 @inject IMediator Mediator
 @inject IConfiguration Configuration
+@inject ILaDanseRuntimeContext LaDanseRuntimeContext;
 
 <div class="centered-page">
 
@@ -104,6 +106,8 @@
 
 @code {
 
+  private Guid _currentUserId;
+  
   private RaidWeekModel _currentRaidWeek;
   private CalendarMonthModel _calendarMonth;
   
@@ -111,6 +115,8 @@
   
   protected override async Task OnInitializedAsync()
   {
+    _currentUserId = LaDanseRuntimeContext.UserId();
+    
     var showDay = GetShowDay();
 
     await InitCalendarAsync(showDay);
@@ -192,16 +198,14 @@
     return day.IsToday() ? "today" : "";
   }
 
-  private static string EventCssClass(Event @event)
+  private string EventCssClass(Event @event)
   {
-    const string currentUserId = "35d2e57a-2625-4f56-9e71-d77bd9be9d87";
-    
     if (@event.State == "Cancelled")
     {
       return "event-cancelled";
     }
     
-    var signUp = @event.SignUps.FirstOrDefault(s => s.UserRef.Id.ToString() == currentUserId);
+    var signUp = @event.SignUps.FirstOrDefault(s => s.UserRef.Id == _currentUserId);
       
     if (signUp != null)
     {
@@ -209,7 +213,7 @@
       {
         "WillCome" => "event-willCome",
         "MightCome" => "event-mightCome",
-        "Absent" => "event-absent",
+        "Absence" => "event-absent",
         _ => "event-notSigned"
         };
     }

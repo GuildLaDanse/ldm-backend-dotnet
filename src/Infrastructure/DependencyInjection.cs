@@ -1,4 +1,5 @@
 using Auth0.Implementation;
+using LaDanse.Application;
 using LaDanse.Common;
 using LaDanse.Common.Configuration;
 using LaDanse.External.BattleNet.Implementation;
@@ -15,6 +16,8 @@ namespace LaDanse.Infrastructure
             IConfiguration configuration,
             IWebHostEnvironment environment)
         {
+            services.AddScoped<ILaDanseRuntimeContext, LaDanseRuntimeContext>();
+            
             services.AddBattleNetApi();
             services.AddAuth0Api();
 
