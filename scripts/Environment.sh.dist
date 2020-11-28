@@ -1,13 +1,19 @@
 #!/bin/bash
 
-export RUNTIME_DLL="bin/Debug/netcoreapp2.2/Hermes.WebUI.dll"
+export MAIN_PROJECT="WebUI"
+
+export ASPNETCORE_URLS="http://localhost:5000"
 export ASPNETCORE_ENVIRONMENT="Development"
 
-export HERMES_DATABASE_CONNECTION="Server=localhost;User Id=postgres;Password=secret;Database=database"
+export LADANSE_BASE_URL="http://localhost:5000"
 
-export HERMES_STORAGE_CONNECTION="DefaultEndpointsProtocol=https;AccountName=accountname;AccountKey=accountkey;BlobEndpoint=blobendpointurl;TableEndpoint=tableendpointurl;"
-export HERMES_BLOB_CONTAINER="azure-container-name"
+export LADANSE_DATABASE_CONNECTION="server=DatabaseHost;port=3306;database=YourDatabase;user=DbUser;password=secret"
 
-export HERMES_DBX_APP_KEY=""
-export HERMES_DBX_APP_SECRET=""
-export HERMES_DBX_REDIRECT_URL=""
+export BATTLENET_CLIENT_ID="ClientIdFromBattleNet"
+export BATTLENET_CLIENT_SECRET="ClientSecretFromBattleNet"
+
+export AUTH0_DOMAIN="acme.openid.provider.com"
+export AUTH0_AUDIENCE="https://acme.org/api"
+export AUTH0_CLIENT_ID="ClientIdFromOpenIdProvider"
+export AUTH0_CLIENT_SECRET="ClientSecretFromOpenIdProvider"
+export AUTH0_DEFAULT_CONNECTION=""
