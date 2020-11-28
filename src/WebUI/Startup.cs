@@ -1,18 +1,13 @@
-using System;
-using System.Threading.Tasks;
 using LaDanse.Application;
-using LaDanse.Common.Configuration;
+using LaDanse.Configuration.Implementation;
 using LaDanse.Infrastructure;
+using LaDanse.Infrastructure.Configuration;
 using LaDanse.Persistence;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
 using Serilog;
 
 namespace LaDanse.WebUI
@@ -41,6 +36,7 @@ namespace LaDanse.WebUI
             services.AddRazorPages();
             services.AddServerSideBlazor();
 
+            services.AddLaDanseConfiguration();
             services.AddInfrastructure(Configuration, Environment);
             services.AddPersistence(Configuration);
             services.AddApplication();

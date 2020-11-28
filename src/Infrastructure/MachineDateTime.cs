@@ -1,5 +1,6 @@
 using System;
 using LaDanse.Common;
+using LaDanse.Common.Abstractions;
 
 namespace LaDanse.Infrastructure
 {

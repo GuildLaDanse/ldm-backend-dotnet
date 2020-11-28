@@ -22,7 +22,11 @@
         <ProjectReference Include="..\Application\Application.csproj" />
         <ProjectReference Include="..\Auth0.Implementation\Auth0.Implementation.csproj" />
         <ProjectReference Include="..\BattleNet.Implementation\BattleNet.Implementation.csproj" />
-        <ProjectReference Include="..\Common\Common.csproj" />
+        <ProjectReference Include="..\Common.Abstractions\Common.Abstractions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Configuration" />
     </ItemGroup>
 
 </Project>

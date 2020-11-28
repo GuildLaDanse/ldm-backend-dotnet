@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
-using LaDanse.Common.Configuration;
+using LaDanse.Configuration.Implementation;
+using LaDanse.Infrastructure.Configuration;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Http;

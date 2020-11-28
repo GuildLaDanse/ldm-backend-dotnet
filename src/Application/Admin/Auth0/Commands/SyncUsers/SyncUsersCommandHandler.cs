@@ -4,11 +4,10 @@ using System.Threading.Tasks;
 using Auth0.Abstractions;
 using Auth0.Abstractions.Models;
 using LaDanse.Application.Common.Interfaces;
-using LaDanse.Common;
-using LaDanse.Common.Configuration;
+using LaDanse.Common.Abstractions;
+using LaDanse.Configuration.Abstractions;
 using LaDanse.Domain.Entities.Identity;
 using MediatR;
-using Microsoft.Extensions.Configuration;
 using Serilog;
 
 namespace LaDanse.Application.Admin.Auth0.Commands.SyncUsers
@@ -19,7 +18,7 @@ namespace LaDanse.Application.Admin.Auth0.Commands.SyncUsers
 
         private readonly ILaDanseDbContext _dbContext;
 
-        private readonly IConfiguration _configuration;
+        private readonly ILaDanseConfiguration _configuration;
 
         private readonly IAuth0ApiClientFactory _auth0ApiClientFactory;
 
@@ -27,7 +26,7 @@ namespace LaDanse.Application.Admin.Auth0.Commands.SyncUsers
 
         public SyncUsersCommandHandler(
             ILaDanseDbContext dbContext,
-            IConfiguration configuration,
+            ILaDanseConfiguration configuration,
             IAuth0ApiClientFactory auth0ApiClientFactory,
             IPasswordGenerator passwordGenerator)
         {
@@ -40,10 +39,10 @@ namespace LaDanse.Application.Admin.Auth0.Commands.SyncUsers
         public async Task<Unit> Handle(SyncUsersCommand request, CancellationToken cancellationToken)
         {
             var auth0ApiClient = await _auth0ApiClientFactory.CreateClientAsync(
-                _configuration.GetEnvironmentValue(EnvNames.Auth0Domain),
-                _configuration.GetEnvironmentValue(EnvNames.Auth0AdminAudience),
-                _configuration.GetEnvironmentValue(EnvNames.Auth0AdminClientId),
-                _configuration.GetEnvironmentValue(EnvNames.Auth0AdminClientSecret)
+                _configuration.Auth0AdminConfiguration().Domain(),
+                _configuration.Auth0AdminConfiguration().Audience(),
+                _configuration.Auth0AdminConfiguration().ClientId(),
+                _configuration.Auth0AdminConfiguration().ClientSecret()
             );
 
             var authSearchUsersApi = auth0ApiClient.SearchUsersApi();
@@ -106,7 +105,7 @@ namespace LaDanse.Application.Admin.Auth0.Commands.SyncUsers
                 Blocked = false,
                 EmailVerified = false,
                 Nickname = dbUser.DisplayName,
-                Connection = _configuration.GetEnvironmentValue(EnvNames.Auth0AdminDefaultConnection),
+                Connection = _configuration.Auth0AdminConfiguration().DefaultDatabaseConnection(),
                 Password = _passwordGenerator.Generate(),
                 VerifyEmail = false,
                 AppMetaData = new CreateUser.AppMetaData

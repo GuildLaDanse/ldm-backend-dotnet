@@ -1,7 +1,7 @@
 using Auth0.Implementation;
 using LaDanse.Application;
 using LaDanse.Common;
-using LaDanse.Common.Configuration;
+using LaDanse.Common.Abstractions;
 using LaDanse.External.BattleNet.Implementation;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -22,7 +22,6 @@ namespace LaDanse.Infrastructure
             services.AddAuth0Api();
 
             services.AddTransient<IDateTime, MachineDateTime>();
-            services.AddTransient<ILaDanseConfiguration, LaDanseConfiguration>();
             services.AddTransient<IPasswordGenerator, PasswordGenerator>();
 
             return services;

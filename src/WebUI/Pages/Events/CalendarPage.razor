@@ -7,12 +7,12 @@
 @using Microsoft.AspNetCore.WebUtilities
 @using System.Globalization
 @using LaDanse.Application
-@using LaDanse.Common.Configuration
-@using Microsoft.Extensions.Configuration
+@using LaDanse.Configuration.Abstractions
+@using LaDanse.Infrastructure.Configuration
 
 @inject NavigationManager NavManager
 @inject IMediator Mediator
-@inject IConfiguration Configuration
+@inject ILaDanseConfiguration LaDanseConfiguration
 @inject ILaDanseRuntimeContext LaDanseRuntimeContext;
 
 <div class="centered-page">
@@ -47,15 +47,11 @@
 
 @code {
 
-  private Guid _currentUserId;
-  
   private RaidWeekModel _currentRaidWeek;
   private CalendarMonthModel _calendarMonth;
 
   protected override async Task OnInitializedAsync()
   {
-    _currentUserId = LaDanseRuntimeContext.UserId();
-    
     var showDay = GetShowDay();
 
     await InitCalendarAsync(showDay);
@@ -85,7 +81,7 @@
 
   private void UpdateUri(DateTime showDay)
   {
-    var baseUrlPart = Configuration.GetEnvironmentValue(EnvNames.LaDanseBaseUrl);
+    var baseUrlPart = LaDanseConfiguration.BaseUrl();
     
     NavManager.NavigateTo(baseUrlPart + "/events?showDay=" + showDay.ToString("yyyyMMdd"));
   }
