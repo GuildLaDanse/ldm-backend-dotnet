@@ -6,6 +6,7 @@
 @using MediatR
 @using Microsoft.AspNetCore.WebUtilities
 @using System.Globalization
+@using System.Threading
 @using LaDanse.Application
 @using LaDanse.Configuration.Abstractions
 
@@ -46,11 +47,11 @@
 
 @code {
 
+  private readonly Semaphore _calendarUpdatingSemaphore = new Semaphore(1, 1);
+  
   private RaidWeekModel _currentRaidWeek;
   private CalendarMonthModel _calendarMonth;
-
-  private bool _populating = false;
-
+  
   protected override async Task OnInitializedAsync()
   {
     var showDay = GetShowDay();
@@ -90,21 +91,24 @@
   private async Task InitCalendarAsync(DateTime showDay)
   {
     // prevent running this method multiple times
-    if (_populating)
+    if (!_calendarUpdatingSemaphore.WaitOne(150))
       return;
-    
-    _populating = true;
-    
-    _currentRaidWeek = new RaidWeekModel(DateTime.Today);
-    _calendarMonth = new CalendarMonthModel(showDay, _currentRaidWeek);
 
-    await PopulateEventsAsync(_calendarMonth.FirstDay());
+    try
+    {
+      _currentRaidWeek = new RaidWeekModel(DateTime.Today);
+      _calendarMonth = new CalendarMonthModel(showDay, _currentRaidWeek);
 
-    StateHasChanged();
+      await PopulateEventsAsync(_calendarMonth.FirstDay());
+
+      StateHasChanged();
     
-    UpdateUri(showDay);
-    
-    _populating = false;
+      UpdateUri(showDay);
+    }
+    finally
+    {
+      _calendarUpdatingSemaphore.Release();
+    }
   }
 
   private async Task PopulateEventsAsync(DateTime fromDay)

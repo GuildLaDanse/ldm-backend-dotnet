@@ -43,13 +43,22 @@
               </div>
             }
 
-            @foreach (var eventOnDay in calendarDay.Events())
+            @if (CalendarMonth.HaveEventsLoaded())
             {
-              <a href="/events/@eventOnDay.Id">
-                <div class="event-container @EventCssClass(eventOnDay)">
-                  @eventOnDay.Name
-                </div>
-              </a>
+              @foreach (var eventOnDay in calendarDay.Events())
+              {
+                <a href="/events/@eventOnDay.Id">
+                  <div class="event-container @EventCssClass(eventOnDay)">
+                    @eventOnDay.Name
+                  </div>
+                </a>
+              }
+            }
+            else
+            {
+              <div class="spinner-container">
+                <img src="/images/shared/waiting-spin.gif" alt="waiting spinner"/>
+              </div>
             }
             
           </div>

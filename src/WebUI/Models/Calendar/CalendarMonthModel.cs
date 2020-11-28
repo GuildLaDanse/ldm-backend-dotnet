@@ -7,6 +7,7 @@ namespace LaDanse.WebUI.Models.Calendar
 {
     public class CalendarMonthModel
     {
+        private bool _eventsLoaded;
         private readonly DateTime _firstDay;
         private readonly List<WeekModel> _weeks;
 
@@ -34,6 +35,7 @@ namespace LaDanse.WebUI.Models.Calendar
 
         public CalendarMonthModel(DateTime showDay, RaidWeekModel raidWeekModel)
         {
+            _eventsLoaded = false;
             _firstDay = CalculateFirstDay(showDay, raidWeekModel);
             _weeks = new List<WeekModel>();
 
@@ -49,6 +51,11 @@ namespace LaDanse.WebUI.Models.Calendar
             }
 
             _weeks.First().Days().First().ShowMonth(true);
+        }
+
+        public bool HaveEventsLoaded()
+        {
+            return _eventsLoaded;
         }
 
         public DateTime FirstDay()
@@ -85,6 +92,8 @@ namespace LaDanse.WebUI.Models.Calendar
                     }
                 }
             }
+
+            _eventsLoaded = true;
         }
 
         private void ResetEvents()
