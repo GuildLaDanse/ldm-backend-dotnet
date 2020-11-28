@@ -1,4 +1,5 @@
 using LaDanse.Common;
+using LaDanse.Common.Abstractions;
 using PasswordGenerator;
 
 namespace LaDanse.Infrastructure

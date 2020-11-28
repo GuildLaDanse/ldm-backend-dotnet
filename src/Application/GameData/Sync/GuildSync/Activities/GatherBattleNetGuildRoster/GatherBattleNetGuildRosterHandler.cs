@@ -1,6 +1,6 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using LaDanse.Common.Configuration;
+using LaDanse.Configuration.Abstractions;
 using LaDanse.External.BattleNet.Abstractions;
 using LaDanse.External.BattleNet.Abstractions.Models.GuildRoster;
 using MediatR;
@@ -24,8 +24,8 @@ namespace LaDanse.Application.GameData.Sync.GuildSync.Activities.GatherBattleNet
         {
             var battleNetApiClient = await _battleNetApiClientFactory.CreateClientAsync(
                 ApiRegion.Eu,
-                _laDanseConfiguration.BattleNetClientId(),
-                _laDanseConfiguration.BattleNetClientSecret());
+                _laDanseConfiguration.BattleNetConfiguration().BattleNetClientId(),
+                _laDanseConfiguration.BattleNetConfiguration().BattleNetClientSecret());
 
             return await battleNetApiClient
                 .GuildApi()

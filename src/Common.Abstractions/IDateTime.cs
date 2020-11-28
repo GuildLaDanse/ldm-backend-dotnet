@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace LaDanse.Common
+namespace LaDanse.Common.Abstractions
 {
     public interface IDateTime
     {

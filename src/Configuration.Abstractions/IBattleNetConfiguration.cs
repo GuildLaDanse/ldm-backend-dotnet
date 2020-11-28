@@ -1,6 +1,6 @@
-﻿namespace LaDanse.Common.Configuration
+namespace LaDanse.Configuration.Abstractions
 {
-    public interface ILaDanseConfiguration
+    public interface IBattleNetConfiguration
     {
         string BattleNetClientId();
         string BattleNetClientSecret();

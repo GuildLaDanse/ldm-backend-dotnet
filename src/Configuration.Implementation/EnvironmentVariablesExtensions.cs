@@ -1,6 +1,6 @@
 using Microsoft.Extensions.Configuration;
 
-namespace LaDanse.Common.Configuration
+namespace LaDanse.Common
 {
     public static class EnvironmentVariablesExtensions
     {

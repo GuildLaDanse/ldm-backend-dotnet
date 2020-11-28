@@ -1,11 +1,9 @@
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Auth0.Abstractions;
 using LaDanse.Application.Admin.Auth0.Commands.SyncUsers;
 using LaDanse.Application.Common.Interfaces;
-using LaDanse.Common;
-using LaDanse.Common.Configuration;
+using LaDanse.Common.Abstractions;
 using MediatR;
 using Microsoft.Extensions.Configuration;
 using Serilog;

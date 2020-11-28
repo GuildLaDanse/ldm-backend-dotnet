@@ -1,4 +1,4 @@
-namespace LaDanse.Common
+namespace LaDanse.Common.Abstractions
 {
     public interface IRandomStringGenerator
     {
