@@ -8,7 +8,6 @@
 @using System.Globalization
 @using LaDanse.Application
 @using LaDanse.Configuration.Abstractions
-@using LaDanse.Infrastructure.Configuration
 
 @inject NavigationManager NavManager
 @inject IMediator Mediator
@@ -50,6 +49,8 @@
   private RaidWeekModel _currentRaidWeek;
   private CalendarMonthModel _calendarMonth;
 
+  private bool _populating = false;
+
   protected override async Task OnInitializedAsync()
   {
     var showDay = GetShowDay();
@@ -88,6 +89,12 @@
   
   private async Task InitCalendarAsync(DateTime showDay)
   {
+    // prevent running this method multiple times
+    if (_populating)
+      return;
+    
+    _populating = true;
+    
     _currentRaidWeek = new RaidWeekModel(DateTime.Today);
     _calendarMonth = new CalendarMonthModel(showDay, _currentRaidWeek);
 
@@ -96,6 +103,8 @@
     StateHasChanged();
     
     UpdateUri(showDay);
+    
+    _populating = false;
   }
 
   private async Task PopulateEventsAsync(DateTime fromDay)

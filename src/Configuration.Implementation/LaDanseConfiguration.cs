@@ -29,6 +29,11 @@ namespace LaDanse.Configuration.Implementation
             return _configuration.GetEnvironmentValue(EnvNames.LaDanseBaseUrl);
         }
 
+        public bool IsProduction()
+        {
+            return _environment.IsProduction();
+        }
+
         public IAuth0AdminConfiguration Auth0AdminConfiguration()
         {
             return this;
@@ -82,7 +87,7 @@ namespace LaDanse.Configuration.Implementation
         
         #endregion
         
-        #region IAuth0AdminConfiguration
+        #region Initialization
 
         private void InitializeConfiguration()
         {
@@ -116,7 +121,7 @@ namespace LaDanse.Configuration.Implementation
             }
             else
             {
-                _logger.Information(_environment.IsDevelopment()
+                _logger.Information(!_environment.IsProduction()
                     ? $"Found a value for '{envName}': '{envValue}'"
                     : $"Found a value for '{envName}'");
             }

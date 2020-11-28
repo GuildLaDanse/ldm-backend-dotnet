@@ -1,6 +1,5 @@
 using Auth0.Implementation;
 using LaDanse.Application;
-using LaDanse.Common;
 using LaDanse.Common.Abstractions;
 using LaDanse.External.BattleNet.Implementation;
 using Microsoft.AspNetCore.Hosting;
@@ -11,7 +10,7 @@ namespace LaDanse.Infrastructure
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddInfrastructure(
+        public static IServiceCollection AddLaDanseInfrastructure(
             this IServiceCollection services,
             IConfiguration configuration,
             IWebHostEnvironment environment)

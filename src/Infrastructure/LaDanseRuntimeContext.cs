@@ -24,6 +24,8 @@ namespace LaDanse.Infrastructure
         {
             _dbContext = dbContext;
             _httpContextAccessor = httpContextAccessor;
+
+            LoadUser();
         }
         
         public ClaimsPrincipal ClaimsPrincipal()
@@ -38,43 +40,36 @@ namespace LaDanse.Infrastructure
         
         public Guid UserId()
         {
-            VerifyAndLoadUser();
+            VerifyUser();
 
             return _user.Id;
-
-            var strUserId = ClaimsPrincipal().Claims
-                .First(c => c.Type == "https://www.ladanse.org/ladanse_legacy_id").Value;
-            
-            return Guid.Empty;
         }
 
         public User User()
         {
-            VerifyAndLoadUser();
+            VerifyUser();
 
             return _user;
         }
 
-        private void VerifyAndLoadUser()
+        private void LoadUser()
         {
-            if (_user != null)
-            {
-                return;
-            }
-            
             if (!IsAuthenticated())
             {
-                throw new Exception("Http session is not authenticated, cannot fetch User from database");
+                return;
             }
             
             var externalId = ClaimsPrincipal().Claims
                 .First(c => c.Type == NameIdentifierType).Value;
 
             _user = _dbContext.Users.FirstOrDefault(u => u.ExternalId == externalId);
-
-            if (_user == null)
+        }
+        
+        private void VerifyUser()
+        {
+            if (_user == null || !IsAuthenticated())
             {
-                throw new Exception($"Http session is authenticated but could not fetch User from database using ExternalId {externalId}");
+                throw new Exception("Http session is not authenticated, cannot fetch User from database");
             }
         }
     }
