@@ -42,14 +42,12 @@ div.flex-y-bottom
 
 div.event-date-container
 {
-    position: absolute;
-    left: 10px;
-    bottom: 10px;
     border-radius: 10px;
-    border: red 1px solid;
-    border-top: red 10px solid;
+    border: rgba(255, 0, 0, 0.7) 1px solid;
+    border-top: rgba(255, 0, 0, 0.7) 10px solid;
     padding: 5px;
     background-color: #18191b;
+    display: inline-block;
 }
 
 div.event-state-container
