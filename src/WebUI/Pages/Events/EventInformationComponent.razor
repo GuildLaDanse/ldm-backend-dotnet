@@ -1,6 +1,50 @@
 ﻿@using LaDanse.Application.Events.Models
 
 <div class="EventSignUpInformationComponent">
+    @if (IsInThePast())
+    {
+        <div class="text-primary">
+            <div class="information-icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <div>
+                This event is in the past.
+            </div>
+        </div>
+    }
+    else if (IsConfirmed())
+    {
+        <div class="text-success">
+            <div class="information-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <div>
+                This event has been confirmed!
+            </div>
+        </div>
+    }
+    else if (IsPending())
+    {
+        <div class="text-warning">
+            <div class="information-icon">
+                <i class="fas fa-question-circle"></i>
+            </div>
+            <div>
+                This event is still pending.
+            </div>
+        </div>
+    }
+    else if (IsCancelled())
+    {
+        <div class="text-danger">
+            <div class="information-icon">
+                <i class="fas fa-times-circle"></i>
+            </div>
+            <div>
+                This event has been cancelled.
+            </div>
+        </div>
+    }
     <div>
         <div class="information-icon">
             <i class="fad fa-user-crown"></i>
@@ -37,5 +81,25 @@
     
     [Parameter]
     public Event CalendarEvent { get; set; }
+
+    private bool IsInThePast()
+    {
+        return CalendarEvent.InviteTime.CompareTo(DateTime.UtcNow) < 0;
+    }
+    
+    private bool IsConfirmed()
+    {
+        return CalendarEvent.State == "Confirmed";
+    }
+    
+    private bool IsPending()
+    {
+        return CalendarEvent.State == "Pending";
+    }
+    
+    private bool IsCancelled()
+    {
+        return CalendarEvent.State == "Cancelled";
+    }
 
 }
