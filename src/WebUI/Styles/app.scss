@@ -47,6 +47,7 @@ pre
     cursor: progress !important;
 }
 
+@import 'OverlayWaitingSpinner';
 @import 'Navigation/Navigation';
 @import 'Menu/Menu';
 @import "Events/Events";

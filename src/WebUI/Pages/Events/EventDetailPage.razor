@@ -8,21 +8,21 @@
 @inject IMediator Mediator
 
 <div class="container">
-    
+
     @if (_calendarEvent == null)
     {
-        <p>Loading event ... waiting</p>
+        <OverlayWaitingSpinner/>
     }
     else
     {
         <div class="event-header flex-container">
-            
+
             <div class="flex-x-center flex-y-center">
                 <h3>@_calendarEvent.Name</h3>
-            </div>    
-            
+            </div>
+
         </div>
-        
+
         <div class="container" style="padding-top: 20px;">
             <div class="row" style="margin-bottom: 15px;">
                 <div class="col-6">
@@ -92,7 +92,7 @@
             </div>
         </div>
     }
-    
+
 </div>
 
 @code {
