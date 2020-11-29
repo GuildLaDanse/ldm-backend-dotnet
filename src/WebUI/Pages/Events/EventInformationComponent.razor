@@ -1,0 +1,41 @@
+﻿@using LaDanse.Application.Events.Models
+
+<div class="EventSignUpInformationComponent">
+    <div>
+        <div class="information-icon">
+            <i class="fad fa-user-crown"></i>
+        </div>
+        <div>
+            @CalendarEvent.OrganiserRef.Name
+        </div>
+    </div>
+    <div>
+        <div class="information-icon">
+            <i class="fal fa-calendar-alt"></i>
+        </div>
+        <div>
+            <LaDanseTime UtcDateTime="@CalendarEvent.InviteTime" Format="dddd dd/MM',' yyyy"/>
+        </div>
+    </div>
+    <div>
+        <div class="information-icon">
+            <i class="far fa-clock"></i>
+        </div>
+        <div class="invite-times">
+            <div><LaDanseTime UtcDateTime="@CalendarEvent.InviteTime" Format="HH:mm"/> for invites</div>
+            <div><LaDanseTime UtcDateTime="@CalendarEvent.StartTime" Format="HH:mm"/> for first pull</div>
+            <div><LaDanseTime UtcDateTime="@CalendarEvent.EndTime" Format="HH:mm"/> for end of raid</div>
+        </div>
+
+    </div>
+    <div>
+        @CalendarEvent.Description
+    </div>
+</div>
+
+@code {
+    
+    [Parameter]
+    public Event CalendarEvent { get; set; }
+
+}

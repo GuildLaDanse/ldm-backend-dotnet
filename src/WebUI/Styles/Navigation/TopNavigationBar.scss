@@ -22,6 +22,7 @@ div.guild-logo-container {
 img.guild-logo-image {
   height: 75px;
   position: absolute;
+  z-index: 100;
 }
 
 div.guild-name-container {

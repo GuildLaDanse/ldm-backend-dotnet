@@ -7,11 +7,86 @@
 
 @inject IMediator Mediator
 
-<div class="centered-page">
+<div class="container">
     
-    @if (_calendarEvent != null)
+    @if (_calendarEvent == null)
     {
-        <h3>Event - @_calendarEvent.Name</h3>
+        <p>Loading event ... waiting</p>
+    }
+    else
+    {
+        <div class="event-header flex-container">
+            
+            <div class="flex-x-center flex-y-center">
+                <h3>@_calendarEvent.Name</h3>
+            </div>    
+            
+            <div class="event-date-container">
+                <LaDanseTime UtcDateTime="@_calendarEvent.InviteTime" Format="dddd dd/MM',' yyyy 'at' HH:mm" />
+            </div>
+            
+        </div>
+        
+        <div class="container" style="padding-top: 20px;">
+            <div class="row event-detail-row">
+                <div class="col">
+                    <EventStateComponent CalendarEvent="_calendarEvent" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <div class="card text-white bg-my-dark mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Details</h5>
+                            <EventInformationComponent CalendarEvent="_calendarEvent" />
+                        </div>
+                    </div>
+                    <div class="card text-white bg-my-dark mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Comments</h5>
+                            No comments.
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="card text-white bg-my-dark mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Sign ups</h5>
+                            <EventSignUpsComponent CalendarEvent="_calendarEvent" />
+                        </div>
+                    </div>
+                    <div class="card text-white bg-my-dark mb-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Manage Event</h5>
+                            <div ng-if="ctrl.event.currentUserIsOrganiser && (ctrl.event.isPending || ctrl.event.isConfirmed) && ctrl.event.isFuture"
+                                    style="margin-top: 50px;">
+                          
+                                <div style="float: left;">
+                                    <p>
+                                        <a ng-if="ctrl.event.isPending || ctrl.event.isConfirmed"
+                                            class="btn btn-primary"
+                                            ui-sref="events.event.edit({eventId: ctrl.event.id})">edit event</a>
+                                        <a ng-if="ctrl.event.isPending"
+                                            class="btn btn-success"
+                                            ng-click="ctrl.confirmEventClicked()" href="javascript:void(0);">confirm event</a>
+                                        <a ng-if="ctrl.event.isPending"
+                                            class="btn btn-warning"
+                                            ng-click="ctrl.cancelEventClicked()" href="javascript:void(0);">cancel event</a>
+                                    </p>
+                                </div>
+                                <div style="float: right;">
+                                    <p>
+                                        <a ng-if="ctrl.event.isPending"
+                                            id="removeEvent" class="btn btn-danger"
+                                            ng-click="ctrl.removeEventClicked()" href="javascript:void(0);">delete event</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     }
     
 </div>
