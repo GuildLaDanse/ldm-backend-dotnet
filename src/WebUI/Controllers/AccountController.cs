@@ -13,6 +13,9 @@ namespace LaDanse.WebUI.Controllers
         [Route("login")]
         public async Task Login([FromQuery(Name = "redirectUri")] string redirectUri = "/")
         {
+            if (string.IsNullOrEmpty(redirectUri))
+                redirectUri = "/";
+
             await HttpContext.ChallengeAsync("Auth0", new AuthenticationProperties() { RedirectUri = redirectUri });
         }
 
