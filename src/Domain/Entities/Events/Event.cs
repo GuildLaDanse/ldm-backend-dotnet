@@ -1,7 +1,7 @@
 ﻿using System;
 using LaDanse.Domain.Entities.Comments;
 using LaDanse.Domain.Entities.Identity;
-using LaDanse.Domain.Shared;
+using LaDanse.Domain.Entities.Shared;
 
 namespace LaDanse.Domain.Entities.Events
 {

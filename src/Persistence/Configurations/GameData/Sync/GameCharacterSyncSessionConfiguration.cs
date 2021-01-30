@@ -12,7 +12,7 @@ namespace LaDanse.Persistence.Configurations.GameData.Sync
             builder.ToTable("GameCharacterSyncSession");
 
             builder.HasIndex(e => e.GameCharacterSourceId)
-                .HasName("IDX_EC73362CDD71BB");
+                .HasDatabaseName("IDX_EC73362CDD71BB");
 
             builder.HasGuidKey();
 

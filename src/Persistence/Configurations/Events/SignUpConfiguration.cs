@@ -12,10 +12,10 @@ namespace LaDanse.Persistence.Configurations.Events
             builder.ToTable("SignUp");
 
             builder.HasIndex(e => e.UserId)
-                .HasName("IDX_DC8B3F7B62DEB3E8");
+                .HasDatabaseName("IDX_DC8B3F7B62DEB3E8");
 
             builder.HasIndex(e => e.EventId)
-                .HasName("IDX_DC8B3F7B2B2EBB6C");
+                .HasDatabaseName("IDX_DC8B3F7B2B2EBB6C");
 
             builder.HasGuidKey();
             

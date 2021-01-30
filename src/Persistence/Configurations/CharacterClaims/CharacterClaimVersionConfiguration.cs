@@ -12,11 +12,11 @@ namespace LaDanse.Persistence.Configurations.CharacterClaims
             builder.ToTable("GameCharacterClaimVersion");
 
             builder.HasIndex(e => e.GameCharacterClaimId)
-                .HasName("IDX_C33F42E09113A92D");
+                .HasDatabaseName("IDX_C33F42E09113A92D");
             
             builder.HasGuidKey();
             
-            builder.TemporalEntity();
+            builder.TimeVersioned();
 
             builder.Property(e => e.Comment)
                 .HasColumnName("comment")

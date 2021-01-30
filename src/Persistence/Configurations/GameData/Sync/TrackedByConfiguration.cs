@@ -12,14 +12,14 @@ namespace LaDanse.Persistence.Configurations.GameData.Sync
             builder.ToTable("TrackedBy");
 
             builder.HasIndex(e => e.GameCharacterId)
-                .HasName("IDX_C2316E125AF690F3");
+                .HasDatabaseName("IDX_C2316E125AF690F3");
 
             builder.HasIndex(e => e.GameCharacterSourceId)
-                .HasName("IDX_C2316E122CDD71BB");
+                .HasDatabaseName("IDX_C2316E122CDD71BB");
 
             builder.HasGuidKey();
             
-            builder.TemporalEntity();
+            builder.TimeVersioned();
 
             builder.Property(e => e.GameCharacterId)
                 .HasColumnName("gameCharacterId")

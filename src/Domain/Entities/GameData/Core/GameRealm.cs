@@ -1,5 +1,5 @@
 ﻿using System;
-using LaDanse.Domain.Shared;
+using LaDanse.Domain.Entities.Shared;
 
 namespace LaDanse.Domain.Entities.GameData.Core
 {

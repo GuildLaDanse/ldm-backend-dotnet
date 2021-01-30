@@ -12,7 +12,7 @@ namespace LaDanse.Persistence.Configurations.Telemetry
             builder.ToTable("FeatureUse");   
 
             builder.HasIndex(e => e.UsedById)
-                .HasName("IDX_E504F432FCEF271C");
+                .HasDatabaseName("IDX_E504F432FCEF271C");
 
             builder.HasGuidKey();
 

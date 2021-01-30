@@ -12,7 +12,7 @@ namespace LaDanse.Persistence.Configurations.Settings
             builder.ToTable("CalendarExport");
 
             builder.HasIndex(e => e.UserId)
-                .HasName("IDX_6E28848862DEB3E8");
+                .HasDatabaseName("IDX_6E28848862DEB3E8");
 
             builder.HasGuidKey();
             

@@ -12,17 +12,17 @@ namespace LaDanse.Persistence.Configurations.Comments
             builder.ToTable("Comment");
 
             builder.HasIndex(e => e.GroupId)
-                .HasName("IDX_5BC96BF0ED8188B0");
+                .HasDatabaseName("IDX_5BC96BF0ED8188B0");
 
             builder.HasIndex(e => e.PosterId)
-                .HasName("IDX_5BC96BF0581A197");
+                .HasDatabaseName("IDX_5BC96BF0581A197");
 
             builder.HasGuidKey();
             
             builder.Property(e => e.Content)
                 .HasColumnName("content")
                 .IsRequired()
-                .HasUtf8ColumnType(MySqlBuilderTypes.String((4096)));
+                .HasUtf8ColumnType(MySqlBuilderTypes.String((4000)));
 
             builder.Property(e => e.PostDate)
                 .HasColumnName("postDate")

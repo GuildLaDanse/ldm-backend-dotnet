@@ -36,10 +36,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "External", "External", "{26
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BattleNet.Implementation", "src\BattleNet.Implementation\BattleNet.Implementation.csproj", "{8537798C-9A33-4B96-A609-C83A2828C37A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.Abstractions", "src\Auth0.Abstractions\Auth0.Abstractions.csproj", "{DCCC4037-D784-4635-931C-B4858D80C12A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth0.Implementation", "src\Auth0.Implementation\Auth0.Implementation.csproj", "{15636D4F-600D-4D3C-B04B-26936E239465}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Configuration.Abstractions", "src\Configuration.Abstractions\Configuration.Abstractions.csproj", "{F0AC1E5B-A640-47BA-9B83-C9CDCB5F5B26}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Configuration.Implementation", "src\Configuration.Implementation\Configuration.Implementation.csproj", "{7C01FAE7-1E88-483E-8446-F4572BC2C230}"

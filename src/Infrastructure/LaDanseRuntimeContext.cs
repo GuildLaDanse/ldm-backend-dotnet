@@ -62,7 +62,8 @@ namespace LaDanse.Infrastructure
             var externalId = ClaimsPrincipal().Claims
                 .First(c => c.Type == NameIdentifierType).Value;
 
-            _user = _dbContext.Users.FirstOrDefault(u => u.ExternalId == externalId);
+            // TODO this is not correct, fix!
+            _user = _dbContext.Users.FirstOrDefault(u => u.UserName == externalId);
         }
         
         private void VerifyUser()

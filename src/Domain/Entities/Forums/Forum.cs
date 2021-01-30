@@ -1,6 +1,6 @@
 ﻿using System;
 using LaDanse.Domain.Entities.Identity;
-using LaDanse.Domain.Shared;
+using LaDanse.Domain.Entities.Shared;
 
 namespace LaDanse.Domain.Entities.Forums
 {
@@ -11,7 +11,7 @@ namespace LaDanse.Domain.Entities.Forums
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime? LastPostDate { get; set; }
-
+        
         public Guid? LastPostPosterId { get; set; }
         public virtual User LastPostPoster { get; set; }
 

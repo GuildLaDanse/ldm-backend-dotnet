@@ -12,7 +12,7 @@ namespace LaDanse.Persistence.Configurations.Forums
             builder.ToTable("ForumLastVisit");
 
             builder.HasIndex(e => e.UserId)
-                .HasName("IDX_F17408662DEB3E8");
+                .HasDatabaseName("IDX_F17408662DEB3E8");
 
             builder.HasGuidKey();
 

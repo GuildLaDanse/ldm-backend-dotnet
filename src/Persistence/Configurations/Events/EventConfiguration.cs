@@ -12,7 +12,7 @@ namespace LaDanse.Persistence.Configurations.Events
             builder.ToTable("Event");
 
             builder.HasIndex(e => e.OrganiserId)
-                .HasName("IDX_FA6F25A34BDD3C8");
+                .HasDatabaseName("IDX_FA6F25A34BDD3C8");
 
             builder.HasGuidKey();
 
@@ -23,7 +23,7 @@ namespace LaDanse.Persistence.Configurations.Events
 
             builder.Property(e => e.Description)
                 .HasColumnName("description")
-                .HasUtf8ColumnType(MySqlBuilderTypes.String(4096));
+                .HasUtf8ColumnType(MySqlBuilderTypes.String(4000));
 
             builder.Property(e => e.StartTime)
                 .IsRequired()

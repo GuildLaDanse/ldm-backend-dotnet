@@ -12,11 +12,11 @@ namespace LaDanse.Persistence.Configurations.CharacterClaims
             builder.ToTable("PlaysGameRole");
 
             builder.HasIndex(e => e.GameCharacterClaimId)
-                .HasName("IDX_7A9E9B239113A92D");
+                .HasDatabaseName("IDX_7A9E9B239113A92D");
 
             builder.HasGuidKey();
             
-            builder.TemporalEntity();
+            builder.TimeVersioned();
 
             builder.Property(e => e.GameRole)
                 .IsRequired()

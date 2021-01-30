@@ -10,7 +10,7 @@ namespace LaDanse.Persistence.Configurations.GameData.Sync.Profile
         public void Configure(EntityTypeBuilder<ProfileSync> builder)
         {
             builder.HasIndex(e => e.UserId)
-                .HasName("IDX_70D670C87D3656A4");
+                .HasDatabaseName("IDX_70D670C87D3656A4");
 
             builder.Property(e => e.UserId)
                 .HasColumnName("userId")

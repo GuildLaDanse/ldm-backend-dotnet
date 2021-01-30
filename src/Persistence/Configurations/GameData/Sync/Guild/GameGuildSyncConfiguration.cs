@@ -9,7 +9,7 @@ namespace LaDanse.Persistence.Configurations.GameData.Sync.Guild
         public void Configure(EntityTypeBuilder<GameGuildSync> builder)
         {
             builder.HasIndex(e => e.GameGuildId)
-                .HasName("IDX_18BD775675407DAB");
+                .HasDatabaseName("IDX_18BD775675407DAB");
 
             builder.Property(e => e.GameGuildId)
                 .HasColumnName("gameGuildId")

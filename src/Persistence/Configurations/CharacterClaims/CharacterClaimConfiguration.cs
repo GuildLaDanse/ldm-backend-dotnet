@@ -12,13 +12,13 @@ namespace LaDanse.Persistence.Configurations.CharacterClaims
             builder.ToTable("GameCharacterClaim");
 
             builder.HasIndex(e => e.UserId)
-                .HasName("IDX_E115ED7862DEB3E8");
+                .HasDatabaseName("IDX_E115ED7862DEB3E8");
             builder.HasIndex(e => e.GameCharacterId)
-                .HasName("IDX_E115ED785AF690F3");
+                .HasDatabaseName("IDX_E115ED785AF690F3");
             
             builder.HasGuidKey();
             
-            builder.TemporalEntity();
+            builder.TimeVersioned();
 
             builder.Property(e => e.UserId)
                 .HasColumnName("userId")

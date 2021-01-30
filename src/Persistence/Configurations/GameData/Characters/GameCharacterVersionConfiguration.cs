@@ -12,17 +12,17 @@ namespace LaDanse.Persistence.Configurations.GameData.Characters
             builder.ToTable("GameCharacterVersion");
 
             builder.HasIndex(e => e.GameCharacterId)
-                .HasName("IDX_A70EBD185AF690F3");
+                .HasDatabaseName("IDX_A70EBD185AF690F3");
 
             builder.HasIndex(e => e.GameClassId)
-                .HasName("IDX_A70EBD18F3B4E37B");
+                .HasDatabaseName("IDX_A70EBD18F3B4E37B");
 
             builder.HasIndex(e => e.GameRaceId)
-                .HasName("IDX_A70EBD18E036C39A");
+                .HasDatabaseName("IDX_A70EBD18E036C39A");
 
             builder.HasGuidKey();
 
-            builder.TemporalEntity();
+            builder.TimeVersioned();
 
             builder.Property(e => e.Level)
                 .HasColumnName("level")

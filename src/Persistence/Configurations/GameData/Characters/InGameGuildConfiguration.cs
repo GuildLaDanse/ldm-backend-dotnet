@@ -12,14 +12,14 @@ namespace LaDanse.Persistence.Configurations.GameData.Characters
             builder.ToTable("InGameGuild");
 
             builder.HasIndex(e => e.GameCharacterId)
-                .HasName("IDX_CA2244C5AF690F3");
+                .HasDatabaseName("IDX_CA2244C5AF690F3");
 
             builder.HasIndex(e => e.GameGuildId)
-                .HasName("IDX_CA2244C75407DAB");
+                .HasDatabaseName("IDX_CA2244C75407DAB");
 
             builder.HasGuidKey();
 
-            builder.TemporalEntity();
+            builder.TimeVersioned();
 
             builder.Property(e => e.GameCharacterId)
                 .HasColumnName("gameCharacterId")

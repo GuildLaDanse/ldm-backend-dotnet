@@ -1,6 +1,6 @@
 ﻿using System;
 using LaDanse.Domain.Entities.Identity;
-using LaDanse.Domain.Shared;
+using LaDanse.Domain.Entities.Shared;
 
 namespace LaDanse.Domain.Entities.Comments
 {
@@ -10,7 +10,7 @@ namespace LaDanse.Domain.Entities.Comments
 
         public DateTime PostDate { get; set; }
         public string Content { get; set; }
-
+        
         public Guid GroupId { get; set; }
         public virtual CommentGroup Group { get; set; }
 

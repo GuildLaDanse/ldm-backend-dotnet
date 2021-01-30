@@ -1,11 +1,11 @@
 ﻿using System;
 using LaDanse.Domain.Entities.GameData.Characters;
 using LaDanse.Domain.Entities.Identity;
-using LaDanse.Domain.Shared;
+using LaDanse.Domain.Entities.Shared;
 
 namespace LaDanse.Domain.Entities.CharacterClaims
 {
-    public partial class GameCharacterClaim : IBaseEntity<Guid>, ITemporalEntity
+    public partial class GameCharacterClaim : IBaseEntity<Guid>, ITimeVersionedEntity
     {
         public Guid Id { get; set; }
 

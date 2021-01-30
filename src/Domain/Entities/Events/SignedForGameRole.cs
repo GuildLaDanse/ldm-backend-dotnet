@@ -1,6 +1,6 @@
 ﻿using System;
 using LaDanse.Domain.Entities.GameData;
-using LaDanse.Domain.Shared;
+using LaDanse.Domain.Entities.Shared;
 
 namespace LaDanse.Domain.Entities.Events
 {

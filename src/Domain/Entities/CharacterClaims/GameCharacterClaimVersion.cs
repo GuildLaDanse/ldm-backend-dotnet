@@ -1,12 +1,12 @@
 ﻿using System;
-using LaDanse.Domain.Shared;
+using LaDanse.Domain.Entities.Shared;
 
 namespace LaDanse.Domain.Entities.CharacterClaims
 {
-    public partial class GameCharacterClaimVersion : IBaseEntity<Guid>, ITemporalEntity
+    public partial class GameCharacterClaimVersion : IBaseEntity<Guid>, ITimeVersionedEntity
     {
         public Guid Id { get; set; }
-
+        
         public DateTime FromTime { get; set; }
         public DateTime? EndTime { get; set; }
 

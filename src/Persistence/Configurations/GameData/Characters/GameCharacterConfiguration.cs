@@ -12,11 +12,11 @@ namespace LaDanse.Persistence.Configurations.GameData.Characters
             builder.ToTable("GameCharacter");
 
             builder.HasIndex(e => e.GameRealmId)
-                .HasName("IDX_92AF3B34FA96DBDA");
+                .HasDatabaseName("IDX_92AF3B34FA96DBDA");
 
             builder.HasGuidKey();
 
-            builder.TemporalEntity();
+            builder.TimeVersioned();
 
             builder.Property(e => e.Name)
                 .IsRequired()

@@ -12,7 +12,7 @@ namespace LaDanse.Persistence.Configurations.Queues
             builder.ToTable("NotificationQueueItem");
 
             builder.HasIndex(e => e.ActivityById)
-                .HasName("IDX_C656D44393C757EE");
+                .HasDatabaseName("IDX_C656D44393C757EE");
 
             builder.HasGuidKey();
             

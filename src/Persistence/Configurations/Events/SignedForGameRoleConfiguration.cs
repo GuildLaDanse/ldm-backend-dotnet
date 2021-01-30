@@ -12,7 +12,7 @@ namespace LaDanse.Persistence.Configurations.Events
             builder.ToTable("SignedForGameRole");
 
             builder.HasIndex(e => e.SignUpId)
-                .HasName("IDX_16186B55A966702F");
+                .HasDatabaseName("IDX_16186B55A966702F");
 
             builder.HasGuidKey();
 

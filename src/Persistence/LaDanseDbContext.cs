@@ -1,4 +1,5 @@
-﻿using LaDanse.Application.Common.Interfaces;
+﻿using System;
+using LaDanse.Application.Common.Interfaces;
 using LaDanse.Domain.Entities.CharacterClaims;
 using LaDanse.Domain.Entities.Comments;
 using LaDanse.Domain.Entities.Events;
@@ -13,11 +14,13 @@ using LaDanse.Domain.Entities.Queues;
 using LaDanse.Domain.Entities.Settings;
 using LaDanse.Domain.Entities.Telemetry;
 using LaDanse.Persistence.Extensions;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace LaDanse.Persistence
 {
-    public class LaDanseDbContext : DbContext, ILaDanseDbContext
+    public class LaDanseDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>, ILaDanseDbContext
     {
         public LaDanseDbContext(DbContextOptions<LaDanseDbContext> options)
             : base(options)
@@ -79,20 +82,12 @@ namespace LaDanse.Persistence
 
         #endregion
 
-        #region Identity
-
-        public virtual DbSet<User> Users { get; set; }
-
-        #endregion
-
-
         #region Queues
 
         public virtual DbSet<ActivityQueueItem> ActivityQueueItems { get; set; }
         public virtual DbSet<NotificationQueueItem> NotificationQueueItems { get; set; }
 
         #endregion
-
 
         #region Settings
 
@@ -101,7 +96,6 @@ namespace LaDanse.Persistence
         public virtual DbSet<FeatureToggle> FeatureToggles { get; set; }
 
         #endregion
-
 
         #region Telemetry
 

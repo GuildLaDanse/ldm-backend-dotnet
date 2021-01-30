@@ -12,13 +12,13 @@ namespace LaDanse.Persistence.Configurations.Forums
             builder.ToTable("Topic");
 
             builder.HasIndex(e => e.ForumId)
-                .HasName("IDX_5C81F11F7830F151");
+                .HasDatabaseName("IDX_5C81F11F7830F151");
 
             builder.HasIndex(e => e.LastPostPosterId)
-                .HasName("IDX_5C81F11F22F0147C");
+                .HasDatabaseName("IDX_5C81F11F22F0147C");
 
             builder.HasIndex(e => e.PosterId)
-                .HasName("IDX_5C81F11F581A197");
+                .HasDatabaseName("IDX_5C81F11F581A197");
 
             builder.HasGuidKey();
             

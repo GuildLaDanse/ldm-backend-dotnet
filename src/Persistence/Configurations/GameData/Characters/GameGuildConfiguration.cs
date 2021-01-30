@@ -12,7 +12,7 @@ namespace LaDanse.Persistence.Configurations.GameData.Characters
             builder.ToTable("GameGuild");
 
             builder.HasIndex(e => e.GameRealmId)
-                .HasName("IDX_B48152AFFA96DBDA");
+                .HasDatabaseName("IDX_B48152AFFA96DBDA");
 
             builder.HasGuidKey();
 

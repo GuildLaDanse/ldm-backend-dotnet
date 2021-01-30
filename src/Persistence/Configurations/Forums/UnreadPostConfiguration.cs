@@ -12,10 +12,10 @@ namespace LaDanse.Persistence.Configurations.Forums
             builder.ToTable("UnreadPost");
 
             builder.HasIndex(e => e.UserId)
-                .HasName("IDX_6B0B9B3E62DEB3E8");
+                .HasDatabaseName("IDX_6B0B9B3E62DEB3E8");
 
             builder.HasIndex(e => e.PostId)
-                .HasName("IDX_6B0B9B3EE094D20D");
+                .HasDatabaseName("IDX_6B0B9B3EE094D20D");
 
             builder.HasGuidKey();
 

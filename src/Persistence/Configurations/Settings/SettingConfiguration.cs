@@ -12,7 +12,7 @@ namespace LaDanse.Persistence.Configurations.Settings
             builder.ToTable("Setting");
 
             builder.HasIndex(e => e.UserId)
-                .HasName("IDX_50C9810462DEB3E8");
+                .HasDatabaseName("IDX_50C9810462DEB3E8");
 
             builder.HasGuidKey();
             

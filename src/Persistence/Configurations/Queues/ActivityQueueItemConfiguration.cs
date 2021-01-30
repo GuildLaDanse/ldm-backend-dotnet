@@ -12,7 +12,7 @@ namespace LaDanse.Persistence.Configurations.Queues
             builder.ToTable("ActivityQueueItem");
 
             builder.HasIndex(e => e.ActivityById)
-                .HasName("IDX_8A274BCA93C757EE");
+                .HasDatabaseName("IDX_8A274BCA93C757EE");
 
             builder.HasGuidKey();
             

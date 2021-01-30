@@ -17,17 +17,12 @@
         public const string SignedInt = "INT";
         
         public const string Enum = "TINYINT";
+        
+        public const string Boolean = "TINYINT(1)";
 
         public static string String(int length, bool isFixedLength = false)
         {
-            if (isFixedLength)
-            {
-                return $"char({length})";
-            }
-            else
-            {
-                return $"varchar({length})";
-            }
+            return isFixedLength ? $"CHAR({length})" : $"VARCHAR({length})";
         }
     }
 }

@@ -12,7 +12,7 @@ namespace LaDanse.Persistence.Configurations.GameData.Core
             builder.ToTable("GameRace");
 
             builder.HasIndex(e => e.GameFactionId)
-                .HasName("IDX_D51A7CF883048B90");
+                .HasDatabaseName("IDX_D51A7CF883048B90");
 
             builder.HasGuidKey();
 
