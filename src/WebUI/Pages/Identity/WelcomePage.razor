@@ -1,0 +1,92 @@
+﻿@page "/welcome"
+@using Microsoft.AspNetCore.WebUtilities
+
+@inject NavigationManager NavManager
+
+<div style="width: 100%; max-width: 980px; position: relative; margin: 100px auto auto;">
+
+  <div class="container-fluid">
+
+    <div class="row">
+
+      <div class="col-md-12">
+
+        <div class="jumbo">
+          <div style="width: 100%;">
+            <h1>La Danse Macabre</h1>
+
+            <br/>
+
+            <p>Welcome to the website of La Danse Macabre, a gaming guild of fun people of all ages and
+              interests. Join us in World of Warcraft, Star Wars The Old Republic or other games.</p>
+
+            <p>LDM is a 'friends and family guild'. We always aim to have fun. While we raid and do some
+              PvP, this is not meant as serious or hardcore, but casual and fun. While we can aim to
+              progress in raids and push rating in arena, the aim is to keep it fun.</p>
+
+            <br/>
+            
+            <AuthorizeView>
+                <Authorized>
+                    <a href="Identity/Account/Manage">Hello, @context.User.Identity.Name!</a>
+                    <form method="post" action="Identity/Account/LogOut">
+                        <button type="submit" class="nav-link btn btn-link">Log out</button>
+                    </form>
+                </Authorized>
+                <NotAuthorized>
+                    <a href="Identity/Account/Register">Register</a>
+                    <a href="Identity/Account/Login">Log in</a>
+                </NotAuthorized>
+            </AuthorizeView>
+            
+            <br/>
+            <br/>
+
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-md-4" style="text-align: center;">
+                  <p><a class="btn btn-info" routerLink="/about">more information</a></p>
+                </div>
+                <div class="col-md-4" style="text-align: center;">
+                  <p>
+                    <button class="btn btn-success" @onclick="LoginButtonClicked">login or register</button>
+                  </p>
+                </div>
+                <div class="col-md-4" style="text-align: center;">
+                  <p>
+                    <a href="https://www.facebook.com/groups/23877201619/">
+                      <img src="/images/pages/welcome/FindUsOnFacebook.png" alt="Facebook Logo"/>
+                    </a>
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+@code {
+
+  private void LoginButtonClicked()
+  {
+    var uri = NavManager.ToAbsoluteUri(NavManager.Uri);
+
+    var redirectUri = "/";
+
+    if (QueryHelpers.ParseQuery(uri.Query).TryGetValue("redirectUri", out var strRedirectUri))
+    {
+      redirectUri = strRedirectUri;
+    }
+    
+    NavManager.NavigateTo("/login?redirectUri=" + redirectUri, true);
+  }
+    
+}

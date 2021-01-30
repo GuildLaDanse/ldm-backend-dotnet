@@ -1,0 +1,26 @@
+﻿<div class="icon-container">
+  <i class="@CssIconStyle() @Icon fa-5x"></i>
+</div>
+
+@code {
+    
+    [Parameter]
+    public string Icon { get; set; }
+    
+    [Parameter]
+    public string IconStyle { get; set; }
+    
+    private string CssIconStyle()
+    {
+        return IconStyle switch
+        {
+            "solid" => "fas",
+            "regular" => "far",
+            "light" => "fal",
+            "duotone" => "fad",
+            "brands" => "fab",
+            _ => "fas"
+            };
+    }
+    
+}

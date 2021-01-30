@@ -1,0 +1,26 @@
+﻿@page "/Debug"
+
+<div class="centered-page">
+    
+    <AuthorizeView>
+        <Authorized>
+            <p>You can only see this content if you're authorized.</p>
+            <ul>
+                @foreach (var claim in @context.User.Claims)
+                {
+                    <li>@claim.Type = @claim.Value</li>    
+                }
+            </ul>
+            <a href="/logout">Logout</a>
+        </Authorized>
+        <NotAuthorized>
+            <p>You're not signed in.</p>
+            <a href="/login">Login</a>
+        </NotAuthorized>
+    </AuthorizeView>
+
+</div>
+
+@code {
+    
+}

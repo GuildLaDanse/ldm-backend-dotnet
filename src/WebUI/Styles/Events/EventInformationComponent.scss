@@ -1,0 +1,40 @@
+div.EventSignUpInformationComponent
+{
+  display: flex;
+  flex-direction: column;
+  
+  
+  
+  div
+  {
+    display: flex;
+    flex-direction: row;
+
+    margin-top: 5px;
+    margin-bottom: 5px;
+    
+    div
+    {
+      margin: 0;
+    }
+    
+    div.information-icon
+    {
+      width: 20px;
+      margin-right: 10px;
+      align-items: center;
+    }
+    
+    div.invite-times
+    {
+      display: flex;
+      flex-direction: column;
+      
+      div
+      {
+        margin-top: 1px;
+        margin-bottom: 1px;
+      }
+    }
+  }
+}

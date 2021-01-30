@@ -1,0 +1,117 @@
+﻿@attribute [Authorize]
+
+@using LaDanse.WebUI.Models.Calendar
+@using System.Globalization
+@using LaDanse.Application
+@using LaDanse.Application.Events.Models
+@using Microsoft.Extensions.Configuration
+
+@inject ILaDanseRuntimeContext LaDanseRuntimeContext;
+
+@if (CalendarMonth != null)
+{
+  <div class="calendar">
+
+    <div class="weekday-row">
+      <div>monday</div>
+      <div>tuesday</div>
+      <div>wednesday</div>
+      <div>thursday</div>
+      <div>friday</div>
+      <div>saturday</div>
+      <div>sunday</div>
+    </div>
+
+    @foreach (var week in CalendarMonth.Weeks())
+    {
+      <div class="week-row">
+
+        @foreach (var calendarDay in week.Days())
+        {
+          <div class="day-container @RaidWeekCssClass(calendarDay)">
+
+            <div class="day-container-header">
+              <span class="@IsTodayCssClass(calendarDay)">@calendarDay.DisplayString()</span>
+            </div>
+
+            @if (!calendarDay.IsInThePast())
+            {
+              <div class="hover-me-container">
+                <div class="hover-me">
+                  <a routerLink="['/']">add an event</a>
+                </div>
+              </div>
+            }
+
+            @if (CalendarMonth.HaveEventsLoaded())
+            {
+              @foreach (var eventOnDay in calendarDay.Events())
+              {
+                <a href="/events/@eventOnDay.Id">
+                  <div class="event-container @EventCssClass(eventOnDay)">
+                    @eventOnDay.Name
+                  </div>
+                </a>
+              }
+            }
+            else
+            {
+              <div class="spinner-container">
+                <img src="/images/shared/waiting-spin.gif" alt="waiting spinner"/>
+              </div>
+            }
+            
+          </div>
+        }
+
+      </div>
+    }
+
+  </div>
+}
+
+@code {
+
+  private Guid _currentUserId;
+  
+  [Parameter]
+  public CalendarMonthModel CalendarMonth { get; set; }
+
+  protected override void OnInitialized()
+  {
+    _currentUserId = LaDanseRuntimeContext.UserId();
+  }
+
+  private static string RaidWeekCssClass(DayModel day)
+  {
+    return day.IsInRaidWeek() ? "day-in-raidweek" : "";
+  }
+  
+  private static string IsTodayCssClass(DayModel day)
+  {
+    return day.IsToday() ? "today" : "";
+  }
+
+  private string EventCssClass(Event @event)
+  {
+    if (@event.State == "Cancelled")
+    {
+      return "event-cancelled";
+    }
+    
+    var signUp = @event.SignUps.FirstOrDefault(s => s.UserRef.Id == _currentUserId);
+      
+    if (signUp != null)
+    {
+      return signUp.Type switch
+      {
+        "WillCome" => "event-willCome",
+        "MightCome" => "event-mightCome",
+        "Absence" => "event-absent",
+        _ => "event-notSigned"
+        };
+    }
+      
+    return "event-notSigned";
+  }
+}

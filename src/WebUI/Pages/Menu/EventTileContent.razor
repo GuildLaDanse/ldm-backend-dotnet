@@ -1,0 +1,50 @@
+﻿@using LaDanse.Application.Events.Models
+@using LaDanse.Application.Events.Queries.GetAllEvents
+@using MediatR
+
+@inject IMediator Mediator
+
+<div class="tile-content-container">
+
+  @if (!_eventsPopulated)
+  {
+    <div class="spinner-container">
+      <img src="/images/shared/waiting-spin.gif" alt="waiting spinner"/>
+    </div>
+  }
+  else
+  {
+    @foreach (var eventItem in _uiEvents.Take(3))
+    {
+      <div class="event-container">
+        <a href="/events/@eventItem.Id.ToString()">
+          <LaDanseTime UtcDateTime="@eventItem.InviteTime" Format="ddd dd, HH:mm" /> - @eventItem.Name
+        </a>
+      </div>
+    }
+  }
+
+</div>
+
+@code {
+
+  private List<Event> _uiEvents;
+
+  private bool _eventsPopulated = false;
+  
+  protected override async Task OnInitializedAsync()
+  {
+    _uiEvents = new List<Event>();
+    
+    var result = await Mediator.Send(new GetAllEventsQuery(DateTime.Today));
+    
+    foreach(var @event in result)
+    {
+      _uiEvents.Add(@event);
+    }
+
+    _eventsPopulated = true;
+    StateHasChanged();
+  }
+
+}

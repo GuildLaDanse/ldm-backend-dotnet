@@ -1,0 +1,135 @@
+﻿@page "/events"
+@attribute [Authorize]
+
+@using LaDanse.Application.Events.Queries.GetAllEvents
+@using LaDanse.WebUI.Models.Calendar
+@using MediatR
+@using Microsoft.AspNetCore.WebUtilities
+@using System.Globalization
+@using System.Threading
+@using LaDanse.Application
+@using LaDanse.Configuration.Abstractions
+
+@inject NavigationManager NavManager
+@inject IMediator Mediator
+@inject ILaDanseConfiguration LaDanseConfiguration
+@inject ILaDanseRuntimeContext LaDanseRuntimeContext;
+
+<div class="centered-page">
+
+  <div class="pager">
+    <div>
+      <a @onclick="OlderButtonClicked" @onclick:preventDefault href="#">
+        <i class="fa fa-arrow-left fa-1x"></i> older
+      </a>
+    </div>
+    <div>
+      <a @onclick="TodayButtonClicked" @onclick:preventDefault href="#">today</a>
+    </div>
+    <div>
+      <a @onclick="NewerButtonClicked" @onclick:preventDefault href="#">
+        newer <i class="fa fa-arrow-right fa-1x"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="event-willCome">will come</div>
+    <div class="event-mightCome">might come</div>
+    <div class="event-absent">absent</div>
+    <div class="event-notSigned">you haven't signed yet</div>
+    <div class="event-cancelled">cancelled event</div>
+  </div>
+  
+  <Calendar CalendarMonth="@_calendarMonth"></Calendar>
+
+</div>
+
+@code {
+
+  private readonly Semaphore _calendarUpdatingSemaphore = new Semaphore(1, 1);
+  
+  private RaidWeekModel _currentRaidWeek;
+  private CalendarMonthModel _calendarMonth;
+  
+  protected override async Task OnInitializedAsync()
+  {
+    var showDay = GetShowDay();
+
+    await InitCalendarAsync(showDay);
+  }
+
+  private DateTime GetShowDay()
+  {
+    var uri = NavManager.ToAbsoluteUri(NavManager.Uri);
+
+    if (!QueryHelpers.ParseQuery(uri.Query).TryGetValue("showDay", out var strShowDay))
+    {
+      return DateTime.Today;
+    }
+    
+    if (!DateTime.TryParseExact(
+      strShowDay, 
+      "yyyyMMdd", 
+      null, 
+      DateTimeStyles.None, 
+      out var fromDate))
+    {
+      fromDate = DateTime.Today;
+    }
+
+    return fromDate;
+  }
+
+  private void UpdateUri(DateTime showDay)
+  {
+    var baseUrlPart = LaDanseConfiguration.BaseUrl();
+    
+    NavManager.NavigateTo(baseUrlPart + "/events?showDay=" + showDay.ToString("yyyyMMdd"));
+  }
+  
+  private async Task InitCalendarAsync(DateTime showDay)
+  {
+    // prevent running this method multiple times
+    if (!_calendarUpdatingSemaphore.WaitOne(150))
+      return;
+
+    try
+    {
+      _currentRaidWeek = new RaidWeekModel(DateTime.Today);
+      _calendarMonth = new CalendarMonthModel(showDay, _currentRaidWeek);
+
+      await PopulateEventsAsync(_calendarMonth.FirstDay());
+
+      StateHasChanged();
+    
+      UpdateUri(showDay);
+    }
+    finally
+    {
+      _calendarUpdatingSemaphore.Release();
+    }
+  }
+
+  private async Task PopulateEventsAsync(DateTime fromDay)
+  {
+    var result = await Mediator.Send(new GetAllEventsQuery(fromDay));
+    
+    _calendarMonth.PopulateEvents(result);
+  }
+
+  private async Task OlderButtonClicked()
+  {
+    await InitCalendarAsync(_calendarMonth.GetStartOfPreviousMonth());
+  }
+
+  private async Task TodayButtonClicked()
+  {
+    await InitCalendarAsync(DateTime.Today);
+  }
+
+  private async Task NewerButtonClicked()
+  {
+    await InitCalendarAsync(_calendarMonth.GetStartOfNextMonth());
+  }
+}
