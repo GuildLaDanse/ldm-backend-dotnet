@@ -1,6 +1,6 @@
-﻿using Auth0.Abstractions.UserApi;
+﻿using LaDanse.External.Auth0.Abstractions.UserApi;
 
-namespace Auth0.Abstractions
+namespace LaDanse.External.Auth0.Abstractions
 {
     public interface IAuth0ApiClient
     {

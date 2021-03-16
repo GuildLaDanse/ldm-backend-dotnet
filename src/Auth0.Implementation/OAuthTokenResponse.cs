@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace Auth0.Implementation
+namespace LaDanse.External.Auth0.Implementation
 {
     public class OAuthTokenResponse
     {

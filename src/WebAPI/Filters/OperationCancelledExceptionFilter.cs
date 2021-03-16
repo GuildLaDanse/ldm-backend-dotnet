@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 using Serilog;
 
-namespace WebAPI.Filters
+namespace LaDanse.WebAPI.Filters
 {
     public class OperationCancelledExceptionFilter : ExceptionFilterAttribute
     {

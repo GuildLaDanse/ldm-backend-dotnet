@@ -3,7 +3,7 @@ using Flurl;
 using Flurl.Http;
 using Serilog;
 
-namespace Auth0.Implementation
+namespace LaDanse.External.Auth0.Implementation
 {
     public class Auth0Api
     {

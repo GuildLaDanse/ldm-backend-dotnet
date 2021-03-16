@@ -4,6 +4,7 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <LangVersion>default</LangVersion>
         <RootNamespace>LaDanse.External.BattleNet.Implementation</RootNamespace>
+        <AssemblyName>LaDanse.External.BattleNet.Implementation</AssemblyName>
     </PropertyGroup>
 
     <ItemGroup>

@@ -1,7 +1,7 @@
-using LaDanse.Configuration.Abstractions;
+using LaDanse.External.Configuration.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace LaDanse.Configuration.Implementation
+namespace LaDanse.External.Configuration.Implementation
 {
     public static class DependencyInjection
     {

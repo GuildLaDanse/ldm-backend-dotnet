@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Auth0.Abstractions
+namespace LaDanse.External.Auth0.Abstractions
 {
     public class CannotCreateClientException : Exception
     {

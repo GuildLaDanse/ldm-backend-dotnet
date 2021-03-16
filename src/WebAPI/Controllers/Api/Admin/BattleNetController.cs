@@ -4,7 +4,7 @@ using LaDanse.Application.GameData.Sync.GuildSync.Activities.CalculateSyncAction
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebAPI.Controllers.Api.Admin
+namespace LaDanse.WebAPI.Controllers.Api.Admin
 {
     [ApiController]
     public class BattleNetController : ControllerBase

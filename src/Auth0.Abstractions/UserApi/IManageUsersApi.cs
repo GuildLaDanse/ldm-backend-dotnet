@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
-using Auth0.Abstractions.Models;
+using LaDanse.External.Auth0.Abstractions.Models;
 
-namespace Auth0.Abstractions.UserApi
+namespace LaDanse.External.Auth0.Abstractions.UserApi
 {
     public interface IManageUsersApi
     {

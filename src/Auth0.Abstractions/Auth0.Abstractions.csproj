@@ -2,6 +2,8 @@
 
     <PropertyGroup>
         <TargetFramework>netstandard2.1</TargetFramework>
+        <AssemblyName>LaDanse.External.Auth0.Abstractions</AssemblyName>
+        <RootNamespace>LaDanse.External.Auth0.Abstractions</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>

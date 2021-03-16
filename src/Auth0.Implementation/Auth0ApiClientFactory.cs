@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
-using Auth0.Abstractions;
 using Flurl.Http;
+using LaDanse.External.Auth0.Abstractions;
 using Serilog;
 
-namespace Auth0.Implementation
+namespace LaDanse.External.Auth0.Implementation
 {
     public class Auth0ApiClientFactory : IAuth0ApiClientFactory
     {

@@ -1,10 +1,10 @@
 using System;
 using System.Threading.Tasks;
-using Auth0.Abstractions.Models;
-using Auth0.Abstractions.UserApi;
+using LaDanse.External.Auth0.Abstractions.Models;
+using LaDanse.External.Auth0.Abstractions.UserApi;
 using Serilog;
 
-namespace Auth0.Implementation.UserApi
+namespace LaDanse.External.Auth0.Implementation.UserApi
 {
     public class ManageUsersApi : Auth0Api, IManageUsersApi
     {

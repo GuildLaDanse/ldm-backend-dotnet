@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace Auth0.Abstractions
+namespace LaDanse.External.Auth0.Abstractions
 {
     public interface IAuth0ApiClientFactory
     {

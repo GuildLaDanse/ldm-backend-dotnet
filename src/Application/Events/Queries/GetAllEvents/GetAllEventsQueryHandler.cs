@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -6,7 +5,6 @@ using System.Threading.Tasks;
 using LaDanse.Application.Common.Extensions;
 using LaDanse.Application.Common.Interfaces;
 using LaDanse.Application.Events.Models;
-using LaDanse.Application.Events.Queries.GetEvent;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Serilog;

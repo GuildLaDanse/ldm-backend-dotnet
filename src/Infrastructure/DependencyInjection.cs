@@ -1,9 +1,7 @@
 using LaDanse.Application;
 using LaDanse.Common.Abstractions;
 using LaDanse.External.BattleNet.Implementation;
-using LaDanse.Persistence;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -1,4 +1,4 @@
-namespace LaDanse.Configuration.Abstractions
+namespace LaDanse.External.Configuration.Abstractions
 {
     public interface IAuth0AdminConfiguration
     {

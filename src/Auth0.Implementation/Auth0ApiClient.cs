@@ -1,10 +1,10 @@
-﻿using Auth0.Abstractions;
-using Auth0.Abstractions.UserApi;
-using Auth0.Implementation.SearchApi;
-using Auth0.Implementation.UserApi;
+﻿using LaDanse.External.Auth0.Abstractions;
+using LaDanse.External.Auth0.Abstractions.UserApi;
+using LaDanse.External.Auth0.Implementation.SearchApi;
+using LaDanse.External.Auth0.Implementation.UserApi;
 using Serilog;
 
-namespace Auth0.Implementation
+namespace LaDanse.External.Auth0.Implementation
 {
     public class Auth0ApiClient : IAuth0ApiClient
     {

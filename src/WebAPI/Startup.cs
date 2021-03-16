@@ -1,9 +1,10 @@
 using System;
 using System.Security.Claims;
 using LaDanse.Application;
-using LaDanse.Configuration.Implementation;
+using LaDanse.External.Configuration.Implementation;
 using LaDanse.Infrastructure;
 using LaDanse.Persistence;
+using LaDanse.WebAPI.Filters;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -12,9 +13,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
-using WebAPI.Filters;
 
-namespace WebAPI
+namespace LaDanse.WebAPI
 {
     public class Startup
     {

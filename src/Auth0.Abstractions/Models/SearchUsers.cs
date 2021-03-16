@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace Auth0.Abstractions.Models
+namespace LaDanse.External.Auth0.Abstractions.Models
 {
     public class SearchUsers
     {

@@ -1,11 +1,10 @@
-﻿using LaDanse.Configuration.Abstractions;
-using LaDanse.Infrastructure.Configuration;
+﻿using LaDanse.External.Configuration.Abstractions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
-namespace LaDanse.Configuration.Implementation
+namespace LaDanse.External.Configuration.Implementation
 {
     public class LaDanseConfiguration : ILaDanseConfiguration, IBattleNetConfiguration, IAuth0AdminConfiguration
     {

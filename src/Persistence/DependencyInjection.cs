@@ -1,7 +1,6 @@
 ﻿using System;
 using LaDanse.Application.Common.Interfaces;
-using LaDanse.Configuration.Implementation;
-using LaDanse.Infrastructure.Configuration;
+using LaDanse.External.Configuration.Implementation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

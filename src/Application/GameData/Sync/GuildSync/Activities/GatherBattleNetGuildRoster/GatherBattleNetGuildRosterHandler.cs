@@ -1,8 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
-using LaDanse.Configuration.Abstractions;
 using LaDanse.External.BattleNet.Abstractions;
 using LaDanse.External.BattleNet.Abstractions.Models.GuildRoster;
+using LaDanse.External.Configuration.Abstractions;
 using MediatR;
 
 namespace LaDanse.Application.GameData.Sync.GuildSync.Activities.GatherBattleNetGuildRoster

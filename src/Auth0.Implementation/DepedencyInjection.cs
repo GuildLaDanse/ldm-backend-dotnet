@@ -1,7 +1,7 @@
-﻿using Auth0.Abstractions;
+﻿using LaDanse.External.Auth0.Abstractions;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Auth0.Implementation
+namespace LaDanse.External.Auth0.Implementation
 {
     public static class DependencyInjection
     {

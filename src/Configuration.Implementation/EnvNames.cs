@@ -1,4 +1,4 @@
-namespace LaDanse.Infrastructure.Configuration
+namespace LaDanse.External.Configuration.Implementation
 {
     public static class EnvNames
     {
