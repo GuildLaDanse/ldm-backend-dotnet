@@ -1,19 +1,23 @@
 #!/bin/bash
 
-export MAIN_PROJECT="WebUI"
+export MAIN_PROJECT="WebApi"
 
 export ASPNETCORE_URLS="http://localhost:5000"
 export ASPNETCORE_ENVIRONMENT="Development"
 
 export LADANSE_BASE_URL="http://localhost:5000"
 
-export LADANSE_DATABASE_CONNECTION="server=DatabaseHost;port=3306;database=YourDatabase;user=DbUser;password=secret"
+export LADANSE_DATABASE_CONNECTION="server=127.0.0.1;port=3306;database=DatabaseName;user=root;password=sql"
 
 export BATTLENET_CLIENT_ID="ClientIdFromBattleNet"
 export BATTLENET_CLIENT_SECRET="ClientSecretFromBattleNet"
 
-export AUTH0_DOMAIN="acme.openid.provider.com"
-export AUTH0_AUDIENCE="https://acme.org/api"
-export AUTH0_CLIENT_ID="ClientIdFromOpenIdProvider"
-export AUTH0_CLIENT_SECRET="ClientSecretFromOpenIdProvider"
-export AUTH0_DEFAULT_CONNECTION=""
+export AUTH0_DOMAIN="Auth0Domain"
+
+export AUTH0_CLIENT_ID="Auth0ClientId"
+export AUTH0_CLIENT_SECRET="Auth0ClientSecret"
+
+export AUTH0_ADMIN_AUDIENCE="AuthAdminAudience"
+export AUTH0_ADMIN_CLIENT_ID="Auth0AdminClientId"
+export AUTH0_ADMIN_CLIENT_SECRET="Auth0AdminClientSecret"
+export AUTH0_ADMIN_DEFAULT_CONNECTION="Auth0AdminDefaultConnection"
