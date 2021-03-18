@@ -32,30 +32,59 @@ namespace LaDanse.WebAPI.Controllers.Api.Events
                 fromDate = DateTime.Today;
             }
             
-            var result = await mediator.Send(new GetAllEventsQuery(fromDate));
-
-            if (result == null)
+            try
             {
-                return NotFound();
-            }
+                var result = await mediator.Send(new GetAllEventsQuery(fromDate));
+
+                if (result == null)
+                {
+                    return NotFound();
+                }
             
-            return Ok(result);
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                _logger.Error(e, ErrorMessages.InternalError);
+                
+                return Problem(ErrorMessages.InternalError);
+            }
         }
         
         [HttpGet("/api/events/{eventId}")]
         [Produces("application/json")]
         public async Task<ActionResult<Event>> GetEventAsync([FromServices] IMediator mediator, string eventId)
         {
-            var gEventId = Guid.Parse(eventId);
-            
-            var result = await mediator.Send(new GetEventQuery(gEventId));
+            Guid gEventId;
 
-            if (result == null)
+            try
             {
-                return NotFound();
+                gEventId = Guid.Parse(eventId);
             }
-            
-            return Ok(result);
+            catch (Exception e)
+            {
+                _logger.Error(e, ErrorMessages.InvalidGuidIdentifier);
+                
+                return BadRequest(ErrorMessages.InvalidGuidIdentifier);
+            }
+
+            try
+            {
+                var result = await mediator.Send(new GetEventQuery(gEventId));
+
+                if (result == null)
+                {
+                    return NotFound();
+                }
+                
+                return Ok(result);
+            }
+            catch (Exception e)
+            {
+                _logger.Error(e, ErrorMessages.InternalError);
+                
+                return Problem(ErrorMessages.InternalError);
+            }
         }
     }
 }
