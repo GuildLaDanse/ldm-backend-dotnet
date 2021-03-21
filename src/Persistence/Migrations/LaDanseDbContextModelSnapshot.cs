@@ -14,9 +14,9 @@ namespace LaDanse.Persistence.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 64)
-                .HasAnnotation("ProductVersion", "5.0.2");
+                .HasAnnotation("ProductVersion", "5.0.4");
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.CharacterClaims.GameCharacterClaim", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.CharacterClaims.GameCharacterClaim", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -50,7 +50,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("GameCharacterClaim");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.CharacterClaims.GameCharacterClaimVersion", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.CharacterClaims.GameCharacterClaimVersion", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -87,7 +87,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("GameCharacterClaimVersion");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.CharacterClaims.PlaysGameRole", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.CharacterClaims.PlaysGameRole", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -118,7 +118,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("PlaysGameRole");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Comments.Comment", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Comments.Comment", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -155,7 +155,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("Comment");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Comments.CommentGroup", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Comments.CommentGroup", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -171,7 +171,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("CommentGroup");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Events.Event", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Events.Event", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -229,7 +229,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("Event");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Events.SignUp", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Events.SignUp", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -259,7 +259,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("SignUp");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Events.SignedForGameRole", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Events.SignedForGameRole", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -282,7 +282,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("SignedForGameRole");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Forums.Forum", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Forums.Forum", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -327,7 +327,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("Forum");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Forums.ForumLastVisit", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Forums.ForumLastVisit", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -350,7 +350,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("ForumLastVisit");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Forums.Post", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Forums.Post", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -389,7 +389,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("Post");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Forums.Topic", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Forums.Topic", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -437,7 +437,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("Topic");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Forums.UnreadPost", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Forums.UnreadPost", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -463,7 +463,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("UnreadPost");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Characters.GameCharacter", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Characters.GameCharacter", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -497,7 +497,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("GameCharacter");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Characters.GameCharacterVersion", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Characters.GameCharacterVersion", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -542,7 +542,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("GameCharacterVersion");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Characters.GameGuild", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Characters.GameGuild", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -579,7 +579,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("GameGuild");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Characters.InGameGuild", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Characters.InGameGuild", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -613,7 +613,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("InGameGuild");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Core.GameClass", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Core.GameClass", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -636,7 +636,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("GameClass");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Core.GameFaction", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Core.GameFaction", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -659,7 +659,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("GameFaction");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Core.GameRace", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Core.GameRace", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -689,7 +689,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("GameRace");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Core.GameRealm", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Core.GameRealm", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -719,7 +719,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("GameRealm");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Sync.GameCharacterSource", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Sync.GameCharacterSource", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -738,7 +738,7 @@ namespace LaDanse.Persistence.Migrations
                     b.HasDiscriminator<string>("discr").HasValue("GameCharacterSource");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Sync.GameCharacterSyncSession", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Sync.GameCharacterSyncSession", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -771,7 +771,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("GameCharacterSyncSession");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Sync.TrackedBy", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Sync.TrackedBy", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -805,23 +805,12 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("TrackedBy");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Identity.User", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Identity.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("CHAR(36)")
                         .HasColumnName("id");
-
-                    b.Property<uint>("AccessFailedCount")
-                        .HasColumnType("INT UNSIGNED")
-                        .HasColumnName("accessFailedCount");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("VARCHAR(2048)")
-                        .HasColumnName("concurrencyStamp")
-                        .UseCollation("utf8mb4_unicode_ci")
-                        .HasCharSet("utf8mb4");
 
                     b.Property<string>("DisplayName")
                         .IsRequired()
@@ -830,82 +819,20 @@ namespace LaDanse.Persistence.Migrations
                         .UseCollation("utf8mb4_unicode_ci")
                         .HasCharSet("utf8mb4");
 
+                    b.Property<bool>("DisplayNameByUser")
+                        .HasColumnType("tinyint(1)")
+                        .HasColumnName("displayNameByUser");
+
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("VARCHAR(255)")
+                        .HasColumnType("VARCHAR(180)")
                         .HasColumnName("email")
                         .UseCollation("utf8mb4_unicode_ci")
                         .HasCharSet("utf8mb4");
 
-                    b.Property<bool>("EmailConfirmed")
-                        .HasColumnType("TINYINT(1)")
-                        .HasColumnName("emailConfirmed");
-
-                    b.Property<DateTime?>("LastLogin")
-                        .HasColumnType("DATETIME")
-                        .HasColumnName("lastLogin");
-
-                    b.Property<bool>("LockoutEnabled")
-                        .HasColumnType("TINYINT(1)")
-                        .HasColumnName("lockoutEnabled");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("DATETIME")
-                        .HasColumnName("lockoutEnd");
-
-                    b.Property<string>("NormalizedEmail")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("VARCHAR(255)")
-                        .HasColumnName("normalizedEmail")
-                        .UseCollation("utf8mb4_unicode_ci")
-                        .HasCharSet("utf8mb4");
-
-                    b.Property<string>("NormalizedUserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("VARCHAR(40)")
-                        .HasColumnName("normalizedUserName")
-                        .UseCollation("utf8mb4_unicode_ci")
-                        .HasCharSet("utf8mb4");
-
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("VARCHAR(2048)")
-                        .HasColumnName("passwordHash")
-                        .UseCollation("utf8mb4_unicode_ci")
-                        .HasCharSet("utf8mb4");
-
-                    b.Property<string>("PasswordSalt")
-                        .HasColumnType("VARCHAR(255)")
-                        .HasColumnName("passwordSalt")
-                        .UseCollation("utf8mb4_unicode_ci")
-                        .HasCharSet("utf8mb4");
-
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnType("VARCHAR(255)")
-                        .HasColumnName("phoneNumber")
-                        .UseCollation("utf8mb4_unicode_ci")
-                        .HasCharSet("utf8mb4");
-
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .HasColumnType("TINYINT(1)")
-                        .HasColumnName("phoneNumberConfirmed");
-
-                    b.Property<string>("SecurityStamp")
-                        .HasColumnType("VARCHAR(2048)")
-                        .HasColumnName("securityStamp")
-                        .UseCollation("utf8mb4_unicode_ci")
-                        .HasCharSet("utf8mb4");
-
-                    b.Property<bool>("TwoFactorEnabled")
-                        .HasColumnType("TINYINT(1)")
-                        .HasColumnName("twoFactorEnabled");
-
-                    b.Property<string>("UserName")
-                        .HasMaxLength(256)
-                        .HasColumnType("VARCHAR(40)")
-                        .HasColumnName("userName")
+                    b.Property<string>("ExternalId")
+                        .HasColumnType("VARCHAR(127)")
+                        .HasColumnName("externalId")
                         .UseCollation("utf8mb4_unicode_ci")
                         .HasCharSet("utf8mb4");
 
@@ -915,18 +842,18 @@ namespace LaDanse.Persistence.Migrations
                         .IsUnique()
                         .HasDatabaseName("UNIQ_B28B6F38A0D96FBF");
 
-                    b.HasIndex("NormalizedEmail")
+                    b.HasIndex("Email")
                         .IsUnique()
                         .HasDatabaseName("UNIQ_B28B6F3892FC23A8");
 
-                    b.HasIndex("NormalizedUserName")
+                    b.HasIndex("ExternalId")
                         .IsUnique()
-                        .HasDatabaseName("UserNameIndex");
+                        .HasDatabaseName("UNIQ_B28B6F38C05FB297");
 
                     b.ToTable("User");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Queues.ActivityQueueItem", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Queues.ActivityQueueItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -966,7 +893,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("ActivityQueueItem");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Queues.NotificationQueueItem", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Queues.NotificationQueueItem", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1006,7 +933,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("NotificationQueueItem");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Settings.CalendarExport", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Settings.CalendarExport", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1040,7 +967,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("CalendarExport");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Settings.FeatureToggle", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Settings.FeatureToggle", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1070,7 +997,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("FeatureToggle");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Settings.Setting", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Settings.Setting", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1103,7 +1030,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("Setting");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Telemetry.FeatureUse", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Telemetry.FeatureUse", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1139,7 +1066,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("FeatureUse");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Telemetry.Feedback", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Telemetry.Feedback", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1169,7 +1096,7 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("Feedback");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Telemetry.MailSend", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Telemetry.MailSend", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -1206,139 +1133,9 @@ namespace LaDanse.Persistence.Migrations
                     b.ToTable("MailSend");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Sync.Guild.GameGuildSync", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
-
-                    b.Property<string>("NormalizedName")
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("NormalizedName")
-                        .IsUnique()
-                        .HasDatabaseName("RoleNameIndex");
-
-                    b.ToTable("AspNetRoles");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("longtext");
-
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetRoleClaims");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("ClaimType")
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("longtext");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("CHAR(36)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AspNetUserClaims");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
-                {
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
-
-                    b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
-
-                    b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("longtext");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("CHAR(36)");
-
-                    b.HasKey("LoginProvider", "ProviderKey");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("AspNetUserLogins");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
-                {
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("CHAR(36)");
-
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("UserId", "RoleId");
-
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("AspNetUserRoles");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
-                {
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("CHAR(36)");
-
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("varchar(128)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("longtext");
-
-                    b.HasKey("UserId", "LoginProvider", "Name");
-
-                    b.ToTable("AspNetUserTokens");
-                });
-
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Sync.Guild.GameGuildSync", b =>
-                {
-                    b.HasBaseType("LaDanse.Domain.Entities.GameData.Sync.GameCharacterSource");
+                    b.HasBaseType("LaDanse.Target.Entities.GameData.Sync.GameCharacterSource");
 
                     b.Property<Guid>("GameGuildId")
                         .HasColumnType("CHAR(36)")
@@ -1350,9 +1147,9 @@ namespace LaDanse.Persistence.Migrations
                     b.HasDiscriminator().HasValue("GuildSync");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Sync.Profile.ProfileSync", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Sync.Profile.ProfileSync", b =>
                 {
-                    b.HasBaseType("LaDanse.Domain.Entities.GameData.Sync.GameCharacterSource");
+                    b.HasBaseType("LaDanse.Target.Entities.GameData.Sync.GameCharacterSource");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("CHAR(36)")
@@ -1364,15 +1161,15 @@ namespace LaDanse.Persistence.Migrations
                     b.HasDiscriminator().HasValue("ProfileSync");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.CharacterClaims.GameCharacterClaim", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.CharacterClaims.GameCharacterClaim", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.GameData.Characters.GameCharacter", "GameCharacter")
+                    b.HasOne("LaDanse.Target.Entities.GameData.Characters.GameCharacter", "GameCharacter")
                         .WithMany()
                         .HasForeignKey("GameCharacterId")
                         .HasConstraintName("FK_E115ED785AF690F3")
                         .IsRequired();
 
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "User")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .HasConstraintName("FK_E115ED7862DEB3E8")
@@ -1383,9 +1180,9 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.CharacterClaims.GameCharacterClaimVersion", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.CharacterClaims.GameCharacterClaimVersion", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.CharacterClaims.GameCharacterClaim", "GameCharacterClaim")
+                    b.HasOne("LaDanse.Target.Entities.CharacterClaims.GameCharacterClaim", "GameCharacterClaim")
                         .WithMany()
                         .HasForeignKey("GameCharacterClaimId")
                         .HasConstraintName("FK_C33F42E09113A92D")
@@ -1394,9 +1191,9 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("GameCharacterClaim");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.CharacterClaims.PlaysGameRole", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.CharacterClaims.PlaysGameRole", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.CharacterClaims.GameCharacterClaim", "GameCharacterClaim")
+                    b.HasOne("LaDanse.Target.Entities.CharacterClaims.GameCharacterClaim", "GameCharacterClaim")
                         .WithMany()
                         .HasForeignKey("GameCharacterClaimId")
                         .HasConstraintName("FK_7A9E9B239113A92D")
@@ -1405,16 +1202,16 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("GameCharacterClaim");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Comments.Comment", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Comments.Comment", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.Comments.CommentGroup", "Group")
+                    b.HasOne("LaDanse.Target.Entities.Comments.CommentGroup", "Group")
                         .WithMany()
                         .HasForeignKey("GroupId")
                         .HasConstraintName("FK_5BC96BF0ED8188B0")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "Poster")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "Poster")
                         .WithMany()
                         .HasForeignKey("PosterId")
                         .HasConstraintName("FK_5BC96BF0581A197")
@@ -1426,15 +1223,15 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("Poster");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Events.Event", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Events.Event", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.Comments.CommentGroup", "CommentGroup")
+                    b.HasOne("LaDanse.Target.Entities.Comments.CommentGroup", "CommentGroup")
                         .WithMany()
                         .HasForeignKey("CommentGroupId")
                         .HasConstraintName("FK_FA6F25A34BDD4B9")
                         .IsRequired();
 
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "Organiser")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "Organiser")
                         .WithMany()
                         .HasForeignKey("OrganiserId")
                         .HasConstraintName("FK_FA6F25A34BDD3C8")
@@ -1445,15 +1242,15 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("Organiser");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Events.SignUp", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Events.SignUp", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.Events.Event", "Event")
+                    b.HasOne("LaDanse.Target.Entities.Events.Event", "Event")
                         .WithMany()
                         .HasForeignKey("EventId")
                         .HasConstraintName("FK_DC8B3F7B2B2EBB6C")
                         .IsRequired();
 
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "User")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .HasConstraintName("FK_DC8B3F7B62DEB3E8")
@@ -1464,9 +1261,9 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Events.SignedForGameRole", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Events.SignedForGameRole", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.Events.SignUp", "SignUp")
+                    b.HasOne("LaDanse.Target.Entities.Events.SignUp", "SignUp")
                         .WithMany()
                         .HasForeignKey("SignUpId")
                         .HasConstraintName("FK_16186B55A966702F")
@@ -1475,14 +1272,14 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("SignUp");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Forums.Forum", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Forums.Forum", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "LastPostPoster")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "LastPostPoster")
                         .WithMany()
                         .HasForeignKey("LastPostPosterId")
                         .HasConstraintName("FK_44EA91C922F0147C");
 
-                    b.HasOne("LaDanse.Domain.Entities.Forums.Topic", "LastPostTopic")
+                    b.HasOne("LaDanse.Target.Entities.Forums.Topic", "LastPostTopic")
                         .WithMany()
                         .HasForeignKey("LastPostTopicId")
                         .HasConstraintName("FK_44EA91C91CA16452");
@@ -1492,9 +1289,9 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("LastPostTopic");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Forums.ForumLastVisit", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Forums.ForumLastVisit", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "User")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .HasConstraintName("FK_F17408662DEB3E8")
@@ -1503,16 +1300,16 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Forums.Post", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Forums.Post", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "Poster")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "Poster")
                         .WithMany()
                         .HasForeignKey("PosterId")
                         .HasConstraintName("FK_FAB8C3B3581A197")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LaDanse.Domain.Entities.Forums.Topic", "Topic")
+                    b.HasOne("LaDanse.Target.Entities.Forums.Topic", "Topic")
                         .WithMany()
                         .HasForeignKey("TopicId")
                         .HasConstraintName("FK_FAB8C3B3E2E0EAFB")
@@ -1524,21 +1321,21 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("Topic");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Forums.Topic", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Forums.Topic", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.Forums.Forum", "Forum")
+                    b.HasOne("LaDanse.Target.Entities.Forums.Forum", "Forum")
                         .WithMany()
                         .HasForeignKey("ForumId")
                         .HasConstraintName("FK_5C81F11F7830F151")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "LastPostPoster")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "LastPostPoster")
                         .WithMany()
                         .HasForeignKey("LastPostPosterId")
                         .HasConstraintName("FK_5C81F11F22F0147C");
 
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "Poster")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "Poster")
                         .WithMany()
                         .HasForeignKey("PosterId")
                         .HasConstraintName("FK_5C81F11F581A197")
@@ -1551,15 +1348,15 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("Poster");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Forums.UnreadPost", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Forums.UnreadPost", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.Forums.Post", "Post")
+                    b.HasOne("LaDanse.Target.Entities.Forums.Post", "Post")
                         .WithMany()
                         .HasForeignKey("PostId")
                         .HasConstraintName("FK_6B0B9B3EE094D20D")
                         .IsRequired();
 
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "User")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .HasConstraintName("FK_6B0B9B3E62DEB3E8")
@@ -1570,9 +1367,9 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Characters.GameCharacter", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Characters.GameCharacter", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.GameData.Core.GameRealm", "GameRealm")
+                    b.HasOne("LaDanse.Target.Entities.GameData.Core.GameRealm", "GameRealm")
                         .WithMany()
                         .HasForeignKey("GameRealmId")
                         .HasConstraintName("FK_92AF3B34FA96DBDA")
@@ -1581,21 +1378,21 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("GameRealm");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Characters.GameCharacterVersion", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Characters.GameCharacterVersion", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.GameData.Characters.GameCharacter", "GameCharacter")
+                    b.HasOne("LaDanse.Target.Entities.GameData.Characters.GameCharacter", "GameCharacter")
                         .WithMany()
                         .HasForeignKey("GameCharacterId")
                         .HasConstraintName("FK_A70EBD185AF690F3")
                         .IsRequired();
 
-                    b.HasOne("LaDanse.Domain.Entities.GameData.Core.GameClass", "GameClass")
+                    b.HasOne("LaDanse.Target.Entities.GameData.Core.GameClass", "GameClass")
                         .WithMany()
                         .HasForeignKey("GameClassId")
                         .HasConstraintName("FK_A70EBD18F3B4E37B")
                         .IsRequired();
 
-                    b.HasOne("LaDanse.Domain.Entities.GameData.Core.GameRace", "GameRace")
+                    b.HasOne("LaDanse.Target.Entities.GameData.Core.GameRace", "GameRace")
                         .WithMany()
                         .HasForeignKey("GameRaceId")
                         .HasConstraintName("FK_A70EBD18E036C39A")
@@ -1608,9 +1405,9 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("GameRace");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Characters.GameGuild", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Characters.GameGuild", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.GameData.Core.GameRealm", "GameRealm")
+                    b.HasOne("LaDanse.Target.Entities.GameData.Core.GameRealm", "GameRealm")
                         .WithMany()
                         .HasForeignKey("GameRealmId")
                         .HasConstraintName("FK_B48152AFFA96DBDA")
@@ -1619,15 +1416,15 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("GameRealm");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Characters.InGameGuild", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Characters.InGameGuild", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.GameData.Characters.GameCharacter", "GameCharacter")
+                    b.HasOne("LaDanse.Target.Entities.GameData.Characters.GameCharacter", "GameCharacter")
                         .WithMany()
                         .HasForeignKey("GameCharacterId")
                         .HasConstraintName("FK_CA2244C5AF690F3")
                         .IsRequired();
 
-                    b.HasOne("LaDanse.Domain.Entities.GameData.Characters.GameGuild", "GameGuild")
+                    b.HasOne("LaDanse.Target.Entities.GameData.Characters.GameGuild", "GameGuild")
                         .WithMany()
                         .HasForeignKey("GameGuildId")
                         .HasConstraintName("FK_CA2244C75407DAB")
@@ -1638,9 +1435,9 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("GameGuild");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Core.GameRace", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Core.GameRace", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.GameData.Core.GameFaction", "GameFaction")
+                    b.HasOne("LaDanse.Target.Entities.GameData.Core.GameFaction", "GameFaction")
                         .WithMany()
                         .HasForeignKey("GameFactionId")
                         .HasConstraintName("FK_D51A7CF883048B90")
@@ -1649,9 +1446,9 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("GameFaction");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Sync.GameCharacterSyncSession", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Sync.GameCharacterSyncSession", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.GameData.Sync.GameCharacterSource", "GameCharacterSource")
+                    b.HasOne("LaDanse.Target.Entities.GameData.Sync.GameCharacterSource", "GameCharacterSource")
                         .WithMany()
                         .HasForeignKey("GameCharacterSourceId")
                         .HasConstraintName("FK_EC73362CDD71BB")
@@ -1660,15 +1457,15 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("GameCharacterSource");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Sync.TrackedBy", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Sync.TrackedBy", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.GameData.Characters.GameCharacter", "GameCharacter")
+                    b.HasOne("LaDanse.Target.Entities.GameData.Characters.GameCharacter", "GameCharacter")
                         .WithMany()
                         .HasForeignKey("GameCharacterId")
                         .HasConstraintName("FK_C2316E125AF690F3")
                         .IsRequired();
 
-                    b.HasOne("LaDanse.Domain.Entities.GameData.Sync.GameCharacterSource", "GameCharacterSource")
+                    b.HasOne("LaDanse.Target.Entities.GameData.Sync.GameCharacterSource", "GameCharacterSource")
                         .WithMany()
                         .HasForeignKey("GameCharacterSourceId")
                         .HasConstraintName("FK_C2316E122CDD71BB")
@@ -1679,9 +1476,9 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("GameCharacterSource");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Queues.ActivityQueueItem", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Queues.ActivityQueueItem", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "ActivityBy")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "ActivityBy")
                         .WithMany()
                         .HasForeignKey("ActivityById")
                         .HasConstraintName("FK_8A274BCA93C757EE");
@@ -1689,9 +1486,9 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("ActivityBy");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Queues.NotificationQueueItem", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Queues.NotificationQueueItem", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "ActivityBy")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "ActivityBy")
                         .WithMany()
                         .HasForeignKey("ActivityById")
                         .HasConstraintName("FK_C656D44393C757EE");
@@ -1699,9 +1496,9 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("ActivityBy");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Settings.CalendarExport", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Settings.CalendarExport", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "User")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .HasConstraintName("FK_6E28848862DEB3E8")
@@ -1710,9 +1507,9 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Settings.FeatureToggle", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Settings.FeatureToggle", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "User")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .HasConstraintName("FK_D25E05DD612E729E")
@@ -1721,9 +1518,9 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Settings.Setting", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Settings.Setting", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "User")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .HasConstraintName("FK_50C9810462DEB3E8")
@@ -1732,9 +1529,9 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Telemetry.FeatureUse", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Telemetry.FeatureUse", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "UsedBy")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "UsedBy")
                         .WithMany()
                         .HasForeignKey("UsedById")
                         .HasConstraintName("FK_E504F432FCEF271C");
@@ -1742,9 +1539,9 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("UsedBy");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.Telemetry.Feedback", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.Telemetry.Feedback", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "PostedBy")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "PostedBy")
                         .WithMany()
                         .HasForeignKey("PostedById")
                         .HasConstraintName("FK_2B5F260E9DD8CB47")
@@ -1753,60 +1550,9 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("PostedBy");
                 });
 
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<System.Guid>", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Sync.Guild.GameGuildSync", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<System.Guid>", b =>
-                {
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<System.Guid>", b =>
-                {
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserRole<System.Guid>", b =>
-                {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole<System.Guid>", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<System.Guid>", b =>
-                {
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", null)
-                        .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Sync.Guild.GameGuildSync", b =>
-                {
-                    b.HasOne("LaDanse.Domain.Entities.GameData.Characters.GameGuild", "GameGuild")
+                    b.HasOne("LaDanse.Target.Entities.GameData.Characters.GameGuild", "GameGuild")
                         .WithMany()
                         .HasForeignKey("GameGuildId")
                         .HasConstraintName("FK_18BD775675407DAB")
@@ -1815,9 +1561,9 @@ namespace LaDanse.Persistence.Migrations
                     b.Navigation("GameGuild");
                 });
 
-            modelBuilder.Entity("LaDanse.Domain.Entities.GameData.Sync.Profile.ProfileSync", b =>
+            modelBuilder.Entity("LaDanse.Target.Entities.GameData.Sync.Profile.ProfileSync", b =>
                 {
-                    b.HasOne("LaDanse.Domain.Entities.Identity.User", "User")
+                    b.HasOne("LaDanse.Target.Entities.Identity.User", "User")
                         .WithMany()
                         .HasForeignKey("UserId")
                         .HasConstraintName("FK_70D670C87D3656A4")

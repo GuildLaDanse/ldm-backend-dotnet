@@ -20,7 +20,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LaDanse.Persistence
 {
-    public class LaDanseDbContext : IdentityDbContext<User, IdentityRole<Guid>, Guid>, ILaDanseDbContext
+    public class LaDanseDbContext : DbContext, ILaDanseDbContext
     {
         public LaDanseDbContext(DbContextOptions<LaDanseDbContext> options)
             : base(options)
@@ -82,6 +82,12 @@ namespace LaDanse.Persistence
 
         #endregion
 
+        #region Identity
+
+        public virtual DbSet<User> Users { get; set; }
+
+        #endregion
+        
         #region Queues
 
         public virtual DbSet<ActivityQueueItem> ActivityQueueItems { get; set; }
