@@ -63,7 +63,7 @@ namespace LaDanse.Infrastructure
                 .First(c => c.Type == NameIdentifierType).Value;
 
             // TODO this is not correct, fix!
-            _user = _dbContext.Users.FirstOrDefault(u => u.UserName == externalId);
+            _user = _dbContext.Users.FirstOrDefault(u => u.ExternalId == externalId);
         }
         
         private void VerifyUser()

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
+using LaDanse.Application;
 using LaDanse.Application.Events.Models;
 using LaDanse.Application.Events.Queries.GetAllEvents;
 using LaDanse.Application.Events.Queries.GetEvent;
@@ -20,8 +21,13 @@ namespace LaDanse.WebAPI.Controllers.Api.Events
         [Produces("application/json")]
         public async Task<ActionResult<IEnumerable<Event>>> GetAllEventAsync(
             [FromQuery(Name = "fromDate")] string strFromDate,
-            [FromServices] IMediator mediator)
+            [FromServices] IMediator mediator,
+            [FromServices] ILaDanseRuntimeContext runtimeContext)
         {
+            _logger.Debug(runtimeContext.UserId().ToString());
+            _logger.Debug(runtimeContext.User().DisplayName);
+            _logger.Debug(runtimeContext.IsAuthenticated().ToString());
+            
             if (!DateTime.TryParseExact(
                 strFromDate, 
                 "yyyyMMdd", 
