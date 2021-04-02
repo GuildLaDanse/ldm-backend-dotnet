@@ -1,5 +1,5 @@
 using LaDanse.Application;
-using LaDanse.Common.Abstractions;
+using LaDanse.Common;
 using LaDanse.External.Auth0.Implementation;
 using LaDanse.External.BattleNet.Implementation;
 using Microsoft.AspNetCore.Hosting;

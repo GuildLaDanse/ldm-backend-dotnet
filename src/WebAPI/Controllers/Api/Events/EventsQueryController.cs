@@ -13,21 +13,16 @@ using Serilog;
 namespace LaDanse.WebAPI.Controllers.Api.Events
 {
     [ApiController]
-    public class EventsController : ControllerBase
+    public class EventsQueryController : ControllerBase
     {
-        private readonly ILogger _logger = Log.ForContext<EventsController>();
+        private readonly ILogger _logger = Log.ForContext<EventsQueryController>();
         
         [HttpGet("/api/events")]
         [Produces("application/json")]
         public async Task<ActionResult<IEnumerable<Event>>> GetAllEventAsync(
             [FromQuery(Name = "fromDate")] string strFromDate,
-            [FromServices] IMediator mediator,
-            [FromServices] ILaDanseRuntimeContext runtimeContext)
+            [FromServices] IMediator mediator)
         {
-            _logger.Debug(runtimeContext.UserId().ToString());
-            _logger.Debug(runtimeContext.User().DisplayName);
-            _logger.Debug(runtimeContext.IsAuthenticated().ToString());
-            
             if (!DateTime.TryParseExact(
                 strFromDate, 
                 "yyyyMMdd", 
@@ -59,7 +54,9 @@ namespace LaDanse.WebAPI.Controllers.Api.Events
         
         [HttpGet("/api/events/{eventId}")]
         [Produces("application/json")]
-        public async Task<ActionResult<Event>> GetEventAsync([FromServices] IMediator mediator, string eventId)
+        public async Task<ActionResult<Event>> GetEventAsync(
+            [FromServices] IMediator mediator, 
+            string eventId)
         {
             Guid gEventId;
 

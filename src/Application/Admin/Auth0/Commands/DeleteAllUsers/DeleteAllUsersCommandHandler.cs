@@ -1,13 +1,11 @@
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using LaDanse.Application.Admin.Auth0.Commands.SyncUsers;
 using LaDanse.Application.Common.Interfaces;
-using LaDanse.Common.Abstractions;
+using LaDanse.Common;
 using LaDanse.External.Auth0.Abstractions;
 using LaDanse.External.Configuration.Abstractions;
 using MediatR;
-using Microsoft.Extensions.Configuration;
 using Serilog;
 
 namespace LaDanse.Application.Admin.Auth0.Commands.DeleteAllUsers

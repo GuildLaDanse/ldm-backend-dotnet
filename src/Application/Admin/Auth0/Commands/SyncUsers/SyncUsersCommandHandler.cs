@@ -2,7 +2,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using LaDanse.Application.Common.Interfaces;
-using LaDanse.Common.Abstractions;
+using LaDanse.Common;
 using LaDanse.Domain.Entities.Identity;
 using LaDanse.External.Auth0.Abstractions;
 using LaDanse.External.Auth0.Abstractions.Models;

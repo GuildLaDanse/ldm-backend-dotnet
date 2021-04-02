@@ -3,7 +3,6 @@
     <PropertyGroup>
         <TargetFramework>net5.0</TargetFramework>
         <UserSecretsId>e3ff1a86-1ab1-4289-b370-508648f6c8b7</UserSecretsId>
-        <ApplicationInsightsResourceId>/subscriptions/effbd3cc-3237-4261-858c-52455599cc64/resourceGroups/LaDanseResources/providers/microsoft.insights/components/DevelopmentInsights</ApplicationInsightsResourceId>
         <AssemblyName>LaDanse.WebAPI</AssemblyName>
         <RootNamespace>LaDanse.WebAPI</RootNamespace>
     </PropertyGroup>
