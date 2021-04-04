@@ -2,7 +2,7 @@ using System;
 
 namespace LaDanse.Application.Events.Models
 {
-    public class CommentGroupReference
+    public record CommentGroupReference
     {
         public CommentGroupReference(Guid commentGroupId)
         {

@@ -3,14 +3,14 @@ using System.Collections.Generic;
 
 namespace LaDanse.Application.Events.Models
 {
-    public class SignUp
+    public record SignUp
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; init; }
         
-        public UserReference UserRef { get; set; }
+        public UserReference UserRef { get; init; }
         
-        public string Type { get; set; }
+        public string Type { get; init; }
         
-        public IEnumerable<string> Roles { get; set; }
+        public IEnumerable<string> Roles { get; init; }
     }
 }

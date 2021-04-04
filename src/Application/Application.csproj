@@ -4,6 +4,7 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <RootNamespace>LaDanse.Application</RootNamespace>
         <AssemblyName>LaDanse.Application</AssemblyName>
+        <LangVersion>9</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
@@ -14,7 +15,6 @@
 
     <ItemGroup>
         <ProjectReference Include="..\Auth0.Abstractions\Auth0.Abstractions.csproj" />
-        <ProjectReference Include="..\Common.Abstractions\Common.Abstractions.csproj" />
         <ProjectReference Include="..\Common\Common.csproj" />
         <ProjectReference Include="..\Configuration.Abstractions\Configuration.Abstractions.csproj" />
         <ProjectReference Include="..\Domain\Domain.csproj" />
@@ -24,6 +24,12 @@
     <ItemGroup>
         <Folder Include="Admin" />
         <Folder Include="Common\Exceptions" />
+        <Folder Include="Events\Commands\CreateSignUp" />
+        <Folder Include="Events\Commands\DeleteEvent" />
+        <Folder Include="Events\Commands\DeleteSignUp" />
+        <Folder Include="Events\Commands\UpdateCoreEvent" />
+        <Folder Include="Events\Commands\UpdateSignUp" />
+        <Folder Include="Events\Commands\UpdateStateEvent" />
     </ItemGroup>
 
 </Project>

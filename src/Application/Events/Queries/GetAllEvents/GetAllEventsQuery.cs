@@ -5,13 +5,8 @@ using MediatR;
 
 namespace LaDanse.Application.Events.Queries.GetAllEvents
 {
-    public class GetAllEventsQuery : IRequest<IEnumerable<Event>>
+    public record GetAllEventsQuery : IRequest<IEnumerable<Event>>
     {
-        public GetAllEventsQuery(DateTime startDate)
-        {
-            StartDate = startDate;
-        }
-        
-        public DateTime StartDate { get;  }
+        public DateTime StartDate { get; init; }
     }
 }

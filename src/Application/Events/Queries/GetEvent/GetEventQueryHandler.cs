@@ -34,19 +34,6 @@ namespace LaDanse.Application.Events.Queries.GetEvent
                 return null;
             }
 
-            var eventModel = new Event
-            {
-                Id = dbEvent.Id,
-                Name = dbEvent.Name,
-                Description = dbEvent.Description,
-                OrganiserRef = new UserReference(dbEvent.OrganiserId, dbEvent.Organiser.DisplayName),
-                InviteTime = dbEvent.InviteTime,
-                StartTime = dbEvent.StartTime,
-                EndTime = dbEvent.EndTime,
-                State = dbEvent.State.ToString(),
-                CommentGroupRef = new CommentGroupReference(dbEvent.CommentGroupId)
-            };
-
             var dbSignups = await _dbContext.SignUps
                 .Where(s => s.EventId == dbEvent.Id)
                 .Include(s => s.User)
@@ -70,10 +57,20 @@ namespace LaDanse.Application.Events.Queries.GetEvent
                         .Where(r => r.SignUpId == s.Id)
                         .Select(r => r.GameRole.ToString())
                 });
-
-            eventModel.SignUps = signUps;
             
-            return eventModel;
+            return new Event
+            {
+                Id = dbEvent.Id,
+                Name = dbEvent.Name,
+                Description = dbEvent.Description,
+                OrganiserRef = new UserReference(dbEvent.OrganiserId, dbEvent.Organiser.DisplayName),
+                InviteTime = dbEvent.InviteTime,
+                StartTime = dbEvent.StartTime,
+                EndTime = dbEvent.EndTime,
+                State = dbEvent.State.ToString(),
+                CommentGroupRef = new CommentGroupReference(dbEvent.CommentGroupId),
+                SignUps = signUps
+            };
         }
     }
 }

@@ -43,7 +43,10 @@ namespace LaDanse.WebAPI.Controllers.Api.Events
 
             try
             {
-                var result = await mediator.Send(new GetEventQuery(gEventId));
+                var result = await mediator.Send(new GetEventQuery
+                {
+                    EventId = gEventId
+                });
 
                 if (result == null)
                 {
@@ -81,7 +84,10 @@ namespace LaDanse.WebAPI.Controllers.Api.Events
 
             try
             {
-                var result = await mediator.Send(new GetEventQuery(gEventId));
+                var result = await mediator.Send(new GetEventQuery
+                {
+                    EventId = gEventId
+                });
 
                 if (result == null)
                 {
@@ -119,7 +125,10 @@ namespace LaDanse.WebAPI.Controllers.Api.Events
 
             try
             {
-                var result = await mediator.Send(new GetEventQuery(gEventId));
+                var result = await mediator.Send(new GetEventQuery
+                {
+                    EventId = gEventId
+                });
 
                 if (result == null)
                 {
@@ -136,10 +145,10 @@ namespace LaDanse.WebAPI.Controllers.Api.Events
             }
         }
         
-        // Post Sign Up (create Sign Up)
+        // Post Sign Up (CreateSignUp)
         
-        // Put Sign Up (update Sign Up)
+        // Put Sign Up (UpdateSignUp)
         
-        // Delete Sign Up (remove Sign Up)
+        // Delete Sign Up (DeleteSignUp)
     }
 }

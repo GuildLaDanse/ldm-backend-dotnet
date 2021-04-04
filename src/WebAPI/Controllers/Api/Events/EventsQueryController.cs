@@ -35,7 +35,10 @@ namespace LaDanse.WebAPI.Controllers.Api.Events
             
             try
             {
-                var result = await mediator.Send(new GetAllEventsQuery(fromDate));
+                var result = await mediator.Send(new GetAllEventsQuery
+                {
+                    StartDate = fromDate
+                });
 
                 if (result == null)
                 {
@@ -73,7 +76,10 @@ namespace LaDanse.WebAPI.Controllers.Api.Events
 
             try
             {
-                var result = await mediator.Send(new GetEventQuery(gEventId));
+                var result = await mediator.Send(new GetEventQuery
+                {
+                    EventId = gEventId
+                });
 
                 if (result == null)
                 {

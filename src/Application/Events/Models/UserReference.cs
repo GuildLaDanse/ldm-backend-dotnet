@@ -2,7 +2,7 @@ using System;
 
 namespace LaDanse.Application.Events.Models
 {
-    public class UserReference
+    public record UserReference
     {
         public UserReference(Guid userId, string name)
         {

@@ -3,26 +3,26 @@ using System.Collections.Generic;
 
 namespace LaDanse.Application.Events.Models
 {
-    public class Event
+    public record Event
     {
-        public Guid Id { get; set; }
+        public Guid Id { get; init; }
         
-        public string Name { get; set; }
+        public string Name { get; init; }
         
-        public string Description { get; set; }
+        public string Description { get; init; }
         
-        public UserReference OrganiserRef { get; set; }
+        public UserReference OrganiserRef { get; init; }
 
-        public DateTime InviteTime { get; set; }
+        public DateTime InviteTime { get; init; }
         
-        public DateTime StartTime { get; set; }
+        public DateTime StartTime { get; init; }
         
-        public DateTime EndTime { get; set; }
+        public DateTime EndTime { get; init; }
         
-        public string State { get; set; }
+        public string State { get; init; }
         
-        public CommentGroupReference CommentGroupRef { get; set; }
+        public CommentGroupReference CommentGroupRef { get; init; }
         
-        public IEnumerable<SignUp> SignUps { get; set; }
+        public IEnumerable<SignUp> SignUps { get; init; }
     }
 }
