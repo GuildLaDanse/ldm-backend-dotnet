@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using LaDanse.Application.Events.Commands.CreateEvent;
+using LaDanse.Application.Events.Commands.UpdateBasicEvent;
 using LaDanse.Application.Events.Models;
 using LaDanse.Application.Events.Queries.GetEvent;
 using MediatR;
@@ -34,7 +35,8 @@ namespace LaDanse.WebAPI.Controllers.Api.Events
         [Produces("application/json")]
         public async Task<ActionResult<Event>> UpdateCoreEventAsync(
             [FromServices] IMediator mediator, 
-            string eventId)
+            string eventId,
+            [FromBody] UpdateBasicEvent updateBasicEvent)
         {
             Guid gEventId;
 
@@ -51,17 +53,13 @@ namespace LaDanse.WebAPI.Controllers.Api.Events
 
             try
             {
-                var result = await mediator.Send(new GetEventQuery
+                await mediator.Send(new UpdateBasicEventCommand
                 {
-                    EventId = gEventId
+                    EventId = gEventId,
+                    UpdateBasicEvent = updateBasicEvent
                 });
-
-                if (result == null)
-                {
-                    return NotFound();
-                }
                 
-                return Ok(result);
+                return Ok();
             }
             catch (Exception e)
             {

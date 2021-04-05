@@ -2,7 +2,7 @@
 
 namespace LaDanse.Application.Events.Models
 {
-    public record UpdateCoreEvent
+    public record UpdateBasicEvent
     {
         public string Name { get; init; }
         

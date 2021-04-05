@@ -28,7 +28,6 @@
         <Folder Include="Events\Commands\CreateSignUp" />
         <Folder Include="Events\Commands\DeleteEvent" />
         <Folder Include="Events\Commands\DeleteSignUp" />
-        <Folder Include="Events\Commands\UpdateCoreEvent" />
         <Folder Include="Events\Commands\UpdateSignUp" />
         <Folder Include="Events\Commands\UpdateStateEvent" />
     </ItemGroup>
