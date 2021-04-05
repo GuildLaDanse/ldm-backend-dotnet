@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using LaDanse.Application.Events.Commands.CreateEvent;
 using LaDanse.Application.Events.Models;
 using LaDanse.Application.Events.Queries.GetEvent;
 using MediatR;
@@ -16,10 +17,15 @@ namespace LaDanse.WebAPI.Controllers.Api.Events
         [HttpPost("/api/events")]
         [Produces("application/json")]
         public async Task<ActionResult<Guid>> CreateEventAsync(
-            [FromQuery(Name = "fromDate")] string strFromDate,
+            [FromBody] CreateEvent createEvent,
             [FromServices] IMediator mediator)
         {
-            return Guid.NewGuid();
+            var createEventCmd = new CreateEventCommand
+            {
+                CreateEvent = createEvent
+            };
+
+            return await mediator.Send(createEventCmd);
         }
         
         [HttpPut("/api/events/{eventId}/basic")]

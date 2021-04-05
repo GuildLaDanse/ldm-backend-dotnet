@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
-using LaDanse.Application;
 using LaDanse.Application.Events.Models;
 using LaDanse.Application.Events.Queries.GetAllEvents;
 using LaDanse.Application.Events.Queries.GetEvent;

@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using LaDanse.Application.Common.Interfaces;
 using LaDanse.Domain.Entities.Comments;
 using LaDanse.Domain.Entities.Events;
+using LaDanse.ServiceBus.Abstractions;
 using MediatR;
 using Serilog;
 
@@ -14,17 +15,22 @@ namespace LaDanse.Application.Events.Commands.CreateEvent
         private readonly ILogger _logger = Log.ForContext<CreateEventCommandHandler>();
 
         private readonly ILaDanseDbContext _dbContext;
+        private readonly IServiceBus _serviceBus;
         private readonly ILaDanseRuntimeContext _laDanseRuntimeContext;
 
         public CreateEventCommandHandler(
             ILaDanseRuntimeContext laDanseRuntimeContext,
+            IServiceBus serviceBus,
             ILaDanseDbContext dbContext)
         {
             _dbContext = dbContext;
+            _serviceBus = serviceBus;
             _laDanseRuntimeContext = laDanseRuntimeContext;
         }
         
-        public async Task<Guid> Handle(CreateEventCommand request, CancellationToken cancellationToken)
+        public async Task<Guid> Handle(
+            CreateEventCommand request, 
+            CancellationToken cancellationToken)
         {
             /* (1) Verify validity of input */
 
@@ -40,12 +46,14 @@ namespace LaDanse.Application.Events.Commands.CreateEvent
             
             /* (4) Send out an integration event to indicate an event was created */
 
-            // TODO
+            SendIntegrationEvent(request, newEvent);
 
             return newEvent.Id;
         }
 
-        private void ValidateRequest(CreateEventCommand request, CancellationToken cancellationToken)
+        private void ValidateRequest(
+            CreateEventCommand request, 
+            CancellationToken cancellationToken)
         {
             /*
              * - Name cannot be empty (minimum length)
@@ -56,7 +64,9 @@ namespace LaDanse.Application.Events.Commands.CreateEvent
              */
         }
 
-        private async Task<Event> HandleRequestAsync(CreateEventCommand request, CancellationToken cancellationToken)
+        private async Task<Event> HandleRequestAsync(
+            CreateEventCommand request, 
+            CancellationToken cancellationToken)
         {
             var newCommentGroup = new CommentGroup
             {
@@ -87,6 +97,13 @@ namespace LaDanse.Application.Events.Commands.CreateEvent
             await _dbContext.SaveChangesAsync(cancellationToken);
 
             return newEvent;
+        }
+        
+        private void SendIntegrationEvent(
+            CreateEventCommand request, 
+            Event newEvent)
+        {
+            _serviceBus.GetTopic("IntegrationEvents").SendMessage("New event created");
         }
     }
 }

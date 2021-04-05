@@ -26,6 +26,7 @@
         <ProjectReference Include="..\BattleNet.Implementation\BattleNet.Implementation.csproj" />
         <ProjectReference Include="..\Common.Abstractions\Common.Abstractions.csproj" />
         <ProjectReference Include="..\Persistence\Persistence.csproj" />
+        <ProjectReference Include="..\ServiceBus.Implementation\ServiceBus.Implementation.csproj" />
     </ItemGroup>
 
 </Project>
