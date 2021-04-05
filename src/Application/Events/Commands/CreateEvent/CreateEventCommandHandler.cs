@@ -64,7 +64,7 @@ namespace LaDanse.Application.Events.Commands.CreateEvent
              * - Invite, Start and End Time must be on the same day
              * - Invite Time <= Start Time < End Time
              * - Invite, Start and End Time cannot be in the past
-             *      - unless Admin or Office?
+             *      - unless Admin or Officer?
              */
         }
 

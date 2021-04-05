@@ -40,7 +40,7 @@ namespace LaDanse.Application.Events.Commands.UpdateBasicEvent
 
             ValidateRequest(request, cancellationToken);
             
-            /* (2) Verify if person trying to create event is allowed to create an event */
+            /* (2) Verify if person trying to update the event is allowed to update this event */
             
             // TODO
             
@@ -48,7 +48,7 @@ namespace LaDanse.Application.Events.Commands.UpdateBasicEvent
 
             var updatedEvent = await HandleRequestAsync(request, cancellationToken);
             
-            /* (4) Send out an integration event to indicate an event was created */
+            /* (4) Send out an integration event to indicate an event was updated */
 
             SendIntegrationEvent(request, updatedEvent);
 
