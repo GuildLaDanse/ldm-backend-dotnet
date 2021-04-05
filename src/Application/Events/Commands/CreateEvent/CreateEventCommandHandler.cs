@@ -86,7 +86,7 @@ namespace LaDanse.Application.Events.Commands.CreateEvent
                 Name = request.CreateEvent.Name,
                 Description = request.CreateEvent.Description,
                 InviteTime = request.CreateEvent.InviteTime.ToUniversalTime(),
-                StartTime = request.CreateEvent.InviteTime.ToUniversalTime(),
+                StartTime = request.CreateEvent.StartTime.ToUniversalTime(),
                 EndTime = request.CreateEvent.EndTime.ToUniversalTime(),
                 OrganiserId = _laDanseRuntimeContext.UserId(),
                 CommentGroupId = newCommentGroup.Id,
