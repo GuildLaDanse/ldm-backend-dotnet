@@ -6,6 +6,7 @@ using LaDanse.Application.Events.Models;
 using LaDanse.Application.Events.Queries.GetAllEvents;
 using LaDanse.Application.Events.Queries.GetEvent;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
@@ -18,6 +19,7 @@ namespace LaDanse.WebAPI.Controllers.Api.Events
         
         [HttpGet("/api/events")]
         [Produces("application/json")]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Event>>> GetAllEventAsync(
             [FromQuery(Name = "fromDate")] string strFromDate,
             [FromServices] IMediator mediator)
@@ -56,6 +58,7 @@ namespace LaDanse.WebAPI.Controllers.Api.Events
         
         [HttpGet("/api/events/{eventId}")]
         [Produces("application/json")]
+        [Authorize]
         public async Task<ActionResult<Event>> GetEventAsync(
             [FromServices] IMediator mediator, 
             string eventId)

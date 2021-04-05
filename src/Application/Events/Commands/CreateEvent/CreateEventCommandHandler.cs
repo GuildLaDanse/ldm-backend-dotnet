@@ -2,15 +2,16 @@
 using System.Threading;
 using System.Threading.Tasks;
 using LaDanse.Application.Common.Interfaces;
+using LaDanse.Application.Events.Models;
 using LaDanse.Domain.Entities.Comments;
-using LaDanse.Domain.Entities.Events;
 using LaDanse.ServiceBus.Abstractions;
 using MediatR;
 using Serilog;
+using Event = LaDanse.Domain.Entities.Events.Event;
 
 namespace LaDanse.Application.Events.Commands.CreateEvent
 {
-    public class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, Guid>
+    public class CreateEventCommandHandler : IRequestHandler<CreateEventCommand, EventCreated>
     {
         private readonly ILogger _logger = Log.ForContext<CreateEventCommandHandler>();
 
@@ -28,7 +29,7 @@ namespace LaDanse.Application.Events.Commands.CreateEvent
             _laDanseRuntimeContext = laDanseRuntimeContext;
         }
         
-        public async Task<Guid> Handle(
+        public async Task<EventCreated> Handle(
             CreateEventCommand request, 
             CancellationToken cancellationToken)
         {
@@ -48,7 +49,10 @@ namespace LaDanse.Application.Events.Commands.CreateEvent
 
             SendIntegrationEvent(request, newEvent);
 
-            return newEvent.Id;
+            return new EventCreated
+            {
+                EventId = newEvent.Id
+            };
         }
 
         private void ValidateRequest(

@@ -4,6 +4,7 @@ using LaDanse.Application.Events.Commands.CreateEvent;
 using LaDanse.Application.Events.Models;
 using LaDanse.Application.Events.Queries.GetEvent;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
 
@@ -16,7 +17,8 @@ namespace LaDanse.WebAPI.Controllers.Api.Events
         
         [HttpPost("/api/events")]
         [Produces("application/json")]
-        public async Task<ActionResult<Guid>> CreateEventAsync(
+        [Authorize]
+        public async Task<ActionResult<EventCreated>> CreateEventAsync(
             [FromBody] CreateEvent createEvent,
             [FromServices] IMediator mediator)
         {
